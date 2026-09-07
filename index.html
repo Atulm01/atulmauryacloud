@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0078d4">
+    <meta name="description" content="Atul Maurya Cloud Solution - global cloud and IT services.">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="logo.png.png">
     <title>Atul Maurya Cloud Solution Pvt. Ltd.</title>
     <style>
         :root {
@@ -1819,6 +1823,12 @@
     </footer>
 
     <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js');
+            });
+        }
+
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const pageViews = document.querySelectorAll('.page-view');

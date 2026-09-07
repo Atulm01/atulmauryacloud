@@ -1,0 +1,19 @@
+{
+  "name": "Atul Maurya Cloud Solution",
+  "short_name": "Atul Maurya Cloud",
+  "description": "Global cloud and IT services from Atul Maurya Cloud Solution.",
+  "start_url": "./index.html#home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#0078d4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "logo.png.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
