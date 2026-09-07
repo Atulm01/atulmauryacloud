@@ -98,6 +98,71 @@
         .nav-links a { color: var(--text); }
         .nav-links a:hover { color: var(--primary-2); }
 
+        .service-brands {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .service-brands-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            min-height: 72px;
+            overflow-x: auto;
+        }
+
+        .service-brands-label {
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .service-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex: 0 0 auto;
+            color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .service-brand:hover { color: var(--primary-2); }
+
+        .brand-logo-image {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            padding: 6px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .brand-mark {
+            display: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-azure { background: #0078d4; }
+        .brand-365 { background: #d83b01; }
+        .brand-teams { background: #6264a7; }
+        .brand-bi { background: #f2c811; color: #172b4d; }
+        .brand-apps { background: #742774; }
+        .brand-defender { background: #107c10; }
+        .brand-dynamics { background: #002050; }
+
         .primary-btn, .secondary-btn, .small-btn {
             display: inline-flex;
             align-items: center;
@@ -145,7 +210,7 @@
 
         .hero-inner {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
             align-items: center;
         }
@@ -224,14 +289,15 @@
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1.15rem;
             box-shadow: var(--shadow);
         }
 
         .hero-photo {
             width: 100%;
-            height: 450px;
+            height: 560px;
             object-fit: cover;
+            object-position: center top;
             border-radius: 4px;
         }
 
@@ -265,6 +331,48 @@
             padding: 1.2rem 0 0;
         }
 
+        .home-overview {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .home-overview-card {
+            padding: 1.2rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .home-overview-card strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--primary);
+        }
+
+        .home-overview-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .home-process {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .home-process strong {
+            color: var(--text);
+        }
+
         .stat-box {
             background: #fff;
             border: 1px solid var(--border);
@@ -286,6 +394,20 @@
 
         .section {
             padding: 5.5rem 0;
+        }
+
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active {
+            display: block;
+            animation: page-enter 0.28s ease both;
+        }
+
+        @keyframes page-enter {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section-header {
@@ -419,6 +541,60 @@
             border-left: 4px solid #d29200;
             color: #5b4300;
             font-size: 0.92rem;
+        }
+
+        .license-comparison {
+            margin-top: 2rem;
+            overflow-x: auto;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .license-comparison table {
+            width: 100%;
+            min-width: 860px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .license-comparison caption {
+            padding: 1.25rem 1.25rem 0.85rem;
+            color: var(--text);
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-align: left;
+        }
+
+        .license-comparison th,
+        .license-comparison td {
+            padding: 0.9rem 1rem;
+            border-top: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .license-comparison th {
+            background: #f2f7fb;
+            color: var(--text);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .license-comparison td {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .license-comparison td strong {
+            color: var(--text);
+        }
+
+        .license-comparison td a {
+            color: var(--primary);
+            font-weight: 700;
+            white-space: nowrap;
         }
 
         .pricing-card {
@@ -616,13 +792,41 @@
         .meeting-form input[type="date"] {
             min-height: 48px;
             cursor: pointer;
-            color-scheme: dark;
+            color-scheme: light;
         }
 
         .meeting-form input[type="time"] {
             min-height: 48px;
             cursor: pointer;
-            color-scheme: dark;
+            color-scheme: light;
+        }
+
+        .picker-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0.5rem;
+            margin-top: 0.35rem;
+        }
+
+        .picker-row input {
+            flex: 1;
+            margin-top: 0;
+        }
+
+        .picker-btn {
+            border: 1px solid #b9d8f0;
+            border-radius: 4px;
+            background: #e8f3fc;
+            color: var(--primary);
+            padding: 0 0.8rem;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .picker-btn:hover {
+            background: #d7ebf9;
         }
 
         .meeting-form textarea {
@@ -657,6 +861,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .home-overview {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .pricing-reference {
                 grid-template-columns: 1fr;
             }
@@ -671,6 +879,16 @@
                 justify-content: center;
                 flex-wrap: wrap;
             }
+
+            .hero-photo {
+                height: 460px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .home-overview {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -682,6 +900,7 @@
                 <div class="logo-text">Atul Maurya Cloud Solution Pvt. Ltd.</div>
             </div>
             <nav class="nav-links" aria-label="Main navigation">
+                <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#about">About</a>
@@ -692,14 +911,27 @@
         </div>
     </header>
 
+    <div class="service-brands" aria-label="Microsoft services we provide">
+        <div class="container service-brands-inner">
+            <span class="service-brands-label">Services we provide</span>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="azure.svg" alt="Microsoft Azure logo">Azure</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft 365 logo">Microsoft 365</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="teams.svg" alt="Microsoft Teams logo">Teams</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="powerbi.svg" alt="Power BI logo">Power BI</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="powerapps.svg" alt="Power Apps logo">Power Apps</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft Defender logo">Defender</a>
+            <a class="service-brand" href="#services"><img class="brand-logo-image" src="dynamics365.svg" alt="Dynamics 365 logo">Dynamics 365</a>
+        </div>
+    </div>
+
     <main>
-        <section class="hero">
+        <section id="home" class="hero page-view active">
             <div class="container hero-inner">
                 <div class="hero-copy">
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
                     <h1>One technology partner for your <span class="highlight">complete IT journey</span>.</h1>
                     <p>
-                        Atul Maurya Cloud Solution Pvt. Ltd. provides end-to-end cloud and IT services for businesses of every size. We plan, build, secure, migrate, manage, and support your technology across Microsoft Azure, Microsoft 365, networking, cybersecurity, data, applications, and business continuity.
+                        Atul Maurya Cloud Solution Pvt. Ltd. is your end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations.
                         Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
                     </p>
 
@@ -742,9 +974,39 @@
                     <span>Cloud-first Strategy</span>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="home-overview">
+                    <article class="home-overview-card">
+                        <strong>Cloud Foundation</strong>
+                        <span>Azure architecture, migration, virtual machines, storage, databases, backup, and cost governance.</span>
+                    </article>
+                    <article class="home-overview-card">
+                        <strong>Modern Workplace</strong>
+                        <span>Microsoft 365, email, Teams, SharePoint, OneDrive, identity, devices, and collaboration.</span>
+                    </article>
+                    <article class="home-overview-card">
+                        <strong>Secure Operations</strong>
+                        <span>Networks, firewalls, VPN, Defender, compliance, monitoring, disaster recovery, and managed support.</span>
+                    </article>
+                    <article class="home-overview-card">
+                        <strong>Digital Products</strong>
+                        <span>Websites, full-stack applications, APIs, Power Platform automation, analytics, and business systems.</span>
+                    </article>
+                </div>
+
+                <div class="home-process">
+                    <strong>How we work:</strong>
+                    <span>Discover</span>
+                    <span>Design</span>
+                    <span>Implement</span>
+                    <span>Secure</span>
+                    <span>Support and optimize</span>
+                </div>
+            </div>
         </section>
 
-        <section id="services" class="section">
+        <section id="services" class="section page-view">
             <div class="container">
                 <div class="section-header">
                     <h2>Complete Cloud & IT Services</h2>
@@ -846,7 +1108,7 @@
             </div>
         </section>
 
-        <section id="pricing" class="section" style="background: #eef5fb; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <section id="pricing" class="section page-view" style="background: #eef5fb; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container">
                 <div class="section-header">
                     <h2>Service & Microsoft Pricing</h2>
@@ -914,10 +1176,113 @@
                 </div>
 
                 <p class="pricing-note"><strong>Pricing note:</strong> Microsoft license prices can change based on country, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote before implementation. Our service and support fees are separate from Microsoft licensing charges.</p>
+
+                <div class="license-comparison">
+                    <table>
+                        <caption>Microsoft licensing comparison</caption>
+                        <thead>
+                            <tr>
+                                <th>Product family</th>
+                                <th>License</th>
+                                <th>Best for</th>
+                                <th>Main capabilities</th>
+                                <th>Billing / live price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="4"><strong>Microsoft 365 Business</strong></td>
+                                <td><strong>Business Basic</strong></td>
+                                <td>Cloud-first small businesses</td>
+                                <td>Business email, Teams, web and mobile Office apps, OneDrive, SharePoint</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/business/compare-all-microsoft-365-business-products" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Standard</strong></td>
+                                <td>Businesses needing desktop Office</td>
+                                <td>Everything in Basic plus desktop Word, Excel, PowerPoint, Outlook, and Publisher</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/business/compare-all-microsoft-365-business-products" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Premium</strong></td>
+                                <td>Businesses needing advanced security</td>
+                                <td>Standard apps plus Intune, Defender for Business, Entra ID, and advanced device protection</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/business/compare-all-microsoft-365-business-products" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Apps for business</strong></td>
+                                <td>Office app-only users</td>
+                                <td>Desktop Office apps, web and mobile apps, OneDrive cloud storage</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/business/compare-all-microsoft-365-business-products" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3"><strong>Microsoft 365 Enterprise</strong></td>
+                                <td><strong>Office 365 E1</strong></td>
+                                <td>Frontline and web-app users</td>
+                                <td>Web and mobile Office apps, Exchange, Teams, SharePoint, and OneDrive</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/enterprise/e1" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Microsoft 365 E3</strong></td>
+                                <td>Medium and large organizations</td>
+                                <td>Desktop Office, enterprise collaboration, compliance, identity, and device management</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/enterprise/e3" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Microsoft 365 E5</strong></td>
+                                <td>Organizations needing maximum security</td>
+                                <td>E3 capabilities plus advanced security, compliance, analytics, and voice features</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/microsoft-365/enterprise/e5" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Azure</strong></td>
+                                <td><strong>Pay-As-You-Go / Reservations / Savings Plans</strong></td>
+                                <td>Cloud infrastructure and application workloads</td>
+                                <td>Virtual machines, storage, databases, networking, backup, AI, monitoring, and security</td>
+                                <td>Consumption or commitment<br><a href="https://azure.microsoft.com/en-in/pricing/calculator/" target="_blank" rel="noopener noreferrer">Open pricing calculator</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Power Platform</strong></td>
+                                <td><strong>Power BI Free / Pro / Premium Per User</strong></td>
+                                <td>Reports, dashboards, and governed analytics</td>
+                                <td>Data visualization, sharing, collaboration, semantic models, and premium capabilities</td>
+                                <td>Per user or capacity<br><a href="https://www.microsoft.com/en-in/power-platform/products/power-bi/pricing" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Power Platform</strong></td>
+                                <td><strong>Power Apps Premium</strong></td>
+                                <td>Custom business applications</td>
+                                <td>Low-code app development, Dataverse, connectors, and enterprise applications</td>
+                                <td>Per user / app<br><a href="https://www.microsoft.com/en-in/power-platform/products/power-apps/pricing" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Power Platform</strong></td>
+                                <td><strong>Power Automate Premium</strong></td>
+                                <td>Workflow and process automation</td>
+                                <td>Cloud flows, desktop automation, approvals, connectors, and business process automation</td>
+                                <td>Per user or process<br><a href="https://www.microsoft.com/en-in/power-platform/products/power-automate/pricing" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security</strong></td>
+                                <td><strong>Microsoft Defender for Business</strong></td>
+                                <td>Small and medium business endpoint security</td>
+                                <td>Endpoint detection, response, vulnerability management, and threat protection</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/security/business/endpoint-security" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business applications</strong></td>
+                                <td><strong>Dynamics 365 Sales / Business Central</strong></td>
+                                <td>CRM, finance, operations, and ERP</td>
+                                <td>Sales management, customer service, finance, supply chain, projects, and business operations</td>
+                                <td>Per user / month<br><a href="https://www.microsoft.com/en-in/dynamics-365/pricing" target="_blank" rel="noopener noreferrer">Check live price</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section page-view">
             <div class="container">
                 <div class="section-header">
                     <h2>Why businesses choose us</h2>
@@ -954,7 +1319,7 @@
             </div>
         </section>
 
-        <section id="team" class="section">
+        <section id="team" class="section page-view">
             <div class="container">
                 <div class="section-header">
                     <h2>Meet Our Team</h2>
@@ -985,7 +1350,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section page-view">
             <div class="container contact-wrapper">
                 <div class="contact-box">
                     <h3>Contact Us</h3>
@@ -1011,11 +1376,17 @@
                         </label>
                         <label>
                             Select a date from the calendar
-                            <input type="date" name="date" id="meeting-date" aria-label="Choose a meeting date from the calendar" required>
+                            <span class="picker-row">
+                                <input type="date" name="date" id="meeting-date" aria-label="Choose a meeting date from the calendar" required>
+                                <button type="button" class="picker-btn" data-picker="meeting-date">Open calendar</button>
+                            </span>
                         </label>
                         <label>
                             Select a preferred time
-                            <input type="time" name="time" aria-label="Choose a preferred meeting time" required>
+                            <span class="picker-row">
+                                <input type="time" name="time" id="meeting-time" aria-label="Choose a preferred meeting time" required>
+                                <button type="button" class="picker-btn" data-picker="meeting-time">Choose time</button>
+                            </span>
                         </label>
                         <label>
                             Time zone
@@ -1061,8 +1432,51 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        const pageViews = document.querySelectorAll('.page-view');
+
+        function showPage(pageId, updateHistory) {
+            const requestedPage = document.getElementById(pageId);
+            const activePage = requestedPage && requestedPage.classList.contains('page-view')
+                ? requestedPage
+                : document.getElementById('home');
+
+            pageViews.forEach(function (page) {
+                page.classList.toggle('active', page === activePage);
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (updateHistory) {
+                history.pushState(null, '', `#${activePage.id}`);
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                showPage(link.getAttribute('href').slice(1), true);
+            });
+        });
+
+        window.addEventListener('popstate', function () {
+            showPage(window.location.hash.slice(1) || 'home', false);
+        });
+
+        showPage(window.location.hash.slice(1) || 'home', false);
+
         const meetingDate = document.getElementById('meeting-date');
         meetingDate.min = new Date().toISOString().split('T')[0];
+
+        document.querySelectorAll('[data-picker]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const picker = document.getElementById(button.dataset.picker);
+                if (typeof picker.showPicker === 'function') {
+                    picker.showPicker();
+                } else {
+                    picker.focus();
+                }
+            });
+        });
 
         document.getElementById('meeting-form').addEventListener('submit', function (event) {
             event.preventDefault();
