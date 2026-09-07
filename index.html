@@ -61,7 +61,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 76px;
+            min-height: 92px;
             gap: 1rem;
         }
 
@@ -72,14 +72,15 @@
         }
 
         .logo-mark {
-            width: 48px;
-            height: 48px;
+            width: 72px;
+            height: 72px;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .logo-text {
-            font-size: 0.9rem;
+            max-width: 220px;
+            font-size: 0.92rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -133,6 +134,62 @@
         }
 
         .service-brand:hover { color: var(--primary-2); }
+
+        .service-detail-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(23, 43, 77, 0.48);
+            backdrop-filter: blur(5px);
+        }
+
+        .service-detail-backdrop.open { display: flex; }
+
+        .service-detail {
+            position: relative;
+            width: min(760px, 100%);
+            max-height: min(720px, 92vh);
+            overflow-y: auto;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 25px 70px rgba(23, 43, 77, 0.25);
+            animation: reveal-up 0.25s ease both;
+        }
+
+        .service-detail h2 { margin: 0 0 0.5rem; color: var(--text); }
+        .service-detail h3 { margin: 1.35rem 0 0.45rem; color: var(--primary); font-size: 1rem; }
+        .service-detail p { margin: 0; color: var(--muted); }
+        .service-detail ul { margin: 0.5rem 0 0; color: var(--muted); }
+
+        .service-detail-close {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: #fff;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.3rem;
+        }
+
+        .service-price {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 4px;
+            background: #e8f3fc;
+            color: var(--primary);
+            font-weight: 800;
+        }
 
         .brand-logo-image {
             width: 36px;
@@ -614,6 +671,85 @@
             font-size: 0.92rem;
         }
 
+        .pricing-calculator {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #b9d8f0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f1f8fd, #fff);
+        }
+
+        .pricing-calculator h3 {
+            margin: 0 0 0.35rem;
+            color: var(--text);
+        }
+
+        .calculator-intro {
+            margin: 0 0 1.2rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .calculator-fields {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .calculator-fields label {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .calculator-fields select,
+        .calculator-fields input {
+            width: 100%;
+            margin-top: 0.35rem;
+            padding: 0.7rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: #fff;
+            color: var(--text);
+            font: inherit;
+        }
+
+        .calculator-result {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.3rem;
+        }
+
+        .calculator-result div {
+            padding: 0.85rem;
+            border-radius: 4px;
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .calculator-result span,
+        .calculator-result strong {
+            display: block;
+        }
+
+        .calculator-result span {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .calculator-result strong {
+            margin-top: 0.25rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .calculator-footnote {
+            margin: 1rem 0 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
         .license-comparison {
             margin-top: 2rem;
             overflow-x: auto;
@@ -754,6 +890,34 @@
             color: var(--muted);
         }
 
+        .expertise-title {
+            margin: 1.25rem 0 0.55rem;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.35rem 1rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .expertise-list li {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .expertise-list li::before {
+            content: "✓";
+            margin-right: 0.45rem;
+            color: var(--success);
+            font-weight: 800;
+        }
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -799,11 +963,11 @@
         }
 
         .linkedin-link {
-            color: #9ed7ff;
+            color: var(--primary);
             font-weight: 700;
         }
 
-        .linkedin-link:hover { color: white; }
+        .linkedin-link:hover { color: var(--primary-2); }
 
         .contact-wrapper {
             display: grid;
@@ -946,6 +1110,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .calculator-fields,
+            .calculator-result {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .nav {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -968,6 +1137,10 @@
             .hero-photo {
                 height: 340px;
             }
+
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 560px) {
@@ -985,6 +1158,11 @@
 
             .hero-photo {
                 height: 300px;
+            }
+
+            .calculator-fields,
+            .calculator-result {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1020,14 +1198,29 @@
     <div class="service-brands" aria-label="Microsoft services we provide">
         <div class="container service-brands-inner">
             <span class="service-brands-label">Services we provide</span>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="azure.svg" alt="Microsoft Azure logo">Azure</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft 365 logo">Microsoft 365</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="teams.svg" alt="Microsoft Teams logo">Teams</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="powerbi.svg" alt="Power BI logo">Power BI</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="powerapps.svg" alt="Power Apps logo">Power Apps</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft Defender logo">Defender</a>
-            <a class="service-brand" href="#services"><img class="brand-logo-image" src="dynamics365.svg" alt="Dynamics 365 logo">Dynamics 365</a>
+            <a class="service-brand service-trigger" href="#azure" data-service="azure"><img class="brand-logo-image" src="azure.svg" alt="Microsoft Azure logo">Azure</a>
+            <a class="service-brand service-trigger" href="#microsoft-365" data-service="microsoft-365"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft 365 logo">Microsoft 365</a>
+            <a class="service-brand service-trigger" href="#teams" data-service="teams"><img class="brand-logo-image" src="teams.svg" alt="Microsoft Teams logo">Teams</a>
+            <a class="service-brand service-trigger" href="#power-bi" data-service="power-bi"><img class="brand-logo-image" src="powerbi.svg" alt="Power BI logo">Power BI</a>
+            <a class="service-brand service-trigger" href="#power-apps" data-service="power-apps"><img class="brand-logo-image" src="powerapps.svg" alt="Power Apps logo">Power Apps</a>
+            <a class="service-brand service-trigger" href="#defender" data-service="defender"><img class="brand-logo-image" src="microsoft.svg" alt="Microsoft Defender logo">Defender</a>
+            <a class="service-brand service-trigger" href="#dynamics-365" data-service="dynamics-365"><img class="brand-logo-image" src="dynamics365.svg" alt="Dynamics 365 logo">Dynamics 365</a>
         </div>
+    </div>
+
+    <div class="service-detail-backdrop" id="service-detail-backdrop" role="dialog" aria-modal="true" aria-labelledby="service-detail-title">
+        <article class="service-detail">
+            <button class="service-detail-close" type="button" aria-label="Close service details">&times;</button>
+            <h2 id="service-detail-title"></h2>
+            <p id="service-detail-summary"></p>
+            <h3>Two main purposes</h3>
+            <ul id="service-detail-purposes"></ul>
+            <h3>What you receive after purchase</h3>
+            <ul id="service-detail-deliverables"></ul>
+            <span class="service-price" id="service-detail-price"></span>
+            <p id="service-detail-note" style="margin-top:0.8rem; font-size:0.88rem;"></p>
+            <a href="#contact" class="primary-btn" id="service-detail-contact" style="margin-top:1.2rem;">Request this service</a>
+        </article>
     </div>
 
     <main>
@@ -1037,7 +1230,7 @@
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
                     <h1>Your next big move <span class="highlight">starts in the cloud.</span></h1>
                     <p>
-                        Atul Maurya Cloud Solution Pvt. Ltd. is your end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations.
+                        Atul Maurya Cloud Solution Pvt. Ltd. is a global end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations worldwide.
                         Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
                     </p>
 
@@ -1057,7 +1250,7 @@
                     <img class="hero-photo" src="myphoto.jpg.jpg" alt="Founder Mr. Atul Maurya" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80';">
                     <div class="founder-badge">
                         <strong>Mr. Atul Maurya</strong>
-                        <span>Founder & Managing Director</span>
+                        <span>Founder · Microsoft Solutions Consultant · Cloud Advisor</span>
                     </div>
                 </div>
             </div>
@@ -1218,7 +1411,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Service & Microsoft Pricing</h2>
-                    <p>Choose a support package from us, then review the current Microsoft license and usage pricing for the services your business needs.</p>
+                    <p>Choose a support package from us, review Microsoft licensing, and estimate your complete technology cost in the currency used by your organization anywhere in the world.</p>
                 </div>
 
                 <div class="pricing-grid">
@@ -1281,7 +1474,66 @@
                     </article>
                 </div>
 
-                <p class="pricing-note"><strong>Pricing note:</strong> Microsoft license prices can change based on country, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote before implementation. Our service and support fees are separate from Microsoft licensing charges.</p>
+                <p class="pricing-note"><strong>Global pricing note:</strong> Microsoft license prices can change by country, currency, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote in your preferred currency before implementation. Our service and support fees are separate from Microsoft licensing charges.</p>
+
+                <div class="pricing-calculator" id="pricing-calculator">
+                    <h3>Estimate your complete monthly cost</h3>
+                    <p class="calculator-intro">Choose your service need, user count, currency, and local tax rate. We work globally, so the estimate separates our service fee from Microsoft licensing and converts the result for international planning.</p>
+                    <div class="calculator-fields">
+                        <label>
+                            Service package
+                            <select id="calculator-package">
+                                <option value="4999">Starter service - INR 4,999</option>
+                                <option value="12999">Growth service - INR 12,999</option>
+                                <option value="0">Enterprise service - custom quote</option>
+                            </select>
+                        </label>
+                        <label>
+                            Microsoft license estimate
+                            <select id="calculator-license">
+                                <option value="0">No license estimate</option>
+                                <option value="1500">Business Basic - INR 1,500/user</option>
+                                <option value="2600">Business Standard - INR 2,600/user</option>
+                                <option value="3900">Business Premium - INR 3,900/user</option>
+                                <option value="6000">Enterprise estimate - INR 6,000/user</option>
+                            </select>
+                        </label>
+                        <label>
+                            Number of users
+                            <input id="calculator-users" type="number" min="1" value="5">
+                        </label>
+                        <label>
+                            Currency
+                            <select id="calculator-currency">
+                                <option value="INR" data-rate="1">INR - Indian Rupee</option>
+                                <option value="USD" data-rate="0.012">USD - US Dollar</option>
+                                <option value="EUR" data-rate="0.011">EUR - Euro</option>
+                                <option value="GBP" data-rate="0.0095">GBP - Pound Sterling</option>
+                                <option value="AED" data-rate="0.044">AED - UAE Dirham</option>
+                                <option value="CAD" data-rate="0.016">CAD - Canadian Dollar</option>
+                                <option value="AUD" data-rate="0.018">AUD - Australian Dollar</option>
+                                <option value="SGD" data-rate="0.016">SGD - Singapore Dollar</option>
+                                <option value="CHF" data-rate="0.010">CHF - Swiss Franc</option>
+                                <option value="JPY" data-rate="1.78">JPY - Japanese Yen</option>
+                                <option value="CNY" data-rate="0.086">CNY - Chinese Yuan</option>
+                                <option value="NZD" data-rate="0.020">NZD - New Zealand Dollar</option>
+                                <option value="SAR" data-rate="0.045">SAR - Saudi Riyal</option>
+                                <option value="ZAR" data-rate="0.22">ZAR - South African Rand</option>
+                            </select>
+                        </label>
+                        <label>
+                            Tax / GST percentage
+                            <input id="calculator-tax" type="number" min="0" max="100" step="0.1" value="18">
+                        </label>
+                    </div>
+                    <div class="calculator-result" aria-live="polite">
+                        <div><span>Our service cost</span><strong id="calculator-service-total"></strong></div>
+                        <div><span>Microsoft license estimate</span><strong id="calculator-license-total"></strong></div>
+                        <div><span>Tax / GST</span><strong id="calculator-tax-total"></strong></div>
+                        <div><span>Estimated total</span><strong id="calculator-grand-total"></strong></div>
+                    </div>
+                    <p class="calculator-footnote">This is an indicative global estimate using approximate exchange rates and example license values. Microsoft prices, Azure usage, local tax rules, and exchange rates must be confirmed in the official portal before purchase. Enterprise packages require a custom quote, and we can issue the final proposal in your preferred currency.</p>
+                </div>
 
                 <div class="license-comparison">
                     <table>
@@ -1399,7 +1651,7 @@
                     <div class="company-box">
                         <h3>About the Company</h3>
                         <p>
-                            Atul Maurya Cloud Solution Pvt. Ltd. is a complete cloud and IT services company based in Ayodhya, India. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
+                            Atul Maurya Cloud Solution Pvt. Ltd. is a complete cloud and IT services company based in Ayodhya, India, serving clients globally. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
                             Our team works across cloud infrastructure, Microsoft solutions, networks, security, applications, data, and support so clients have one accountable technology partner.
                         </p>
                         <ul>
@@ -1413,13 +1665,33 @@
                     <div class="company-box">
                         <h3>Founder</h3>
                         <p>
-                            <strong>Mr. Atul Maurya</strong> leads the company with a vision to deliver trusted cloud transformation services, helping organizations reduce complexity and improve productivity using Microsoft technologies.
+                            <strong>Mr. Atul Maurya</strong> is a Microsoft Solutions Consultant and Cloud Advisor focused on helping organizations adopt, optimize, and get measurable value from Microsoft technologies. He combines solution consulting, technical support, cloud migration, licensing guidance, security, user adoption, and customer success to turn complex requirements into practical business outcomes.
                         </p>
                         <ul>
-                            <li>Leadership with a growth mindset</li>
-                            <li>Customer-first solution design</li>
-                            <li>Focused on performance and trust</li>
+                            <li>Cloud migration, tenant review, licensing, and solution consulting</li>
+                            <li>Microsoft 365, Azure identity, security, collaboration, and Copilot adoption</li>
+                            <li>Customer-focused technical support, training, and user adoption</li>
+                            <li>Bachelor of Technology from Dr. A.P.J. Abdul Kalam Technical University</li>
                         </ul>
+                        <h4 class="expertise-title">Core Expertise</h4>
+                        <ul class="expertise-list">
+                            <li>Microsoft 365</li>
+                            <li>Microsoft Copilot</li>
+                            <li>Azure & Identity Management</li>
+                            <li>Microsoft Teams</li>
+                            <li>Exchange Online</li>
+                            <li>SharePoint Online</li>
+                            <li>Windows 365 Cloud PC</li>
+                            <li>Cloud Migration</li>
+                            <li>Security & Compliance</li>
+                            <li>Microsoft Licensing</li>
+                            <li>Customer Success</li>
+                            <li>Technical Support & Troubleshooting</li>
+                            <li>User Adoption & Training</li>
+                            <li>Digital Transformation</li>
+                            <li>Solution Consulting</li>
+                        </ul>
+                        <a class="linkedin-link" href="https://www.linkedin.com/in/aatul-maurya/" target="_blank" rel="noopener noreferrer">View Atul Maurya on LinkedIn</a>
                     </div>
                 </div>
             </div>
@@ -1434,21 +1706,21 @@
 
                 <div class="team-grid">
                     <article class="team-card">
-                        <img class="team-photo" src="ravi-gupta.jpg.jpg" alt="Ravi Gupta, Network Engineer" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80';">
+                        <img class="team-photo" src="ravi-gupta.jpg.jpg" alt="Ravi Gupta, Network, Database, and Security Specialist" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80';">
                         <div>
                             <h3>Ravi Gupta</h3>
-                            <span class="team-role">Network Engineer</span>
-                            <p>Designs, configures, and maintains secure network infrastructure, connectivity, monitoring, and troubleshooting for client environments.</p>
+                            <span class="team-role">Network, Database & Security Specialist</span>
+                            <p>Designs secure networks, manages databases, strengthens identity and endpoint protection, and helps organizations monitor, protect, and maintain their technology environments.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/ravi-gupta-02b3a5235/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
 
                     <article class="team-card">
-                        <img class="team-photo" src="vijay-singh.jpg.jpg" alt="Vijay Singh, Full-Stack Developer" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80';">
+                        <img class="team-photo" src="vijay-singh.jpg.jpg" alt="Vijay Singh, Full-Stack Developer and Cloud Solutions Architect" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80';">
                         <div>
                             <h3>Vijay Singh</h3>
-                            <span class="team-role">Full-Stack Developer</span>
-                            <p>Builds responsive web applications and reliable backend services, from user experience and APIs to deployment and ongoing improvements.</p>
+                            <span class="team-role">Full-Stack Developer & Cloud Solutions Architect</span>
+                            <p>Builds complete web applications and cloud solutions, connecting user experience, APIs, databases, architecture, deployment, and ongoing technical improvements.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/vijay-singh-949456237/?locale=en" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -1557,6 +1829,107 @@
             }
         }
 
+        const serviceDetails = {
+            azure: {
+                title: 'Microsoft Azure Cloud Services',
+                summary: 'Build a reliable cloud foundation for applications, infrastructure, data, and AI workloads.',
+                purposes: ['Move servers and applications from on-premises systems to Azure.', 'Design secure, scalable infrastructure with predictable performance and cost control.'],
+                deliverables: ['Discovery and Azure architecture plan', 'Migration, virtual machines, storage, networking, identity, and monitoring setup', 'Documentation, handover, and optional managed support'],
+                price: 'Our service: from INR 25,000 per project',
+                note: 'Azure subscription and consumption charges are separate. Final Azure cost depends on resources and usage. See the official Azure pricing calculator.'
+            },
+            'microsoft-365': {
+                title: 'Microsoft 365 Business Services',
+                summary: 'Give your team secure email, Office apps, files, collaboration, and identity management.',
+                purposes: ['Set up or migrate business email and user accounts.', 'Create a secure, productive workplace for remote and office teams.'],
+                deliverables: ['Tenant and domain configuration', 'User, mailbox, Teams, SharePoint, OneDrive, and security setup', 'Admin handover, user guidance, and optional monthly support'],
+                price: 'Our service: from INR 8,999 per setup',
+                note: 'Microsoft 365 license charges are separate and depend on the plan and number of users. We help select the correct license.'
+            },
+            teams: {
+                title: 'Microsoft Teams Collaboration',
+                summary: 'Organize communication, meetings, files, and teamwork in one secure workspace.',
+                purposes: ['Replace scattered communication with structured Teams and channels.', 'Enable professional online meetings, calling, file sharing, and collaboration.'],
+                deliverables: ['Teams and channel structure', 'Meeting, guest access, policy, and sharing configuration', 'User training and governance recommendations'],
+                price: 'Our service: from INR 6,999 per setup',
+                note: 'Teams features may require a Microsoft 365 license. License charges are separate from our implementation service.'
+            },
+            'power-bi': {
+                title: 'Power BI Analytics',
+                summary: 'Turn business data into clear dashboards and decisions your team can act on.',
+                purposes: ['Combine data from business systems into one reporting view.', 'Track performance, sales, finance, operations, and KPIs in real time.'],
+                deliverables: ['Data source assessment and model design', 'Up to three initial dashboards and reports', 'Sharing setup, documentation, and handover training'],
+                price: 'Our service: from INR 15,000 per dashboard project',
+                note: 'Power BI licensing is separate and depends on whether you use Free, Pro, Premium Per User, or capacity licensing.'
+            },
+            'power-apps': {
+                title: 'Power Apps and Automation',
+                summary: 'Replace manual work with custom business apps and automated workflows.',
+                purposes: ['Build simple internal apps for approvals, field work, forms, and operations.', 'Automate repetitive processes, notifications, and data movement.'],
+                deliverables: ['Requirements workshop and solution design', 'One initial app or workflow with testing', 'Deployment, documentation, and user handover'],
+                price: 'Our service: from INR 20,000 per solution',
+                note: 'Power Apps and Power Automate licenses or premium connectors may create additional Microsoft charges.'
+            },
+            defender: {
+                title: 'Microsoft Defender Security',
+                summary: 'Protect identities, devices, endpoints, and business data from modern threats.',
+                purposes: ['Improve endpoint visibility, threat detection, and response.', 'Apply practical identity, device, and access controls to reduce risk.'],
+                deliverables: ['Security assessment and priority report', 'Defender, device policy, MFA, and conditional access configuration', 'Security baseline documentation and monitoring recommendations'],
+                price: 'Our service: from INR 18,000 per security setup',
+                note: 'Defender licensing depends on the Microsoft 365 or security plan selected. Security work is scoped after an assessment.'
+            },
+            'dynamics-365': {
+                title: 'Dynamics 365 Business Applications',
+                summary: 'Connect sales, customer service, finance, and operations with business applications.',
+                purposes: ['Create a single view of customers, leads, service, and sales activity.', 'Improve business processes with structured CRM and ERP workflows.'],
+                deliverables: ['Business process discovery and solution recommendation', 'Initial configuration, roles, data setup, and workflow customization', 'Training, documentation, and rollout support'],
+                price: 'Our service: from INR 35,000 per implementation',
+                note: 'Dynamics 365 license pricing varies by application and user role. Microsoft licensing is separate from implementation fees.'
+            }
+        };
+
+        const serviceBackdrop = document.getElementById('service-detail-backdrop');
+        const serviceTitle = document.getElementById('service-detail-title');
+        const serviceSummary = document.getElementById('service-detail-summary');
+        const servicePurposes = document.getElementById('service-detail-purposes');
+        const serviceDeliverables = document.getElementById('service-detail-deliverables');
+        const servicePrice = document.getElementById('service-detail-price');
+        const serviceNote = document.getElementById('service-detail-note');
+
+        function openServiceDetails(serviceId) {
+            const service = serviceDetails[serviceId];
+            if (!service) return;
+            serviceTitle.textContent = service.title;
+            serviceSummary.textContent = service.summary;
+            servicePurposes.innerHTML = service.purposes.map(function (item) { return `<li>${item}</li>`; }).join('');
+            serviceDeliverables.innerHTML = service.deliverables.map(function (item) { return `<li>${item}</li>`; }).join('');
+            servicePrice.textContent = service.price;
+            serviceNote.textContent = `${service.note} Final proposals can be issued in your preferred currency for global projects.`;
+            serviceBackdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServiceDetails() {
+            serviceBackdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.service-trigger').forEach(function (trigger) {
+            trigger.addEventListener('click', function (event) {
+                event.preventDefault();
+                openServiceDetails(trigger.dataset.service);
+            });
+        });
+
+        document.querySelector('.service-detail-close').addEventListener('click', closeServiceDetails);
+        document.getElementById('service-detail-contact').addEventListener('click', closeServiceDetails);
+        serviceBackdrop.addEventListener('click', function (event) {
+            if (event.target === serviceBackdrop) closeServiceDetails();
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') closeServiceDetails();
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(function (link) {
             link.addEventListener('click', function (event) {
                 event.preventDefault();
@@ -1583,6 +1956,36 @@
                 }
             });
         });
+
+        const calculatorPackage = document.getElementById('calculator-package');
+        const calculatorLicense = document.getElementById('calculator-license');
+        const calculatorUsers = document.getElementById('calculator-users');
+        const calculatorCurrency = document.getElementById('calculator-currency');
+        const calculatorTax = document.getElementById('calculator-tax');
+
+        function updatePricingCalculator() {
+            const currencyOption = calculatorCurrency.options[calculatorCurrency.selectedIndex];
+            const currency = calculatorCurrency.value;
+            const rate = Number(currencyOption.dataset.rate);
+            const users = Math.max(1, Number(calculatorUsers.value) || 1);
+            const serviceCost = Number(calculatorPackage.value) || 0;
+            const licenseCost = (Number(calculatorLicense.value) || 0) * users;
+            const subtotal = serviceCost + licenseCost;
+            const tax = subtotal * ((Number(calculatorTax.value) || 0) / 100);
+            const formatter = new Intl.NumberFormat(undefined, { style: 'currency', currency: currency, maximumFractionDigits: 0 });
+            const display = function (amount) { return formatter.format(amount * rate); };
+
+            document.getElementById('calculator-service-total').textContent = display(serviceCost);
+            document.getElementById('calculator-license-total').textContent = display(licenseCost);
+            document.getElementById('calculator-tax-total').textContent = display(tax);
+            document.getElementById('calculator-grand-total').textContent = display(subtotal + tax);
+        }
+
+        [calculatorPackage, calculatorLicense, calculatorUsers, calculatorCurrency, calculatorTax].forEach(function (field) {
+            field.addEventListener('input', updatePricingCalculator);
+            field.addEventListener('change', updatePricingCalculator);
+        });
+        updatePricingCalculator();
 
         document.getElementById('meeting-form').addEventListener('submit', function (event) {
             event.preventDefault();
