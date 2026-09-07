@@ -738,6 +738,7 @@
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 1.5rem;
+            align-items: stretch;
         }
 
         .contact-box {
@@ -746,6 +747,7 @@
             border-radius: 8px;
             padding: 1.6rem;
             box-shadow: var(--shadow);
+            height: 100%;
         }
 
         .contact-list {
@@ -756,11 +758,15 @@
         }
 
         .contact-list li {
+            display: grid;
+            grid-template-columns: 92px 1fr;
+            gap: 0.5rem;
             margin-bottom: 0.75rem;
+            overflow-wrap: anywhere;
         }
 
         .contact-list strong {
-            color: white;
+            color: var(--primary);
         }
 
         .meeting-form {
@@ -1356,9 +1362,9 @@
                     <h3>Contact Us</h3>
                     <p>Let’s discuss your cloud needs, Microsoft environment, and the best solution for your business.</p>
                     <ul class="contact-list">
-                        <li><strong>Email:</strong> samratatulmaurya9415@outlook.com</li>
-                        <li><strong>Phone:</strong> +91 8429395452</li>
-                        <li><strong>Location:</strong> Kaushalpuri Colony Phase-2, Ayodhya, India</li>
+                        <li><strong>Email:</strong> <a href="mailto:samratatulmaurya9415@outlook.com">samratatulmaurya9415@outlook.com</a></li>
+                        <li><strong>Phone:</strong> <a href="tel:+918429395452">+91 8429395452</a></li>
+                        <li><strong>Location:</strong> <span>Kaushalpuri Colony Phase-2, Ayodhya, India</span></li>
                     </ul>
                 </div>
 
