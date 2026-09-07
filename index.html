@@ -524,6 +524,43 @@
             color: white;
         }
 
+        .meeting-form {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1.2rem;
+        }
+
+        .meeting-form label {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .meeting-form input,
+        .meeting-form select,
+        .meeting-form textarea {
+            width: 100%;
+            margin-top: 0.35rem;
+            padding: 0.75rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 0.65rem;
+            background: rgba(7,17,31,0.75);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .meeting-form textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .meeting-form input:focus,
+        .meeting-form select:focus,
+        .meeting-form textarea:focus {
+            outline: 2px solid rgba(58,160,255,0.6);
+            outline-offset: 1px;
+        }
+
         footer {
             padding: 2rem 0 3rem;
             color: var(--muted);
@@ -853,7 +890,40 @@
                 <div class="contact-box">
                     <h3>Get a Free Consultation</h3>
                     <p>Tell us what you need and we’ll guide you toward the right Microsoft cloud solution for your business goals.</p>
-                    <a href="mailto:samratatulmaurya9415@outlook.com?subject=Request%20a%20Microsoft%20Teams%20Meeting&amp;body=Hello%2C%0A%0AI%20would%20like%20to%20schedule%20a%20Microsoft%20Teams%20meeting.%0A%0APreferred%20date%20and%20time%3A%0ARequirements%3A%0A%0AThank%20you." class="primary-btn" style="margin-top:1rem;">Request Teams Meeting</a>
+                    <form class="meeting-form" id="meeting-form">
+                        <label>
+                            Your name
+                            <input type="text" name="name" required>
+                        </label>
+                        <label>
+                            Your email
+                            <input type="email" name="email" required>
+                        </label>
+                        <label>
+                            Preferred date
+                            <input type="date" name="date" id="meeting-date" required>
+                        </label>
+                        <label>
+                            Preferred time
+                            <input type="time" name="time" required>
+                        </label>
+                        <label>
+                            Meeting purpose
+                            <select name="purpose" required>
+                                <option value="">Select a purpose</option>
+                                <option>Azure cloud consultation</option>
+                                <option>Microsoft 365 setup</option>
+                                <option>Network and security</option>
+                                <option>Web development</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+                        <label>
+                            Additional details
+                            <textarea name="details" placeholder="Tell us briefly how we can help."></textarea>
+                        </label>
+                        <button type="submit" class="primary-btn">Request Teams Meeting</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -865,6 +935,24 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const meetingDate = document.getElementById('meeting-date');
+        meetingDate.min = new Date().toISOString().split('T')[0];
+
+        document.getElementById('meeting-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            const subject = `Teams meeting request - ${formData.get('name')}`;
+            const body = [
+                `Name: ${formData.get('name')}`,
+                `Email: ${formData.get('email')}`,
+                `Preferred date: ${formData.get('date')}`,
+                `Preferred time: ${formData.get('time')}`,
+                `Meeting purpose: ${formData.get('purpose')}`,
+                `Additional details: ${formData.get('details') || 'None'}`
+            ].join('\n');
+            window.location.href = `mailto:samratatulmaurya9415@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
     </script>
 </body>
 </html>
