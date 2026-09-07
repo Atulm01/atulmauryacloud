@@ -105,35 +105,44 @@
         }
 
         .service-brands-inner {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
             align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            min-height: 72px;
-            overflow-x: auto;
+            gap: 0.4rem;
+            padding: 0.9rem 0;
         }
 
         .service-brands-label {
-            flex: 0 0 auto;
+            grid-column: 1 / -1;
             color: var(--muted);
             font-size: 0.72rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
+            text-align: center;
         }
 
         .service-brand {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.55rem;
-            flex: 0 0 auto;
+            justify-content: center;
+            gap: 0.35rem;
+            min-width: 0;
+            padding: 0.45rem 0.25rem;
             color: var(--text);
-            font-size: 0.82rem;
+            font-size: 0.76rem;
             font-weight: 700;
-            white-space: nowrap;
+            text-align: center;
+            white-space: normal;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
 
-        .service-brand:hover { color: var(--primary-2); }
+        .service-brand:hover {
+            color: var(--primary-2);
+            background: #f1f8fd;
+            transform: translateY(-2px);
+        }
 
         .service-detail-backdrop {
             position: fixed;
@@ -171,8 +180,8 @@
             position: absolute;
             top: 0.8rem;
             right: 0.8rem;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border: 1px solid var(--border);
             border-radius: 4px;
             background: #fff;
@@ -581,6 +590,14 @@
             box-shadow: var(--shadow);
         }
 
+        .service-card {
+            height: 100%;
+        }
+
+        .list-card {
+            margin-top: 1.5rem;
+        }
+
         .service-card:hover, .pricing-card:hover, .team-card:hover, .company-box:hover {
             border-color: #9fc9e8;
             box-shadow: 0 16px 34px rgba(23, 43, 77, 0.13);
@@ -625,13 +642,13 @@
         }
 
         .services-wrap {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 1.5rem;
-            align-items: start;
+            display: block;
         }
 
         .list-card ul {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 2rem;
             margin: 1rem 0 0;
             padding-left: 1.2rem;
             color: var(--muted);
@@ -1103,6 +1120,10 @@
         }
 
         @media (max-width: 900px) {
+            .service-brands-inner {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
             .hero-inner,
             .services-wrap,
             .contact-wrapper,
@@ -1119,6 +1140,10 @@
             }
 
             .pricing-reference {
+                grid-template-columns: 1fr;
+            }
+
+            .list-card ul {
                 grid-template-columns: 1fr;
             }
 
@@ -1160,6 +1185,10 @@
         }
 
         @media (max-width: 560px) {
+            .service-brands-inner {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .home-overview {
                 grid-template-columns: 1fr;
             }
