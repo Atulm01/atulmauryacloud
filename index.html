@@ -6,20 +6,20 @@
     <title>Atul Maurya Cloud Solution Pvt. Ltd.</title>
     <style>
         :root {
-            --bg: #07111f;
-            --bg-soft: #0d1b2a;
-            --panel: #112133;
-            --panel-2: #0f172a;
-            --card: rgba(15, 23, 42, 0.8);
-            --text: #edf6ff;
-            --muted: #b9c9dc;
-            --primary: #3aa0ff;
-            --primary-2: #6c7bff;
-            --accent: #1fd3a6;
-            --gold: #f5c76a;
-            --border: rgba(173, 216, 255, 0.18);
-            --shadow: 0 20px 50px rgba(7, 17, 31, 0.35);
-            --success: #34d399;
+            --bg: #f5f8fc;
+            --bg-soft: #eef5fb;
+            --panel: #ffffff;
+            --panel-2: #f8fbff;
+            --card: #ffffff;
+            --text: #172b4d;
+            --muted: #52657d;
+            --primary: #0067b8;
+            --primary-2: #0078d4;
+            --accent: #107c10;
+            --gold: #8a5a00;
+            --border: #d7e2ee;
+            --shadow: 0 12px 30px rgba(23, 43, 77, 0.09);
+            --success: #107c10;
         }
 
         * { box-sizing: border-box; }
@@ -27,10 +27,12 @@
 
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: "Aptos", "Segoe UI", sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(58,160,255,0.16), transparent 28%),
-                linear-gradient(135deg, #040d18 0%, #07111f 35%, #0d1b2a 100%);
+                linear-gradient(rgba(0, 120, 212, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 120, 212, 0.035) 1px, transparent 1px),
+                var(--bg);
+            background-size: 36px 36px;
             color: var(--text);
             line-height: 1.6;
         }
@@ -49,9 +51,10 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(7, 17, 31, 0.8);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(23, 43, 77, 0.05);
         }
 
         .nav {
@@ -69,8 +72,8 @@
         }
 
         .logo-mark {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
             border-radius: 8px;
         }
@@ -80,7 +83,7 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: white;
+            color: var(--text);
         }
 
         .nav-links {
@@ -92,11 +95,14 @@
 
         .nav-links a:hover { color: white; }
 
+        .nav-links a { color: var(--text); }
+        .nav-links a:hover { color: var(--primary-2); }
+
         .primary-btn, .secondary-btn, .small-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: 999px;
+            border-radius: 4px;
             padding: 0.9rem 1.4rem;
             font-weight: 700;
             border: 1px solid transparent;
@@ -105,13 +111,13 @@
         }
 
         .primary-btn {
-            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            background: var(--primary-2);
             color: #fff;
-            box-shadow: 0 15px 30px rgba(58, 160, 255, 0.25);
+            box-shadow: 0 6px 14px rgba(0, 120, 212, 0.18);
         }
 
         .secondary-btn {
-            background: rgba(255,255,255,0.02);
+            background: #fff;
             border-color: var(--border);
             color: var(--text);
         }
@@ -119,17 +125,22 @@
         .small-btn {
             padding: 0.75rem 1.1rem;
             font-size: 0.88rem;
-            background: rgba(58,160,255,0.12);
-            border-color: rgba(58,160,255,0.35);
-            color: #dfeeff;
+            background: #e8f3fc;
+            border-color: #b9d8f0;
+            color: var(--primary);
         }
 
         .primary-btn:hover, .secondary-btn:hover, .small-btn:hover {
             transform: translateY(-2px);
         }
 
+        .primary-btn:hover { background: #005a9e; }
+        .secondary-btn:hover { border-color: var(--primary-2); color: var(--primary-2); }
+
         .hero {
-            padding: 5rem 0 4rem;
+            padding: 6rem 0 4.5rem;
+            background: linear-gradient(135deg, #f8fbff 0%, #eaf4fb 100%);
+            border-bottom: 1px solid var(--border);
         }
 
         .hero-inner {
@@ -141,10 +152,10 @@
 
         .eyebrow {
             display: inline-block;
-            background: rgba(58,160,255,0.1);
-            border: 1px solid rgba(58,160,255,0.35);
-            color: #d9efff;
-            border-radius: 999px;
+            background: #e5f1fb;
+            border: 1px solid #bad9f0;
+            color: var(--primary);
+            border-radius: 4px;
             padding: 0.5rem 0.9rem;
             font-size: 0.77rem;
             letter-spacing: 0.08em;
@@ -156,11 +167,11 @@
             margin: 0;
             font-size: clamp(2.6rem, 5vw, 4.5rem);
             line-height: 1.08;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.025em;
         }
 
         .highlight {
-            background: linear-gradient(135deg, #95d2ff, #a8b4ff, #78ffd6);
+            background: linear-gradient(135deg, #0067b8, #107c10);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -194,9 +205,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255,255,255,0.02);
+            background: #fff;
             border: 1px solid var(--border);
-            border-radius: 999px;
+            border-radius: 4px;
             padding: 0.65rem 0.9rem;
         }
 
@@ -205,14 +216,14 @@
             height: 9px;
             border-radius: 50%;
             background: var(--success);
-            box-shadow: 0 0 10px rgba(52,211,153,0.8);
+            box-shadow: 0 0 0 4px rgba(16,124,16,0.12);
         }
 
         .hero-card {
             position: relative;
-            background: linear-gradient(180deg, rgba(14,26,39,0.82), rgba(17,33,51,0.92));
+            background: #fff;
             border: 1px solid var(--border);
-            border-radius: 1.5rem;
+            border-radius: 8px;
             padding: 1rem;
             box-shadow: var(--shadow);
         }
@@ -221,7 +232,7 @@
             width: 100%;
             height: 450px;
             object-fit: cover;
-            border-radius: 1.2rem;
+            border-radius: 4px;
         }
 
         .founder-badge {
@@ -229,9 +240,9 @@
             left: 1.4rem;
             right: 1.4rem;
             bottom: 1.5rem;
-            background: rgba(7,17,31,0.76);
-            border: 1px solid rgba(149,210,255,0.25);
-            border-radius: 1rem;
+            background: rgba(255,255,255,0.94);
+            border: 1px solid var(--border);
+            border-radius: 4px;
             padding: 0.95rem 1rem;
             backdrop-filter: blur(10px);
         }
@@ -255,9 +266,9 @@
         }
 
         .stat-box {
-            background: rgba(255,255,255,0.03);
+            background: #fff;
             border: 1px solid var(--border);
-            border-radius: 1.1rem;
+            border-radius: 6px;
             padding: 1.15rem;
             text-align: center;
         }
@@ -265,7 +276,7 @@
         .stat-box strong {
             display: block;
             font-size: clamp(1.5rem, 2vw, 2rem);
-            color: white;
+            color: var(--primary);
         }
 
         .stat-box span {
@@ -274,7 +285,7 @@
         }
 
         .section {
-            padding: 5rem 0;
+            padding: 5.5rem 0;
         }
 
         .section-header {
@@ -284,7 +295,8 @@
         .section-header h2 {
             font-size: clamp(2rem, 3vw, 2.8rem);
             margin: 0 0 0.8rem;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
+            color: var(--text);
         }
 
         .section-header p {
@@ -300,21 +312,31 @@
         }
 
         .service-card, .pricing-card, .list-card, .feature-box {
-            background: rgba(17,33,51,0.75);
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 1.2rem;
+            border-radius: 8px;
             padding: 1.4rem;
             box-shadow: var(--shadow);
+        }
+
+        .service-card:hover, .pricing-card:hover, .team-card:hover, .company-box:hover {
+            border-color: #9fc9e8;
+            box-shadow: 0 16px 34px rgba(23, 43, 77, 0.13);
+            transform: translateY(-3px);
+        }
+
+        .service-card, .pricing-card, .team-card, .company-box {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .service-card .icon {
             width: 52px;
             height: 52px;
-            border-radius: 15px;
+            border-radius: 4px;
             display: grid;
             place-items: center;
-            background: linear-gradient(135deg, rgba(58,160,255,0.2), rgba(108,123,255,0.2));
-            color: #dff4ff;
+            background: #e8f3fc;
+            color: var(--primary);
             font-size: 1.4rem;
             margin-bottom: 1rem;
         }
@@ -359,14 +381,54 @@
             gap: 1.5rem;
         }
 
+        .pricing-reference {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .pricing-reference article {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+
+        .pricing-reference h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .pricing-reference p {
+            margin: 0 0 0.8rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .pricing-reference a {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .pricing-note {
+            margin: 1.5rem 0 0;
+            padding: 1rem 1.2rem;
+            background: #fff8e1;
+            border-left: 4px solid #d29200;
+            color: #5b4300;
+            font-size: 0.92rem;
+        }
+
         .pricing-card {
             position: relative;
             padding: 1.5rem;
         }
 
         .pricing-card.featured {
-            border-color: rgba(58,160,255,0.6);
-            background: linear-gradient(180deg, rgba(58,160,255,0.08), rgba(17,33,51,0.82));
+            border-color: #0078d4;
+            background: linear-gradient(180deg, #f1f8fd, #ffffff);
         }
 
         .pricing-card .tag {
@@ -375,10 +437,10 @@
             right: 1rem;
             font-size: 0.72rem;
             padding: 0.45rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(29,211,166,0.15);
-            border: 1px solid rgba(29,211,166,0.5);
-            color: #bff8ea;
+            border-radius: 4px;
+            background: #e8f5e8;
+            border: 1px solid #a8d5a8;
+            color: var(--accent);
         }
 
         .pricing-card h3 {
@@ -390,7 +452,8 @@
             margin: 1rem 0;
             font-size: 2.3rem;
             font-weight: 800;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.025em;
+            color: var(--primary);
         }
 
         .price small {
@@ -427,9 +490,9 @@
         }
 
         .company-box {
-            background: rgba(17,33,51,0.75);
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 1.2rem;
+            border-radius: 8px;
             padding: 1.5rem;
             box-shadow: var(--shadow);
         }
@@ -455,9 +518,9 @@
             grid-template-columns: 120px 1fr;
             gap: 1.25rem;
             align-items: start;
-            background: rgba(17,33,51,0.75);
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 1.2rem;
+            border-radius: 8px;
             padding: 1.4rem;
             box-shadow: var(--shadow);
         }
@@ -466,7 +529,7 @@
             width: 120px;
             height: 120px;
             object-fit: cover;
-            border-radius: 1rem;
+            border-radius: 6px;
             border: 1px solid var(--border);
         }
 
@@ -502,9 +565,9 @@
         }
 
         .contact-box {
-            background: rgba(17,33,51,0.75);
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 1.2rem;
+            border-radius: 8px;
             padding: 1.6rem;
             box-shadow: var(--shadow);
         }
@@ -543,10 +606,23 @@
             margin-top: 0.35rem;
             padding: 0.75rem 0.85rem;
             border: 1px solid var(--border);
-            border-radius: 0.65rem;
-            background: rgba(7,17,31,0.75);
+            border-radius: 4px;
+            background: #fff;
+            color: var(--text);
             color: var(--text);
             font: inherit;
+        }
+
+        .meeting-form input[type="date"] {
+            min-height: 48px;
+            cursor: pointer;
+            color-scheme: dark;
+        }
+
+        .meeting-form input[type="time"] {
+            min-height: 48px;
+            cursor: pointer;
+            color-scheme: dark;
         }
 
         .meeting-form textarea {
@@ -564,6 +640,7 @@
         footer {
             padding: 2rem 0 3rem;
             color: var(--muted);
+            background: #eef5fb;
             border-top: 1px solid var(--border);
             text-align: center;
         }
@@ -577,6 +654,10 @@
             .pricing-grid,
             .services-grid,
             .stats-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-reference {
                 grid-template-columns: 1fr;
             }
 
@@ -615,11 +696,11 @@
         <section class="hero">
             <div class="container hero-inner">
                 <div class="hero-copy">
-                    <span class="eyebrow">Microsoft Cloud Partner</span>
-                    <h1>Cloud solutions that help your business <span class="highlight">grow faster</span>.</h1>
+                    <span class="eyebrow">End-to-End Cloud Service Partner</span>
+                    <h1>One technology partner for your <span class="highlight">complete IT journey</span>.</h1>
                     <p>
-                        Atul Maurya Cloud Solution Pvt. Ltd. helps businesses modernize with Microsoft Azure, Microsoft 365, security, automation, and managed cloud support.
-                        Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical technology solutions built for performance, trust, and long-term growth.
+                        Atul Maurya Cloud Solution Pvt. Ltd. provides end-to-end cloud and IT services for businesses of every size. We plan, build, secure, migrate, manage, and support your technology across Microsoft Azure, Microsoft 365, networking, cybersecurity, data, applications, and business continuity.
+                        Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
                     </p>
 
                     <div class="cta-row">
@@ -628,9 +709,9 @@
                     </div>
 
                     <div class="mini-points">
-                        <span><i class="dot"></i> Azure Experts</span>
-                        <span><i class="dot"></i> Secure Cloud Setup</span>
-                        <span><i class="dot"></i> 24/7 Support</span>
+                        <span><i class="dot"></i> Cloud & IT Strategy</span>
+                        <span><i class="dot"></i> Secure Implementation</span>
+                        <span><i class="dot"></i> Ongoing Support</span>
                     </div>
                 </div>
 
@@ -666,8 +747,8 @@
         <section id="services" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Microsoft Cloud Services</h2>
-                    <p>We help businesses simplify transformation across productivity, infrastructure, security, analytics, and collaboration.</p>
+                    <h2>Complete Cloud & IT Services</h2>
+                    <p>From business planning to daily operations, we provide the people, technology, and support needed to run a secure, productive, and scalable digital workplace.</p>
                 </div>
 
                 <div class="services-wrap">
@@ -740,28 +821,36 @@
                     </div>
 
                     <div class="list-card">
-                        <h3>Cloud Solutions We Offer</h3>
-                        <p>Tailored Microsoft-based infrastructure and productivity services for businesses of every size.</p>
+                        <h3>Everything Your Business Needs</h3>
+                        <p>We work across the full technology lifecycle, from assessment and design to implementation, monitoring, optimization, and support.</p>
                         <ul>
                             <li>Microsoft Azure Infrastructure</li>
+                            <li>Cloud Assessment, Architecture & Migration</li>
                             <li>Microsoft 365 Deployment & Support</li>
+                            <li>Exchange Online Email & Tenant Management</li>
+                            <li>Microsoft Teams, SharePoint & OneDrive</li>
                             <li>Dynamics 365 Business Applications</li>
                             <li>Power BI Reporting & Analytics</li>
+                            <li>Power Apps & Power Automate Workflows</li>
                             <li>Identity & Access Management</li>
                             <li>Endpoint Security with Microsoft Defender</li>
-                            <li>Teams & Collaboration Setup</li>
-                            <li>Cloud Cost Optimization</li>
+                            <li>Network Design, Wi-Fi, Firewall & VPN</li>
+                            <li>Server, Storage & Virtualization Solutions</li>
+                            <li>Backup, Disaster Recovery & Business Continuity</li>
+                            <li>Websites, Full-Stack Applications & APIs</li>
+                            <li>Cloud Cost Optimization & Governance</li>
+                            <li>Monitoring, Help Desk & Managed IT Support</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="section" style="background: rgba(10, 18, 30, 0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <section id="pricing" class="section" style="background: #eef5fb; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <div class="container">
                 <div class="section-header">
-                    <h2>Simple Pricing Plans</h2>
-                    <p>Transparent, scalable packages to match your business growth and current Microsoft cloud needs.</p>
+                    <h2>Service & Microsoft Pricing</h2>
+                    <p>Choose a support package from us, then review the current Microsoft license and usage pricing for the services your business needs.</p>
                 </div>
 
                 <div class="pricing-grid">
@@ -805,6 +894,26 @@
                         <a href="#contact" class="secondary-btn">Talk to Us</a>
                     </div>
                 </div>
+
+                <div class="pricing-reference">
+                    <article>
+                        <h3>Microsoft 365 Plans</h3>
+                        <p>Business email, Teams, Office apps, SharePoint, OneDrive, security, and collaboration licensing.</p>
+                        <a href="https://www.microsoft.com/en-in/microsoft-365/business/compare-all-microsoft-365-business-products" target="_blank" rel="noopener noreferrer">View Microsoft 365 pricing</a>
+                    </article>
+                    <article>
+                        <h3>Azure Pricing</h3>
+                        <p>Virtual machines, storage, databases, networking, backup, AI, and other consumption-based Azure services.</p>
+                        <a href="https://azure.microsoft.com/en-in/pricing/" target="_blank" rel="noopener noreferrer">View Azure pricing</a>
+                    </article>
+                    <article>
+                        <h3>Power Platform & Dynamics</h3>
+                        <p>Power BI, Power Apps, Power Automate, and Dynamics 365 plans for analytics, automation, and business applications.</p>
+                        <a href="https://www.microsoft.com/en-in/power-platform/products/power-bi/pricing" target="_blank" rel="noopener noreferrer">View Power Platform pricing</a>
+                    </article>
+                </div>
+
+                <p class="pricing-note"><strong>Pricing note:</strong> Microsoft license prices can change based on country, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote before implementation. Our service and support fees are separate from Microsoft licensing charges.</p>
             </div>
         </section>
 
@@ -812,20 +921,21 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Why businesses choose us</h2>
-                    <p>We combine cloud expertise, practical support, and a clear business-first approach to every project.</p>
+                    <p>We combine cloud expertise, infrastructure knowledge, security discipline, software capability, and practical support in one business-first partnership.</p>
                 </div>
 
                 <div class="about-boxes">
                     <div class="company-box">
                         <h3>About the Company</h3>
                         <p>
-                            Atul Maurya Cloud Solution Pvt. Ltd. is a modern cloud consulting company focused on helping businesses adopt Microsoft technologies with confidence.
-                            Our goal is to simplify technology and create secure, scalable digital operations that support growth.
+                            Atul Maurya Cloud Solution Pvt. Ltd. is a complete cloud and IT services company based in Ayodhya, India. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
+                            Our team works across cloud infrastructure, Microsoft solutions, networks, security, applications, data, and support so clients have one accountable technology partner.
                         </p>
                         <ul>
                             <li>Business-focused cloud strategy</li>
                             <li>Reliable implementation and migration support</li>
-                            <li>Strong focus on cost-efficiency and security</li>
+                            <li>Cloud, infrastructure, security, software, and support under one roof</li>
+                            <li>Strong focus on cost-efficiency, reliability, and security</li>
                         </ul>
                     </div>
 
@@ -900,12 +1010,27 @@
                             <input type="email" name="email" required>
                         </label>
                         <label>
-                            Preferred date
-                            <input type="date" name="date" id="meeting-date" required>
+                            Select a date from the calendar
+                            <input type="date" name="date" id="meeting-date" aria-label="Choose a meeting date from the calendar" required>
                         </label>
                         <label>
-                            Preferred time
-                            <input type="time" name="time" required>
+                            Select a preferred time
+                            <input type="time" name="time" aria-label="Choose a preferred meeting time" required>
+                        </label>
+                        <label>
+                            Time zone
+                            <select name="timezone" required>
+                                <option value="Asia/Kolkata" selected>India Standard Time (IST, UTC+5:30)</option>
+                                <option value="UTC">UTC</option>
+                                <option value="America/New_York">Eastern Time (ET, UTC-5/-4)</option>
+                                <option value="America/Chicago">Central Time (CT, UTC-6/-5)</option>
+                                <option value="America/Denver">Mountain Time (MT, UTC-7/-6)</option>
+                                <option value="America/Los_Angeles">Pacific Time (PT, UTC-8/-7)</option>
+                                <option value="Europe/London">United Kingdom Time (GMT/BST)</option>
+                                <option value="Europe/Berlin">Central European Time (CET/CEST)</option>
+                                <option value="Asia/Dubai">Gulf Standard Time (GST, UTC+4)</option>
+                                <option value="Asia/Singapore">Singapore Time (SGT, UTC+8)</option>
+                            </select>
                         </label>
                         <label>
                             Meeting purpose
@@ -948,6 +1073,7 @@
                 `Email: ${formData.get('email')}`,
                 `Preferred date: ${formData.get('date')}`,
                 `Preferred time: ${formData.get('time')}`,
+                `Time zone: ${formData.get('timezone')}`,
                 `Meeting purpose: ${formData.get('purpose')}`,
                 `Additional details: ${formData.get('details') || 'None'}`
             ].join('\n');
