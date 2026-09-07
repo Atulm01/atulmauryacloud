@@ -3,6 +3,7 @@ const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './cloud-animation.mp4.mp4',
   './logo.png.png',
   './myphoto.jpg.jpg',
   './ravi-gupta.jpg.jpg',

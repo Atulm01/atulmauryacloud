@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0078d4">
-    <meta name="description" content="Atul Maurya Cloud Solution - global cloud and IT services.">
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="logo.png.png">
-    <title>Atul Maurya Cloud Solution Pvt. Ltd.</title>
     <style>
         :root {
             --bg: #f5f8fc;
@@ -364,14 +360,15 @@
         }
 
         .hero-video {
-            width: min(100%, 420px);
-            height: 86px;
+            width: min(100%, 520px);
+            aspect-ratio: 16 / 7;
+            height: auto;
             margin-top: 1.25rem;
-            object-fit: cover;
-            border: 1px solid #b9d8f0;
-            border-radius: 6px;
-            background: #dfeef8;
-            box-shadow: 0 8px 20px rgba(0, 103, 184, 0.1);
+            object-fit: contain;
+            border: 1px solid rgba(0, 120, 212, 0.28);
+            border-radius: 8px;
+            background: transparent;
+            box-shadow: none;
         }
 
         .cta-row {
@@ -1153,6 +1150,10 @@
                 height: 340px;
             }
 
+            .hero-video {
+                aspect-ratio: 16 / 9;
+            }
+
             .expertise-list {
                 grid-template-columns: 1fr;
             }
@@ -1249,10 +1250,9 @@
                         Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
                     </p>
                     <video class="hero-video" autoplay muted loop playsinline controls poster="logo.png.png" aria-label="Cloud technology animation">
-                        <source src="cloud-animation.mp4" type="video/mp4">
+                        <source src="cloud-animation.mp4.mp4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
-
                     <div class="cta-row">
                         <a href="#contact" class="primary-btn">Talk to an Expert</a>
                         <a href="#pricing" class="secondary-btn">View Pricing</a>
