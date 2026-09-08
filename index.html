@@ -26,6 +26,7 @@
         html { scroll-behavior: smooth; }
 
         body {
+            position: relative;
             margin: 0;
             font-family: "Aptos", "Segoe UI", sans-serif;
             background:
@@ -35,6 +36,33 @@
             background-size: 36px 36px;
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.9;
+        }
+
+        body::before {
+            top: -10%;
+            right: -10%;
+            width: 35rem;
+            height: 35rem;
+            background: radial-gradient(circle, rgba(0, 120, 212, 0.25), rgba(0, 120, 212, 0) 64%);
+        }
+
+        body::after {
+            left: -8%;
+            bottom: -12%;
+            width: 30rem;
+            height: 30rem;
+            background: radial-gradient(circle, rgba(16, 124, 16, 0.18), rgba(16, 124, 16, 0) 64%);
         }
 
         a { color: inherit; text-decoration: none; }
@@ -254,11 +282,13 @@
         }
 
         .small-btn {
-            padding: 0.75rem 1.1rem;
-            font-size: 0.88rem;
+            padding: 0.62rem 0.95rem;
+            font-size: 0.8rem;
+            line-height: 1.2;
             background: #e8f3fc;
             border-color: #b9d8f0;
             color: var(--primary);
+            white-space: nowrap;
         }
 
         .primary-btn:hover, .secondary-btn:hover, .small-btn:hover {
@@ -417,49 +447,66 @@
 
         .hero-card {
             position: relative;
-            width: min(100%, 390px);
+            width: min(100%, 360px);
+            height: min(100vw, 360px);
+            max-height: 360px;
             justify-self: end;
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.8rem;
-            box-shadow: 0 24px 55px rgba(0, 103, 184, 0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+            border: 1px solid rgba(0, 120, 212, 0.14);
+            border-radius: 50%;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(23, 43, 77, 0.12);
             transform: rotate(1.5deg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .hero-card:hover {
             transform: rotate(0) translateY(-5px);
-            box-shadow: 0 28px 62px rgba(0, 103, 184, 0.22);
+            box-shadow: 0 26px 56px rgba(0, 120, 212, 0.18);
+            border-color: rgba(0, 120, 212, 0.24);
         }
 
         .hero-card:not(:hover) {
-            animation: reveal-up 0.7s ease 0.12s both, photo-float 5s ease-in-out 1s infinite;
+            animation: reveal-up 0.7s ease 0.12s both;
         }
 
-        @keyframes photo-float {
-            0%, 100% { margin-top: 0; }
-            50% { margin-top: -6px; }
+        img[src$=".jpg.jpg"] {
+            transform-origin: center center;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        img[src$=".jpg.jpg"]:hover {
+            transform: none;
+            filter: none;
         }
 
         .hero-photo {
             width: 100%;
-            height: 370px;
+            height: 100%;
             object-fit: cover;
             object-position: center top;
-            border-radius: 5px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 120, 212, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
         }
 
         .founder-badge {
             position: absolute;
-            left: 1.2rem;
-            right: 1.2rem;
-            bottom: 1.2rem;
-            background: rgba(255,255,255,0.94);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 0.95rem 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1rem;
+            width: min(78%, 260px);
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(0, 120, 212, 0.12);
+            border-radius: 999px;
+            padding: 0.8rem 1rem;
+            text-align: center;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 24px rgba(23, 43, 77, 0.08);
         }
 
         .founder-badge strong {
@@ -520,6 +567,324 @@
 
         .home-process strong {
             color: var(--text);
+        }
+
+        .solutions-grid,
+        .industry-grid,
+        .insight-grid,
+        .career-grid {
+            display: grid;
+            gap: 1.25rem;
+            margin-top: 1.2rem;
+        }
+
+        .solutions-grid,
+        .industry-grid,
+        .insight-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .career-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .job-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 0.8rem 0 1rem;
+        }
+
+        .job-meta span {
+            display: inline-block;
+            padding: 0.38rem 0.65rem;
+            border-radius: 999px;
+            background: #f0f6fc;
+            color: var(--primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .job-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .job-link-btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            border-radius: 4px;
+            padding: 0.7rem 1.05rem;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .job-link-btn.primary {
+            background: var(--primary-2);
+            color: #fff;
+            border-color: var(--primary-2);
+        }
+
+        .job-link-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .job-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 120;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .job-modal-backdrop.open {
+            display: flex;
+        }
+
+        .job-modal {
+            width: min(860px, 100%);
+            max-height: min(90vh, 920px);
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 26px 70px rgba(23, 43, 77, 0.22);
+            padding: 1.5rem;
+        }
+
+        .job-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-modal-header h3 {
+            margin: 0;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+        }
+
+        .job-close {
+            border: 1px solid var(--border);
+            background: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .job-modal-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.25rem;
+        }
+
+        .job-detail-box,
+        .job-app-box {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fff;
+            padding: 1.2rem;
+        }
+
+        .job-detail-box h4,
+        .job-app-box h4 {
+            margin: 0 0 0.8rem;
+            font-size: 1.02rem;
+            color: var(--text);
+        }
+
+        .job-detail-box p,
+        .job-detail-box li,
+        .job-app-box label,
+        .job-app-box p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .job-detail-box ul {
+            margin: 0.5rem 0 0;
+            padding-left: 1.1rem;
+        }
+
+        .job-app-form {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .job-app-form label {
+            display: grid;
+            gap: 0.35rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .job-app-form input,
+        .job-app-form select,
+        .job-app-form textarea {
+            width: 100%;
+            padding: 0.72rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            font: inherit;
+        }
+
+        .job-app-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .job-app-form .inline-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+        }
+
+        .application-note {
+            margin: 0.8rem 0 0;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.4rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 34px rgba(23, 43, 77, 0.12);
+        }
+
+        .info-card .icon {
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e8f3fc, #ecf9f0);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: var(--muted);
+        }
+
+        .info-card ul {
+            margin: 0.8rem 0 0;
+            padding-left: 1rem;
+        }
+
+        .career-highlight {
+            display: inline-block;
+            background: #eaf7ef;
+            color: var(--success);
+            border-radius: 999px;
+            padding: 0.42rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+        }
+
+        .feature-showcase {
+            margin-top: 2.5rem;
+            padding: 2rem 0 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .feature-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 120, 212, 0.12);
+            border-radius: 12px;
+            padding: 1.3rem 1.1rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 120, 212, 0.2);
+            box-shadow: 0 18px 34px rgba(23, 43, 77, 0.12);
+        }
+
+        .feature-item .feature-icon {
+            display: inline-grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e8f3fc, #dff2ea);
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .feature-item h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.12rem;
+            color: var(--text);
+        }
+
+        .feature-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .stat-box {
@@ -1112,11 +1477,67 @@
         }
 
         footer {
-            padding: 2rem 0 3rem;
-            color: var(--muted);
-            background: #eef5fb;
+            background: linear-gradient(180deg, #eef5fb 0%, #e5f0f8 100%);
             border-top: 1px solid var(--border);
+            color: var(--muted);
+            padding: 0;
+        }
+
+        .footer-inner {
+            width: min(1180px, calc(100% - 2rem));
+            margin: 0 auto;
+            padding: 2.2rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .footer-brand,
+        .footer-info,
+        .footer-links {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(0, 120, 212, 0.1);
+            border-radius: 12px;
+            padding: 1.2rem 1.1rem;
+        }
+
+        .footer-brand h3,
+        .footer-info h3,
+        .footer-links h3 {
+            margin: 0 0 0.7rem;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .footer-brand p,
+        .footer-info p,
+        .footer-links p,
+        .footer-links a,
+        .footer-links li {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.35rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 120, 212, 0.12);
+            padding: 1rem 0 1.6rem;
             text-align: center;
+            font-size: 0.88rem;
         }
 
         @media (max-width: 900px) {
@@ -1231,9 +1652,13 @@
             <nav class="nav-links" aria-label="Main navigation">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#industries">Industries</a>
                 <a href="#pricing">Pricing</a>
+                <a href="#insights">Insights</a>
                 <a href="#about">About</a>
                 <a href="#team">Team</a>
+                <a href="#careers">Careers</a>
                 <a href="#contact">Contact</a>
             </nav>
             <a href="#contact" class="small-btn">Book Consultation</a>
@@ -1349,6 +1774,38 @@
                     <span>Implement</span>
                     <span>Secure</span>
                     <span>Support and optimize</span>
+                </div>
+
+                <div class="feature-showcase reveal">
+                    <div class="section-header" style="margin-bottom: 1rem;">
+                        <h2>Why businesses choose us</h2>
+                    </div>
+
+                    <div class="feature-grid">
+                        <article class="feature-item reveal">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Strategy-first delivery</h3>
+                            <p>We align technology with business goals so investments solve real operational problems.</p>
+                        </article>
+
+                        <article class="feature-item reveal">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Security by design</h3>
+                            <p>From identity to endpoint protection, our solutions are built with risk reduction in mind.</p>
+                        </article>
+
+                        <article class="feature-item reveal">
+                            <div class="feature-icon">⚙️</div>
+                            <h3>Practical implementation</h3>
+                            <p>We focus on reliable deployments, clear documentation, and smooth adoption across teams.</p>
+                        </article>
+
+                        <article class="feature-item reveal">
+                            <div class="feature-icon">🤝</div>
+                            <h3>Long-term support</h3>
+                            <p>We keep systems optimized with ongoing support, governance, and continuous improvement.</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1688,6 +2145,93 @@
             </div>
         </section>
 
+        <section id="solutions" class="section page-view">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Business solutions that move work forward</h2>
+                    <p>We create practical, scalable solutions for operations, productivity, and transformation across every part of your technology environment.</p>
+                </div>
+
+                <div class="solutions-grid">
+                    <article class="info-card">
+                        <div class="icon">☁️</div>
+                        <h3>Cloud Modernization</h3>
+                        <p>Upgrade legacy environments into resilient, secure, and cost-aware Azure-based platforms.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">🧠</div>
+                        <h3>Business Intelligence</h3>
+                        <p>Turn scattered reporting into actionable dashboards that help teams make faster, smarter decisions.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">📱</div>
+                        <h3>Digital Workplace</h3>
+                        <p>Enable secure collaboration, identity, and productivity with Microsoft 365 and Teams.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="industries" class="section page-view">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Industry-focused support</h2>
+                    <p>Our services adapt to the needs of growth-stage businesses, service teams, operations-driven companies, and digital-first organizations.</p>
+                </div>
+
+                <div class="industry-grid">
+                    <article class="info-card">
+                        <div class="icon">🏢</div>
+                        <h3>Professional Services</h3>
+                        <p>Support client engagement, secure data operations, and managed digital workflows across teams.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">🏭</div>
+                        <h3>Manufacturing & Operations</h3>
+                        <p>Improve visibility, monitoring, and process automation with connected systems and secure infrastructure.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">📦</div>
+                        <h3>Retail & Distribution</h3>
+                        <p>Build smoother inventory, customer, and sales operations using cloud tools and data visibility.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="insights" class="section page-view">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Insights & expert guidance</h2>
+                    <p>Explore practical ideas and digital guidance for modernization, cloud adoption, security, and productivity improvements.</p>
+                </div>
+
+                <div class="insight-grid">
+                    <article class="info-card">
+                        <div class="icon">📘</div>
+                        <h3>Cloud adoption checklist</h3>
+                        <p>Plan your migration with a focus on risk, cost, security, and employee readiness.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">🛡️</div>
+                        <h3>Zero-trust essentials</h3>
+                        <p>Discover the building blocks of safer digital access with identity and device controls.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="icon">📈</div>
+                        <h3>Workplace productivity</h3>
+                        <p>Learn how better automation and better collaboration can remove manual effort and delays.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="section page-view">
             <div class="container">
                 <div class="section-header">
@@ -1719,7 +2263,6 @@
                             <li>Cloud migration, tenant review, licensing, and solution consulting</li>
                             <li>Microsoft 365, Azure identity, security, collaboration, and Copilot adoption</li>
                             <li>Customer-focused technical support, training, and user adoption</li>
-                            <li>Bachelor of Technology from Dr. A.P.J. Abdul Kalam Technical University</li>
                         </ul>
                         <h4 class="expertise-title">Core Expertise</h4>
                         <ul class="expertise-list">
@@ -1781,6 +2324,89 @@
                             <p>Project Engineer with nearly four years of hands-on experience delivering projects and supervising electrical operations and maintenance, including contributions to net-zero initiatives. His MBA strengthens his technical background with project, operations management, business strategy, and leadership expertise. He is also working toward the NEBOSH IGC certification.</p>
                             <p>Influenced by <em>Operations and Process Management: Principles and Practice for Strategic Impact</em> by Nigel Slack and Alistair Brandon-Jones.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/abdullahkw/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="careers" class="section page-view">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Careers & growth opportunities</h2>
+                    <p>All roles are flexible and remote-ready, with a dynamic 24/7 work culture focused on cloud transformation, DevOps automation, Microsoft 365 modernization, and secure digital platform delivery.</p>
+                </div>
+
+                <div class="career-grid">
+                    <article class="info-card job-card">
+                        <div>
+                            <span class="career-highlight">Open</span>
+                            <h3>Cloud Engineer</h3>
+                            <div class="job-meta">
+                                <span>Flexible</span>
+                                <span>Remote / Hybrid</span>
+                                <span>24x7 support culture</span>
+                                <span>1-4 years</span>
+                            </div>
+                            <p>Design, deploy, and secure cloud environments with a strong focus on Azure infrastructure, networking, performance, and resilience.</p>
+                        </div>
+                        <div class="job-actions">
+                            <button type="button" class="job-link-btn primary" data-job="cloud-engineer">View job post</button>
+                            <button type="button" class="job-link-btn" data-job-apply="cloud-engineer">Apply now</button>
+                        </div>
+                    </article>
+
+                    <article class="info-card job-card">
+                        <div>
+                            <span class="career-highlight">Open</span>
+                            <h3>DevOps Engineer</h3>
+                            <div class="job-meta">
+                                <span>Flexible</span>
+                                <span>Remote / Hybrid</span>
+                                <span>24x7 delivery</span>
+                                <span>2-5 years</span>
+                            </div>
+                            <p>Build CI/CD pipelines, improve release automation, support infrastructure as code, and help teams ship software reliably.</p>
+                        </div>
+                        <div class="job-actions">
+                            <button type="button" class="job-link-btn primary" data-job="devops-engineer">View job post</button>
+                            <button type="button" class="job-link-btn" data-job-apply="devops-engineer">Apply now</button>
+                        </div>
+                    </article>
+
+                    <article class="info-card job-card">
+                        <div>
+                            <span class="career-highlight">Open</span>
+                            <h3>M365 Engineer</h3>
+                            <div class="job-meta">
+                                <span>Flexible</span>
+                                <span>Remote / On-site</span>
+                                <span>24x7 support model</span>
+                                <span>1-3 years</span>
+                            </div>
+                            <p>Support Microsoft 365 environments, security policies, Teams, Exchange, identity, user lifecycle, and workplace modernization.</p>
+                        </div>
+                        <div class="job-actions">
+                            <button type="button" class="job-link-btn primary" data-job="m365-engineer">View job post</button>
+                            <button type="button" class="job-link-btn" data-job-apply="m365-engineer">Apply now</button>
+                        </div>
+                    </article>
+
+                    <article class="info-card job-card">
+                        <div>
+                            <span class="career-highlight">Flexible</span>
+                            <h3>Junior Cloud Support Engineer</h3>
+                            <div class="job-meta">
+                                <span>Flexible</span>
+                                <span>Remote</span>
+                                <span>24x7 support ready</span>
+                                <span>0-2 years</span>
+                            </div>
+                            <p>Assist with user support, environment checks, documentation, and troubleshooting for cloud, identity, and Microsoft services.</p>
+                        </div>
+                        <div class="job-actions">
+                            <button type="button" class="job-link-btn primary" data-job="support-engineer">View job post</button>
+                            <button type="button" class="job-link-btn" data-job-apply="support-engineer">Apply now</button>
                         </div>
                     </article>
                 </div>
@@ -1862,8 +2488,156 @@
         </section>
     </main>
 
+    <div class="job-modal-backdrop" id="job-modal-backdrop" aria-modal="true" role="dialog">
+        <div class="job-modal" aria-labelledby="job-modal-title">
+            <div class="job-modal-header">
+                <h3 id="job-modal-title">Job title</h3>
+                <button class="job-close" type="button" aria-label="Close job details">&times;</button>
+            </div>
+
+            <div class="job-modal-grid">
+                <div class="job-detail-box">
+                    <h4>Job description</h4>
+                    <p id="job-summary"></p>
+
+                    <h4 style="margin-top:1rem;">Responsibilities</h4>
+                    <ul id="job-responsibilities"></ul>
+
+                    <h4 style="margin-top:1rem;">Requirements</h4>
+                    <ul id="job-requirements"></ul>
+
+                    <h4 style="margin-top:1rem;">Preferred skills</h4>
+                    <ul id="job-skills"></ul>
+                </div>
+
+                <div class="job-app-box">
+                    <h4>Apply for this role</h4>
+                    <form class="job-app-form" id="job-application-form">
+                        <label>
+                            Full name
+                            <input type="text" name="fullName" required>
+                        </label>
+
+                        <div class="inline-row">
+                            <label>
+                                Email
+                                <input type="email" name="email" required>
+                            </label>
+                            <label>
+                                Phone
+                                <input type="tel" name="phone" required>
+                            </label>
+                        </div>
+
+                        <div class="inline-row">
+                            <label>
+                                Position
+                                <select name="position" id="application-position" required>
+                                    <option value="Cloud Engineer">Cloud Engineer</option>
+                                    <option value="DevOps Engineer">DevOps Engineer</option>
+                                    <option value="M365 Engineer">M365 Engineer</option>
+                                    <option value="Junior Cloud Support Engineer">Junior Cloud Support Engineer</option>
+                                </select>
+                            </label>
+                            <label>
+                                Experience
+                                <select name="experience" required>
+                                    <option value="">Select</option>
+                                    <option value="0-1 years">0-1 years</option>
+                                    <option value="1-3 years">1-3 years</option>
+                                    <option value="3-5 years">3-5 years</option>
+                                    <option value="5+ years">5+ years</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="inline-row">
+                            <label>
+                                Current company
+                                <input type="text" name="company" required>
+                            </label>
+                            <label>
+                                Current role
+                                <input type="text" name="currentRole" required>
+                            </label>
+                        </div>
+
+                        <div class="inline-row">
+                            <label>
+                                Notice period
+                                <select name="noticePeriod" required>
+                                    <option value="">Select</option>
+                                    <option value="Immediate">Immediate</option>
+                                    <option value="15 days">15 days</option>
+                                    <option value="30 days">30 days</option>
+                                    <option value="45 days">45 days</option>
+                                    <option value="60+ days">60+ days</option>
+                                </select>
+                            </label>
+                            <label>
+                                Preferred location
+                                <select name="location" required>
+                                    <option value="">Select</option>
+                                    <option value="Ayodhya">Ayodhya</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Any">Any</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <label>
+                            LinkedIn profile / portfolio URL
+                            <input type="url" name="linkedin" placeholder="https://linkedin.com/in/yourprofile" required>
+                        </label>
+
+                        <label>
+                            Resume upload
+                            <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+                        </label>
+
+                        <label>
+                            Why are you a fit for this role?
+                            <textarea name="motivation" required></textarea>
+                        </label>
+
+                        <button type="submit" class="primary-btn" style="margin-top:0.25rem;">Submit application</button>
+                        <p class="application-note">We will review your application and contact you if shortlisted for the next interview stage.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        © <span id="year"></span> Atul Maurya Cloud Solution Pvt. Ltd. All rights reserved.
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Atul Maurya Cloud Solution Pvt. Ltd.</h3>
+                    <p>Cloud strategy, Microsoft solutions, security, infrastructure, software, and support for businesses building better digital operations.</p>
+                </div>
+
+                <div class="footer-info">
+                    <h3>Office Location</h3>
+                    <p>Kaushalpuri Colony Phase-2<br>Ayodhya, Uttar Pradesh, India</p>
+                    <p>Open for client consultations, remote support, and strategic project planning.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Important Information</h3>
+                    <ul>
+                        <li>Business hours: Mon–Sat, 9:00 AM–7:00 PM</li>
+                        <li>Service support: Remote + on-site coordination</li>
+                        <li>Global consultations available</li>
+                        <li>Microsoft licensing and Azure charges are separate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © <span id="year"></span> Atul Maurya Cloud Solution Pvt. Ltd. All rights reserved.
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -1876,6 +2650,19 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const pageViews = document.querySelectorAll('.page-view');
+        const revealItems = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealItems.forEach(function (item) {
+            revealObserver.observe(item);
+        });
 
         function showPage(pageId, updateHistory) {
             const requestedPage = document.getElementById(pageId);
@@ -1960,6 +2747,133 @@
         const serviceDeliverables = document.getElementById('service-detail-deliverables');
         const servicePrice = document.getElementById('service-detail-price');
         const serviceNote = document.getElementById('service-detail-note');
+
+        const jobData = {
+            'cloud-engineer': {
+                title: 'Cloud Engineer',
+                summary: 'We are looking for a Cloud Engineer who can design, implement, and secure Azure-based infrastructure while collaborating with cross-functional teams to drive scalable cloud operations.',
+                responsibilities: [
+                    'Design and deploy Azure infrastructure including virtual machines, storage, networking, identity, and governance.',
+                    'Monitor cloud health, optimize cost, and improve stability, performance, and security across environments.',
+                    'Support migration projects, infrastructure modernization, and application hosting requirements.',
+                    'Collaborate with developers and stakeholders to translate business needs into technical solutions.',
+                    'Create and maintain architecture documentation, standards, and operational runbooks.'
+                ],
+                requirements: [
+                    'Bachelor’s degree in computer science, IT, engineering, or a related discipline or equivalent practical experience.',
+                    '1-4 years of hands-on experience with Microsoft Azure or other cloud platforms.',
+                    'Working knowledge of networking, identity, security, storage, compute, and virtualization.',
+                    'Familiarity with Infrastructure as Code, monitoring, automation, and cloud governance best practices.',
+                    'Strong communication, troubleshooting, and project coordination abilities.'
+                ],
+                skills: ['Azure', 'Virtual Machines', 'Networking', 'Terraform', 'PowerShell', 'IAM', 'Monitoring', 'Security', 'Bicep']
+            },
+            'devops-engineer': {
+                title: 'DevOps Engineer',
+                summary: 'We are hiring a DevOps Engineer to build secure automation, streamline delivery pipelines, and improve deployment reliability across modern application platforms.',
+                responsibilities: [
+                    'Develop and manage CI/CD pipelines for application and infrastructure delivery.',
+                    'Automate configuration management, environment provisioning, and release processes.',
+                    'Support cloud deployments, container workloads, and infrastructure changes in production environments.',
+                    'Improve monitoring, alerting, rollback procedures, and recovery readiness.',
+                    'Work with engineering teams to improve quality, speed, and operational consistency.'
+                ],
+                requirements: [
+                    '2-5 years of experience in DevOps, cloud operations, release engineering, or software delivery.',
+                    'Hands-on experience with Git, CI/CD tooling, and automation frameworks.',
+                    'Working knowledge of Azure, Linux, containerization, or script-based deployment workflows.',
+                    'Exposure to infrastructure as code, configuration management, and monitoring systems.',
+                    'Ability to troubleshoot production issues and document robust processes.'
+                ],
+                skills: ['GitHub Actions', 'Azure DevOps', 'Docker', 'Kubernetes', 'Bash', 'Terraform', 'CI/CD', 'Monitoring', 'Automation']
+            },
+            'm365-engineer': {
+                title: 'M365 Engineer',
+                summary: 'We are hiring an M365 Engineer to manage Microsoft 365 services including identity, collaboration, endpoints, security, and user support in fast-moving business environments.',
+                responsibilities: [
+                    'Configure and maintain Microsoft 365 tenant services including Exchange, Teams, SharePoint, OneDrive, and licensing.',
+                    'Support user onboarding, identity lifecycle, access controls, security policies, and compliance requirements.',
+                    'Assist with email migrations, device and workspace setup, and Microsoft 365 troubleshooting.',
+                    'Implement and monitor security features such as Conditional Access, MFA, and Defender policies.',
+                    'Create documentation, user guidance, and operational support plans for clients and internal teams.'
+                ],
+                requirements: [
+                    '1-3 years of experience working with Microsoft 365, identity, collaboration, or endpoint management.',
+                    'Good understanding of Entra ID, Exchange Online, Teams, OneDrive, SharePoint, and device compliance.',
+                    'Familiarity with Microsoft security concepts, access policies, and user provisioning.',
+                    'Strong troubleshooting and customer communication skills.',
+                    'Ability to document configurations, support workflows, and business-ready guidance.'
+                ],
+                skills: ['Microsoft 365', 'Exchange Online', 'Teams', 'SharePoint', 'Entra ID', 'Conditional Access', 'Defender', 'PowerShell']
+            },
+            'support-engineer': {
+                title: 'Junior Cloud Support Engineer',
+                summary: 'This role supports cloud operations, user help requests, environment checks, and issue resolution across Microsoft and cloud platform workloads.',
+                responsibilities: [
+                    'Provide support for Microsoft 365, Azure, and internal business application issues.',
+                    'Troubleshoot connectivity, access, licensing, and configuration problems for end users and teams.',
+                    'Document incidents, process improvements, and environment changes in a structured way.',
+                    'Support onboarding tasks, system checks, and standard cloud operations.',
+                    'Escalate issues appropriately and maintain strong communication with stakeholders.'
+                ],
+                requirements: [
+                    '0-2 years of hands-on IT support, cloud support, or systems operations experience.',
+                    'Understanding of networking, Microsoft 365, and basic cloud concepts.',
+                    'Comfortable supporting tickets, troubleshooting, and learning in a fast-moving environment.',
+                    'Good team communication, documentation, and customer-oriented service mindset.',
+                    'Willingness to learn Azure, security, and support best practices.'
+                ],
+                skills: ['IT support', 'Microsoft 365', 'Azure basics', 'Troubleshooting', 'Documentation', 'Communication']
+            }
+        };
+
+        const jobModalBackdrop = document.getElementById('job-modal-backdrop');
+        const jobModalTitle = document.getElementById('job-modal-title');
+        const jobSummary = document.getElementById('job-summary');
+        const jobResponsibilities = document.getElementById('job-responsibilities');
+        const jobRequirements = document.getElementById('job-requirements');
+        const jobSkills = document.getElementById('job-skills');
+        const applicationPosition = document.getElementById('application-position');
+
+        function openJobModal(key) {
+            const job = jobData[key];
+            if (!job) return;
+
+            jobModalTitle.textContent = job.title;
+            jobSummary.textContent = job.summary;
+            jobResponsibilities.innerHTML = job.responsibilities.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+            jobRequirements.innerHTML = job.requirements.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+            jobSkills.innerHTML = job.skills.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+            applicationPosition.value = job.title;
+            jobModalBackdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeJobModal() {
+            jobModalBackdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('[data-job]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                openJobModal(button.dataset.job);
+            });
+        });
+
+        document.querySelectorAll('[data-job-apply]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                openJobModal(button.dataset.jobApply);
+                document.getElementById('job-application-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.querySelector('.job-close').addEventListener('click', closeJobModal);
+        jobModalBackdrop.addEventListener('click', function (event) {
+            if (event.target === jobModalBackdrop) closeJobModal();
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && jobModalBackdrop.classList.contains('open')) closeJobModal();
+        });
 
         function openServiceDetails(serviceId) {
             const service = serviceDetails[serviceId];
@@ -2064,6 +2978,27 @@
                 `Time zone: ${formData.get('timezone')}`,
                 `Meeting purpose: ${formData.get('purpose')}`,
                 `Additional details: ${formData.get('details') || 'None'}`
+            ].join('\n');
+            window.location.href = `mailto:samratatulmaurya9415@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+
+        document.getElementById('job-application-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            const position = formData.get('position');
+            const subject = `Job application - ${position}`;
+            const body = [
+                `Full name: ${formData.get('fullName')}`,
+                `Email: ${formData.get('email')}`,
+                `Phone: ${formData.get('phone')}`,
+                `Position: ${position}`,
+                `Experience: ${formData.get('experience')}`,
+                `Current company: ${formData.get('company')}`,
+                `Current role: ${formData.get('currentRole')}`,
+                `Notice period: ${formData.get('noticePeriod')}`,
+                `Preferred location: ${formData.get('location')}`,
+                `LinkedIn / portfolio: ${formData.get('linkedin')}`,
+                `Why this role: ${formData.get('motivation')}`
             ].join('\n');
             window.location.href = `mailto:samratatulmaurya9415@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
