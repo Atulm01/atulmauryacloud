@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0078d4">
+    <meta name="theme-color" content="#102a43">
+    <meta name="description" content="Atul Maurya Cloud Solution Pvt. Ltd. delivers cloud, Microsoft, security, software, and IT support services for growing businesses.">
+    <title>Atul Maurya Cloud Solution Pvt. Ltd. | Cloud &amp; IT Services</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
         :root {
-            --bg: #f5f8fc;
-            --bg-soft: #eef5fb;
+            --bg: #f2f7f6;
+            --bg-soft: #e8f2f0;
             --panel: #ffffff;
-            --panel-2: #f8fbff;
+            --panel-2: #f7fbfa;
             --card: #ffffff;
-            --text: #172b4d;
-            --muted: #52657d;
-            --primary: #0067b8;
-            --primary-2: #0078d4;
-            --accent: #107c10;
-            --gold: #8a5a00;
-            --border: #d7e2ee;
-            --shadow: 0 12px 30px rgba(23, 43, 77, 0.09);
-            --success: #107c10;
+            --text: #102a43;
+            --muted: #526779;
+            --primary: #087f8c;
+            --primary-2: #0b7285;
+            --accent: #159b83;
+            --gold: #a66b17;
+            --border: #d4e3e1;
+            --shadow: 0 12px 30px rgba(16, 42, 67, 0.09);
+            --success: #16856f;
         }
 
         * { box-sizing: border-box; }
@@ -32,8 +34,8 @@
             margin: 0;
             font-family: "Aptos", "Segoe UI", sans-serif;
             background:
-                linear-gradient(rgba(0, 120, 212, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 120, 212, 0.035) 1px, transparent 1px),
+                linear-gradient(rgba(8, 127, 140, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(8, 127, 140, 0.035) 1px, transparent 1px),
                 var(--bg);
             background-size: 36px 36px;
             color: var(--text);
@@ -56,7 +58,8 @@
             right: -10%;
             width: 35rem;
             height: 35rem;
-            background: radial-gradient(circle, rgba(0, 120, 212, 0.25), rgba(0, 120, 212, 0) 64%);
+            background: radial-gradient(circle, rgba(8, 127, 140, 0.2), rgba(8, 127, 140, 0) 64%);
+            animation: ambient-drift 20s ease-in-out infinite alternate;
         }
 
         body::after {
@@ -64,7 +67,58 @@
             bottom: -12%;
             width: 30rem;
             height: 30rem;
-            background: radial-gradient(circle, rgba(16, 124, 16, 0.18), rgba(16, 124, 16, 0) 64%);
+            background: radial-gradient(circle, rgba(21, 155, 131, 0.16), rgba(21, 155, 131, 0) 64%);
+            animation: ambient-drift 24s ease-in-out -8s infinite alternate-reverse;
+        }
+
+        .ambient-animation {
+            position: fixed;
+            z-index: 0;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.42;
+        }
+
+        .ambient-animation::before,
+        .ambient-animation::after {
+            position: absolute;
+            inset: -30%;
+            content: "";
+            background:
+                radial-gradient(ellipse at 22% 28%, rgba(8, 127, 140, 0.14), transparent 34%),
+                radial-gradient(ellipse at 76% 68%, rgba(21, 155, 131, 0.12), transparent 36%),
+                radial-gradient(ellipse at 52% 48%, rgba(210, 226, 238, 0.22), transparent 42%);
+            filter: blur(34px);
+            animation: cloud-flow 30s ease-in-out infinite alternate;
+        }
+
+        .ambient-animation::after {
+            opacity: 0.65;
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(8, 127, 140, 0.09), transparent 32%),
+                radial-gradient(ellipse at 18% 78%, rgba(21, 155, 131, 0.1), transparent 34%);
+            animation-duration: 38s;
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes cloud-flow {
+            from { transform: translate3d(-2%, -1%, 0) scale(0.96) rotate(-2deg); }
+            to { transform: translate3d(2%, 1.5%, 0) scale(1.04) rotate(2deg); }
+        }
+
+        @keyframes ambient-drift {
+            from { transform: translate3d(-2rem, -1rem, 0) scale(0.94); }
+            to { transform: translate3d(2rem, 1.5rem, 0) scale(1.08); }
+        }
+
+        @keyframes logo-aurora {
+            from { transform: scale(0.96); filter: hue-rotate(-8deg) drop-shadow(0 3px 7px rgba(8, 127, 140, 0.22)); }
+            to { transform: scale(1.06); filter: hue-rotate(18deg) drop-shadow(0 5px 14px rgba(21, 155, 131, 0.38)); }
+        }
+
+        @keyframes logo-orbit {
+            to { transform: rotate(1turn); }
         }
 
         a { color: inherit; text-decoration: none; }
@@ -81,10 +135,10 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(16, 42, 67, 0.97);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 12px rgba(23, 43, 77, 0.05);
+            border-bottom: 1px solid rgba(132, 206, 200, 0.22);
+            box-shadow: 0 4px 18px rgba(16, 42, 67, 0.16);
         }
 
         .nav {
@@ -101,27 +155,60 @@
             gap: 0.8rem;
         }
 
+        .logo-emblem {
+            position: relative;
+            display: grid;
+            flex: 0 0 76px;
+            width: 76px;
+            height: 76px;
+            place-items: center;
+            isolation: isolate;
+            border-radius: 18px;
+        }
+
+        .logo-emblem::before {
+            position: absolute;
+            z-index: -1;
+            inset: -5px;
+            border-radius: 22px;
+            background: conic-gradient(from 0deg, #087f8c, #78e0c2, #d5bd73, #1683b0, #087f8c);
+            content: "";
+            animation: logo-aurora 3.8s ease-in-out infinite alternate;
+        }
+
+        .logo-emblem::after {
+            position: absolute;
+            z-index: -1;
+            inset: -9px;
+            border: 1px solid rgba(120, 224, 194, 0.45);
+            border-radius: 24px;
+            background: radial-gradient(circle at 50% 0, #d5bd73 0 3px, transparent 4px);
+            content: "";
+            animation: logo-orbit 12s linear infinite;
+        }
+
         .logo-mark {
             width: 72px;
             height: 72px;
             object-fit: contain;
-            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.94);
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(16, 42, 67, 0.28);
         }
 
         .logo-text {
             max-width: 280px;
             font-size: clamp(0.78rem, 1.35vw, 0.98rem);
             font-weight: 800;
-            line-height: 1.12;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-            font-family: "Playfair Display", "Georgia", serif;
-            background: linear-gradient(135deg, #0d2347 0%, #123f7a 24%, #1f5eb3 48%, #d4af62 72%, #f8e7b8 100%);
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            background: linear-gradient(110deg, #ffffff 0%, #b7f2df 58%, #78cfe0 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
-            text-shadow: 0 6px 18px rgba(17, 52, 110, 0.15);
         }
 
         .brand-name {
@@ -129,7 +216,7 @@
             font-family: "Playfair Display", "Georgia", serif;
             font-weight: 700;
             letter-spacing: 0.04em;
-            background: linear-gradient(135deg, #0d2347 0%, #123f7a 26%, #1f5eb3 50%, #d4af62 76%, #f8e7b8 100%);
+            background: linear-gradient(135deg, #102a43 0%, #087f8c 52%, #159b83 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -143,13 +230,23 @@
             font-size: 0.96rem;
         }
 
-        .nav-links a:hover { color: white; }
+        .nav-links a { color: rgba(255, 255, 255, 0.86); }
+        .nav-links a:hover { color: #8ce3cb; }
 
-        .nav-links a { color: var(--text); }
-        .nav-links a:hover { color: var(--primary-2); }
+        .nav > .small-btn {
+            background: linear-gradient(135deg, #087f8c, #159b83);
+            border-color: rgba(140, 227, 203, 0.38);
+            color: #fff;
+        }
+
+        .nav > .small-btn:hover {
+            background: linear-gradient(135deg, #096b78, #117e70);
+        }
 
         .service-brands {
-            background: #fff;
+            position: relative;
+            z-index: 1;
+            background: rgba(247, 251, 250, 0.96);
             border-bottom: 1px solid var(--border);
         }
 
@@ -324,8 +421,8 @@
             overflow: hidden;
             padding: 5rem 0 4rem;
             background:
-                radial-gradient(circle at 78% 18%, rgba(0,120,212,0.16), transparent 23%),
-                linear-gradient(135deg, #f8fbff 0%, #eaf4fb 100%);
+                radial-gradient(circle at 78% 18%, rgba(8, 127, 140, 0.14), transparent 23%),
+                linear-gradient(135deg, #f6fbfa 0%, #e7f3f1 100%);
             border-bottom: 1px solid var(--border);
         }
 
@@ -335,7 +432,7 @@
             right: -8rem;
             width: 22rem;
             height: 22rem;
-            border: 1px solid rgba(0,120,212,0.16);
+            border: 1px solid rgba(8, 127, 140, 0.16);
             border-radius: 50%;
             content: "";
             animation: orbit 16s linear infinite;
@@ -398,7 +495,7 @@
         }
 
         .highlight {
-            background: linear-gradient(135deg, #0067b8, #107c10);
+            background: linear-gradient(135deg, #087f8c, #16856f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -417,18 +514,6 @@
             font-size: 1.08rem;
             max-width: 620px;
             margin-top: 1.1rem;
-        }
-
-        .hero-video {
-            width: min(100%, 520px);
-            aspect-ratio: 16 / 7;
-            height: auto;
-            margin-top: 1.25rem;
-            object-fit: contain;
-            border: 1px solid rgba(0, 120, 212, 0.28);
-            border-radius: 8px;
-            background: transparent;
-            box-shadow: none;
         }
 
         .cta-row {
@@ -538,6 +623,230 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
             padding: 1.2rem 0 0;
+        }
+
+        .stat-box {
+            overflow: hidden;
+        }
+
+        .stat-box strong {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stats-note {
+            margin: 0.75rem 0 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-align: right;
+        }
+
+        .client-insights {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            margin-top: 2rem;
+            padding: clamp(1.4rem, 3vw, 2.2rem);
+            border: 1px solid rgba(120, 224, 194, 0.26);
+            border-radius: 16px;
+            background: linear-gradient(135deg, #102a43 0%, #174e5b 100%);
+            box-shadow: 0 18px 42px rgba(16, 42, 67, 0.16);
+        }
+
+        .client-insights::before {
+            position: absolute;
+            z-index: -1;
+            top: -8rem;
+            right: -5rem;
+            width: 22rem;
+            height: 22rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(120, 224, 194, 0.18), transparent 68%);
+            content: "";
+            animation: ambient-drift 14s ease-in-out infinite alternate;
+        }
+
+        .client-insights-header {
+            max-width: 680px;
+            margin-bottom: 1.25rem;
+        }
+
+        .client-insights-header h2 {
+            margin: 0 0 0.45rem;
+            color: #fff;
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            line-height: 1.2;
+        }
+
+        .client-insights-header p,
+        .client-insight-card p {
+            margin: 0;
+            color: #c8dce2;
+        }
+
+        .client-insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .client-insight-card {
+            min-width: 0;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(8px);
+        }
+
+        .client-insight-card h3 {
+            margin: 0 0 0.55rem;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .client-insight-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a9d9d2;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .client-count {
+            display: block;
+            margin: 0.1rem 0 0.4rem;
+            color: var(--primary);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .client-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            padding: 0;
+            margin: 1rem 0 0;
+            list-style: none;
+        }
+
+        .client-types li {
+            margin: 0;
+            padding: 0.42rem 0.62rem;
+            border: 1px solid rgba(165, 241, 216, 0.32);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #e1eeef;
+            font-size: 0.75rem;
+        }
+
+        .client-insight-note {
+            display: block;
+            margin-top: 0.8rem;
+            color: #a9c2cc;
+            font-size: 0.75rem;
+        }
+
+        .resolution-flow,
+        .feedback-flow {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.4rem;
+            padding: 0;
+            margin: 1rem 0 0;
+            list-style: none;
+        }
+
+        .resolution-flow li,
+        .feedback-flow li {
+            position: relative;
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.45rem;
+            color: #e1eeef;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .resolution-flow li:not(:last-child)::after,
+        .feedback-flow li:not(:last-child)::after {
+            position: absolute;
+            top: 15px;
+            left: calc(50% + 18px);
+            width: calc(100% - 36px);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(120, 224, 194, 0.8), rgba(120, 224, 194, 0.12));
+            content: "";
+        }
+
+        .resolution-flow li::before,
+        .feedback-flow li::before {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            flex: 0 0 32px;
+            place-items: center;
+            border: 1px solid rgba(165, 241, 216, 0.65);
+            border-radius: 50%;
+            background: #174e5b;
+            color: #a5f1d8;
+        }
+
+        .resolution-flow {
+            counter-reset: resolution-step;
+        }
+
+        .resolution-flow li::before {
+            counter-increment: resolution-step;
+            content: counter(resolution-step);
+        }
+
+        .feedback-flow li::before {
+            border-radius: 10px;
+            content: "";
+            background: radial-gradient(circle, #a5f1d8 0 3px, transparent 4px), #174e5b;
+        }
+
+        .client-insights.visible .resolution-flow li::before,
+        .client-insights.visible .feedback-flow li::before {
+            animation: insight-pulse 2.4s ease-in-out infinite;
+        }
+
+        .client-insights.visible .resolution-flow li:nth-child(2)::before,
+        .client-insights.visible .feedback-flow li:nth-child(2)::before {
+            animation-delay: 0.35s;
+        }
+
+        .client-insights.visible .resolution-flow li:nth-child(3)::before,
+        .client-insights.visible .feedback-flow li:nth-child(3)::before {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes insight-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(165, 241, 216, 0.08); }
+            50% { box-shadow: 0 0 0 7px rgba(165, 241, 216, 0.14); }
+        }
+
+        .client-insight-card .resolution-disclaimer {
+            margin-top: 0.9rem;
+            font-size: 0.78rem;
+            line-height: 1.55;
+        }
+
+        .client-feedback-link {
+            display: inline-flex;
+            margin-top: 0.9rem;
+            color: #a5f1d8;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         .home-overview {
@@ -921,6 +1230,12 @@
 
         .section {
             padding: 5.5rem 0;
+        }
+
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
         }
 
         .page-view {
@@ -1490,7 +1805,7 @@
         }
 
         footer {
-            background: linear-gradient(180deg, #eef5fb 0%, #e5f0f8 100%);
+            background: linear-gradient(180deg, #edf5f3 0%, #e4efed 100%);
             border-top: 1px solid var(--border);
             color: var(--muted);
             padding: 0;
@@ -1513,7 +1828,7 @@
         .footer-info,
         .footer-links {
             background: rgba(255,255,255,0.5);
-            border: 1px solid rgba(0, 120, 212, 0.1);
+            border: 1px solid rgba(8, 127, 140, 0.12);
             border-radius: 12px;
             padding: 1.2rem 1.1rem;
         }
@@ -1547,7 +1862,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(0, 120, 212, 0.12);
+            border-top: 1px solid rgba(8, 127, 140, 0.16);
             padding: 1rem 0 1.6rem;
             text-align: center;
             font-size: 0.88rem;
@@ -1571,6 +1886,10 @@
 
             .home-overview {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
 
             .pricing-reference {
@@ -1609,10 +1928,6 @@
                 height: 340px;
             }
 
-            .hero-video {
-                aspect-ratio: 16 / 9;
-            }
-
             .expertise-list {
                 grid-template-columns: 1fr;
             }
@@ -1624,6 +1939,10 @@
             }
 
             .home-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .client-insight-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1656,10 +1975,13 @@
     </style>
 </head>
 <body>
+    <div class="ambient-animation" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container nav">
             <div class="logo-block">
-                <img class="logo-mark" src="logo.png.png" alt="Atul Maurya Cloud Solution logo">
+                <span class="logo-emblem">
+                    <img class="logo-mark" src="logo.png.png" alt="Atul Maurya Cloud Solution Pvt. Ltd. logo">
+                </span>
                 <div class="logo-text">Atul Maurya Cloud Solution Pvt. Ltd.</div>
             </div>
             <nav class="nav-links" aria-label="Main navigation">
@@ -1716,10 +2038,6 @@
                         Atul Maurya Cloud Solution Pvt. Ltd. is a global end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations worldwide.
                         Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
                     </p>
-                    <video class="hero-video" autoplay muted loop playsinline controls poster="logo.png.png" aria-label="Cloud technology animation">
-                        <source src="cloud-animation.mp4.mp4" type="video/mp4">
-                        Your browser does not support video playback.
-                    </video>
                     <div class="cta-row">
                         <a href="#contact" class="primary-btn">Talk to an Expert</a>
                         <a href="#pricing" class="secondary-btn">View Pricing</a>
@@ -1743,21 +2061,64 @@
 
             <div class="container stats-strip">
                 <div class="stat-box">
-                    <strong>150+</strong>
-                    <span>Business Clients</span>
+                    <strong class="client-count" data-count="150" data-suffix="+" aria-label="150 plus company-reported business clients">150+</strong>
+                    <span>Business clients</span>
                 </div>
                 <div class="stat-box">
-                    <strong>99.9%</strong>
-                    <span>Uptime Focus</span>
+                    <strong>Plan-led</strong>
+                    <span>Response and resolution targets</span>
                 </div>
                 <div class="stat-box">
-                    <strong>24/7</strong>
-                    <span>Support</span>
+                    <strong>Step-by-step</strong>
+                    <span>Issue assessment and resolution</span>
                 </div>
                 <div class="stat-box">
-                    <strong>100%</strong>
-                    <span>Cloud-first Strategy</span>
+                    <strong>Feedback-led</strong>
+                    <span>Continuous service improvement</span>
                 </div>
+            </div>
+            <div class="container">
+                <section class="client-insights reveal" aria-labelledby="client-insights-title">
+                    <header class="client-insights-header">
+                        <h2 id="client-insights-title">Client experience, made visible</h2>
+                        <p>A clear view of how client relationships, support requests, and feedback fit into our delivery approach.</p>
+                    </header>
+                    <div class="client-insight-grid">
+                        <article class="client-insight-card">
+                            <span class="client-insight-label">Client snapshot</span>
+                            <h3>Built for growing teams</h3>
+                            <p>Services are designed for organizations at different stages of their technology journey.</p>
+                            <ul class="client-types" aria-label="Types of organizations served">
+                                <li>Startups</li>
+                                <li>Small businesses</li>
+                                <li>Growing organizations</li>
+                            </ul>
+                            <span class="client-insight-note">The 150+ client figure above is company-reported, not a live analytics counter.</span>
+                        </article>
+                        <article class="client-insight-card">
+                            <span class="client-insight-label">Support journey</span>
+                            <h3>Resolution, with clear steps</h3>
+                            <ol class="resolution-flow" aria-label="Report, assess, resolve">
+                                <li>Report</li>
+                                <li>Assess</li>
+                                <li>Resolve</li>
+                            </ol>
+                            <p class="resolution-disclaimer">Resolution time depends on issue severity, access, external dependencies, and the selected support plan. Response targets are agreed before work begins.</p>
+                        </article>
+                        <article class="client-insight-card">
+                            <span class="client-insight-label">Client feedback</span>
+                            <h3>Listen, review, improve</h3>
+                            <p>Share feedback after a project or support request to help guide follow-up improvements.</p>
+                            <ol class="feedback-flow" aria-label="Listen, review, improve">
+                                <li>Listen</li>
+                                <li>Review</li>
+                                <li>Improve</li>
+                            </ol>
+                            <a class="client-feedback-link" href="mailto:samratatulmaurya9415@outlook.com?subject=Client%20feedback">Share feedback or discuss support</a>
+                        </article>
+                    </div>
+                </section>
+                <p class="stats-note">Response and resolution commitments are defined by the agreed service scope; no fixed resolution-time guarantee is implied.</p>
             </div>
 
             <div class="container">
@@ -2256,8 +2617,8 @@
                     <div class="company-box">
                         <h3>About the Company</h3>
                         <p>
-                            Nexzora.Technology PVt. Ltd. is a complete cloud and IT services company based in Ayodhya, India, serving clients globally. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
-                            Our team works across cloud infrastructure, Microsoft solutions, networks, security, applications, data, and support so clients have one accountable technology partner.
+                            Atul Maurya Cloud Solution Pvt. Ltd. is an Ayodhya-based cloud and IT services company serving clients in India and globally. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
+                            We work across cloud infrastructure, Microsoft solutions, networks, security, applications, data, and support to provide one accountable technology partner.
                         </p>
                         <ul>
                             <li>Business-focused cloud strategy</li>
@@ -2347,7 +2708,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Careers & growth opportunities</h2>
-                    <p>All roles are flexible and remote-ready, with a dynamic 24/7 work culture focused on cloud transformation, DevOps automation, Microsoft 365 modernization, and secure digital platform delivery.</p>
+                    <p>All roles are flexible and remote-ready, with a flexible delivery culture focused on cloud transformation, DevOps automation, Microsoft 365 modernization, and secure digital platform delivery.</p>
                 </div>
 
                 <div class="career-grid">
@@ -2664,6 +3025,45 @@
 
         const pageViews = document.querySelectorAll('.page-view');
         const revealItems = document.querySelectorAll('.reveal');
+        const clientCounters = document.querySelectorAll('.client-count[data-count]');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const counterObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+
+                const counter = entry.target;
+                const target = Number(counter.dataset.count);
+                const suffix = counter.dataset.suffix || '';
+                if (!Number.isFinite(target)) {
+                    throw new Error('Client metric count must be a valid number.');
+                }
+
+                if (prefersReducedMotion) {
+                    counter.textContent = `${target}${suffix}`;
+                    counterObserver.unobserve(counter);
+                    return;
+                }
+
+                const duration = 1200;
+                const startTime = performance.now();
+                function updateCounter(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const easedProgress = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = `${Math.round(target * easedProgress)}${suffix}`;
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+                counterObserver.unobserve(counter);
+            });
+        }, { threshold: 0.75 });
+
+        clientCounters.forEach(function (counter) {
+            counterObserver.observe(counter);
+        });
 
         const revealObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
