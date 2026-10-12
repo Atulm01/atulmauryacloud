@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0078d4">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
         :root {
             --bg: #f5f8fc;
             --bg-soft: #eef5fb;
@@ -107,12 +109,31 @@
         }
 
         .logo-text {
-            max-width: 220px;
-            font-size: 0.92rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            max-width: 280px;
+            font-size: clamp(0.78rem, 1.35vw, 0.98rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: 0.09em;
             text-transform: uppercase;
-            color: var(--text);
+            font-family: "Playfair Display", "Georgia", serif;
+            background: linear-gradient(135deg, #0d2347 0%, #123f7a 24%, #1f5eb3 48%, #d4af62 72%, #f8e7b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 0 6px 18px rgba(17, 52, 110, 0.15);
+        }
+
+        .brand-name {
+            display: inline-block;
+            font-family: "Playfair Display", "Georgia", serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #0d2347 0%, #123f7a 26%, #1f5eb3 50%, #d4af62 76%, #f8e7b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .nav-links {
@@ -1690,7 +1711,7 @@
             <div class="container hero-inner">
                 <div class="hero-copy">
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
-                    <h1>Transform your vision into value in the cloud<span class="highlight">Success starts in the cloud.</span></h1>
+                    <h1>Transform your vision into value in the cloud<span class="highlight"> Success starts in the cloud.</span></h1>
                     <p>
                         Atul Maurya Cloud Solution Pvt. Ltd. is a global end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations worldwide.
                         Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
@@ -2605,7 +2626,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>Atul Maurya Cloud Solution Pvt. Ltd.</h3>
+                    <h3 class="brand-name">Atul Maurya Cloud Solution Pvt. Ltd.</h3>
                     <p>Cloud strategy, Microsoft solutions, security, infrastructure, software, and support for businesses building better digital operations.</p>
                 </div>
 
