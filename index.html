@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#102a43">
-    <meta name="description" content="Atul Maurya Cloud Solution Pvt. Ltd. delivers cloud, Microsoft, security, software, and IT support services for growing businesses.">
+    <meta name="description" content="Cloud, Microsoft, cybersecurity, infrastructure, software, and managed support for organizations in the United States, Canada, Australia, Europe, and other regions.">
     <title>Atul Maurya Cloud Solution Pvt. Ltd. | Cloud &amp; IT Services</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
@@ -230,8 +230,23 @@
             font-size: 0.96rem;
         }
 
-        .nav-links a { color: rgba(255, 255, 255, 0.86); }
-        .nav-links a:hover { color: #8ce3cb; }
+        .nav-links a {
+            padding: 0.4rem 0.55rem;
+            border-radius: 7px;
+            color: rgba(255, 255, 255, 0.86);
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            background: rgba(140, 227, 203, 0.12);
+            color: #8ce3cb;
+        }
+
+        .nav-links a:focus-visible {
+            outline: 2px solid #8ce3cb;
+            outline-offset: 2px;
+        }
 
         .nav > .small-btn {
             background: linear-gradient(135deg, #087f8c, #159b83);
@@ -248,6 +263,27 @@
             z-index: 1;
             background: rgba(247, 251, 250, 0.96);
             border-bottom: 1px solid var(--border);
+        }
+
+        .global-capabilities {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem 1.1rem;
+            padding: 0.72rem 1rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(90deg, #edf6f4, #f8fbfa 50%, #edf6f4);
+            color: var(--text);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .global-capabilities strong {
+            color: var(--primary);
+            font-weight: 800;
         }
 
         .service-brands-inner {
@@ -288,6 +324,198 @@
             color: var(--primary-2);
             background: #f1f8fd;
             transform: translateY(-2px);
+        }
+
+        .welcome-dialog {
+            position: fixed;
+            width: min(960px, calc(100% - 2rem));
+            max-width: none;
+            max-height: min(880px, calc(100% - 2rem));
+            overflow: auto;
+            padding: clamp(1.25rem, 4vw, 2.75rem);
+            border: 1px solid rgba(255, 255, 255, 0.68);
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at 100% 0, rgba(120, 224, 194, 0.22), transparent 34%),
+                rgba(248, 252, 251, 0.91);
+            color: var(--text);
+            box-shadow: 0 32px 100px rgba(8, 26, 43, 0.34);
+            backdrop-filter: blur(22px) saturate(135%);
+        }
+
+        .welcome-dialog[open] {
+            animation: welcome-enter 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+
+        .welcome-dialog::backdrop {
+            background: rgba(7, 25, 42, 0.58);
+            backdrop-filter: blur(9px);
+            animation: welcome-backdrop-enter 0.35s ease both;
+        }
+
+        @keyframes welcome-enter {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes welcome-backdrop-enter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .welcome-header {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .welcome-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.55rem;
+            color: var(--primary);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .welcome-eyebrow::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(21, 155, 131, 0.12);
+            content: "";
+        }
+
+        .welcome-heading {
+            max-width: 720px;
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.12;
+            letter-spacing: -0.035em;
+        }
+
+        .welcome-intro {
+            max-width: 720px;
+            margin: 0.7rem 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .welcome-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: grid;
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid rgba(16, 42, 67, 0.12);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--text);
+            cursor: pointer;
+            font: inherit;
+            font-size: 1.45rem;
+            line-height: 1;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .welcome-close:hover {
+            transform: rotate(90deg);
+            background: #fff;
+        }
+
+        .welcome-services {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .welcome-service {
+            min-height: 112px;
+            padding: 1rem;
+            border: 1px solid rgba(8, 127, 140, 0.13);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 7px 20px rgba(16, 42, 67, 0.045);
+            animation: welcome-service-enter 0.45s ease both;
+        }
+
+        .welcome-service:nth-child(2) { animation-delay: 0.04s; }
+        .welcome-service:nth-child(3) { animation-delay: 0.08s; }
+        .welcome-service:nth-child(4) { animation-delay: 0.12s; }
+        .welcome-service:nth-child(5) { animation-delay: 0.16s; }
+        .welcome-service:nth-child(6) { animation-delay: 0.2s; }
+
+        @keyframes welcome-service-enter {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-service-icon {
+            display: inline-grid;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0.55rem;
+            place-items: center;
+            border-radius: 10px;
+            background: #e8f5f2;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .welcome-service h3 {
+            margin: 0 0 0.25rem;
+            font-size: 0.92rem;
+            line-height: 1.35;
+        }
+
+        .welcome-service p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .welcome-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid rgba(16, 42, 67, 0.1);
+        }
+
+        .welcome-service-note {
+            max-width: 380px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .welcome-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.65rem;
+        }
+
+        .welcome-actions button {
+            font: inherit;
+        }
+
+        .welcome-dialog :focus-visible {
+            outline: 3px solid rgba(8, 127, 140, 0.48);
+            outline-offset: 3px;
         }
 
         .service-detail-backdrop {
@@ -447,8 +675,7 @@
 
         .hero-copy,
         .hero-card,
-        .home-overview-card,
-        .home-process {
+        .home-overview-card {
             animation: reveal-up 0.7s ease both;
         }
 
@@ -877,18 +1104,177 @@
             line-height: 1.5;
         }
 
-        .home-process {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem 1.5rem;
-            align-items: center;
-            margin-top: 1.5rem;
-            color: var(--muted);
-            font-size: 0.9rem;
+        .project-workflow {
+            margin-top: 2.5rem;
+            padding: clamp(1.4rem, 3vw, 2.2rem);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(232, 242, 240, 0.94));
+            box-shadow: var(--shadow);
         }
 
-        .home-process strong {
+        .project-workflow-header {
+            max-width: 760px;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-workflow-header .eyebrow {
+            margin-bottom: 0.7rem;
+        }
+
+        .project-workflow-header h2 {
+            margin: 0 0 0.55rem;
             color: var(--text);
+            font-size: clamp(1.8rem, 3.2vw, 2.55rem);
+            line-height: 1.15;
+        }
+
+        .project-workflow-header p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .workflow-steps {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            padding: 0.35rem;
+            margin: 0;
+            list-style: none;
+        }
+
+        .workflow-steps::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, #159b83, #78e0c2, transparent);
+            content: "";
+            opacity: 0;
+        }
+
+        .project-workflow.visible .workflow-steps::before {
+            opacity: 1;
+            animation: workflow-trace 5.6s linear infinite;
+        }
+
+        @keyframes workflow-trace {
+            from { transform: translateX(0); }
+            to { transform: translateX(400%); }
+        }
+
+        .workflow-step {
+            position: relative;
+            min-width: 0;
+            min-height: 185px;
+            padding: 1.15rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 5px 18px rgba(16, 42, 67, 0.05);
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .workflow-step-number {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.9rem;
+            place-items: center;
+            border: 1px solid rgba(8, 127, 140, 0.2);
+            border-radius: 11px;
+            background: #e8f2f0;
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .workflow-step h3 {
+            margin: 0 0 0.4rem;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .workflow-step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .project-workflow.visible .workflow-step {
+            animation: workflow-step-glow 8s ease-in-out infinite;
+        }
+
+        .project-workflow.visible .workflow-step:nth-child(2) { animation-delay: 1s; }
+        .project-workflow.visible .workflow-step:nth-child(3) { animation-delay: 2s; }
+        .project-workflow.visible .workflow-step:nth-child(4) { animation-delay: 3s; }
+        .project-workflow.visible .workflow-step:nth-child(5) { animation-delay: 4s; }
+        .project-workflow.visible .workflow-step:nth-child(6) { animation-delay: 5s; }
+        .project-workflow.visible .workflow-step:nth-child(7) { animation-delay: 6s; }
+        .project-workflow.visible .workflow-step:nth-child(8) { animation-delay: 7s; }
+
+        @keyframes workflow-step-glow {
+            0%, 12%, 100% { border-color: var(--border); box-shadow: 0 5px 18px rgba(16, 42, 67, 0.05); transform: translateY(0); }
+            5% { border-color: rgba(21, 155, 131, 0.72); box-shadow: 0 10px 26px rgba(21, 155, 131, 0.16); transform: translateY(-3px); }
+        }
+
+        .workflow-support {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            padding: 1.15rem 1.25rem;
+            border: 1px solid rgba(120, 224, 194, 0.26);
+            border-radius: 12px;
+            background: linear-gradient(110deg, #102a43, #174e5b);
+            color: #e1eeef;
+        }
+
+        .support-status {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            place-items: center;
+            border: 1px solid rgba(165, 241, 216, 0.42);
+            border-radius: 50%;
+            color: #a5f1d8;
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.05;
+            box-shadow: 0 0 0 0 rgba(165, 241, 216, 0.32);
+        }
+
+        .project-workflow.visible .support-status {
+            animation: support-pulse 2.4s ease-out infinite;
+        }
+
+        @keyframes support-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(165, 241, 216, 0.3); }
+            70%, 100% { box-shadow: 0 0 0 12px rgba(165, 241, 216, 0); }
+        }
+
+        .workflow-support h3 {
+            margin: 0 0 0.25rem;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .workflow-support p {
+            margin: 0;
+            color: #c8dce2;
+            font-size: 0.83rem;
+            line-height: 1.55;
+        }
+
+        .workflow-support .secondary-btn {
+            white-space: nowrap;
         }
 
         .solutions-grid,
@@ -1229,7 +1615,7 @@
         }
 
         .section {
-            padding: 5.5rem 0;
+            padding: clamp(3.75rem, 6vw, 5.5rem) 0;
         }
 
         main,
@@ -1244,7 +1630,7 @@
 
         .page-view.active {
             display: block;
-            animation: page-enter 0.28s ease both;
+            animation: page-enter 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) both;
         }
 
         @keyframes page-enter {
@@ -1253,7 +1639,8 @@
         }
 
         .section-header {
-            margin-bottom: 2rem;
+            max-width: 820px;
+            margin: 0 auto 2.25rem;
         }
 
         .section-header h2 {
@@ -1265,14 +1652,78 @@
 
         .section-header p {
             color: var(--muted);
-            max-width: 700px;
+            max-width: 760px;
             margin: 0;
         }
+
+        @keyframes tab-content-enter {
+            from { opacity: 0; translate: 0 12px; }
+            to { opacity: 1; translate: 0 0; }
+        }
+
+        .page-view.active .section-header,
+        .page-view.active article,
+        .page-view.active .company-box,
+        .page-view.active .contact-box,
+        .page-view.active .pricing-reference,
+        .page-view.active .project-workflow,
+        .page-view.active .client-insights {
+            animation: tab-content-enter 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+
+        .page-view.active :is(
+            .services-grid,
+            .pricing-grid,
+            .team-grid,
+            .about-boxes,
+            .client-insight-grid,
+            .home-overview,
+            .contact-wrapper,
+            .workflow-steps,
+            .info-grid,
+            .solutions-grid,
+            .industry-grid,
+            .insight-grid,
+            .career-grid
+        ) > :nth-child(2) { animation-delay: 0.06s; }
+
+        .page-view.active :is(
+            .services-grid,
+            .pricing-grid,
+            .team-grid,
+            .about-boxes,
+            .client-insight-grid,
+            .home-overview,
+            .contact-wrapper,
+            .workflow-steps,
+            .info-grid,
+            .solutions-grid,
+            .industry-grid,
+            .insight-grid,
+            .career-grid
+        ) > :nth-child(3) { animation-delay: 0.12s; }
+
+        .page-view.active :is(
+            .services-grid,
+            .pricing-grid,
+            .team-grid,
+            .about-boxes,
+            .client-insight-grid,
+            .home-overview,
+            .contact-wrapper,
+            .workflow-steps,
+            .info-grid,
+            .solutions-grid,
+            .industry-grid,
+            .insight-grid,
+            .career-grid
+        ) > :nth-child(n+4) { animation-delay: 0.18s; }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1.5rem;
+            align-items: stretch;
         }
 
         .service-card, .pricing-card, .list-card, .feature-box {
@@ -1819,13 +2270,12 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.5rem;
             margin-bottom: 1.4rem;
         }
 
         .footer-brand,
-        .footer-info,
         .footer-links {
             background: rgba(255,255,255,0.5);
             border: 1px solid rgba(8, 127, 140, 0.12);
@@ -1834,7 +2284,6 @@
         }
 
         .footer-brand h3,
-        .footer-info h3,
         .footer-links h3 {
             margin: 0 0 0.7rem;
             color: var(--text);
@@ -1842,7 +2291,6 @@
         }
 
         .footer-brand p,
-        .footer-info p,
         .footer-links p,
         .footer-links a,
         .footer-links li {
@@ -1868,6 +2316,19 @@
             font-size: 0.88rem;
         }
 
+        @media (max-width: 1150px) {
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0.8rem 0;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
         @media (max-width: 900px) {
             .service-brands-inner {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1888,6 +2349,19 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .workflow-steps {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .workflow-support {
+                grid-template-columns: auto 1fr;
+            }
+
+            .workflow-support .secondary-btn {
+                grid-column: 2;
+                justify-self: start;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
             }
@@ -1903,17 +2377,6 @@
             .calculator-fields,
             .calculator-result {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 0.8rem 0;
-            }
-
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
             }
 
             .hero-inner {
@@ -1934,12 +2397,171 @@
         }
 
         @media (max-width: 560px) {
-            .service-brands-inner {
+            .welcome-dialog {
+                width: calc(100% - 1rem);
+                max-height: calc(100% - 1rem);
+                padding: 1.15rem;
+                border-radius: 20px;
+            }
+
+            .welcome-header {
+                margin-bottom: 0.85rem;
+            }
+
+            .welcome-heading {
+                max-width: 100%;
+                padding-right: 2.25rem;
+                font-size: clamp(1.55rem, 7vw, 1.9rem);
+            }
+
+            .welcome-intro {
+                max-width: 100%;
+                margin-top: 0.45rem;
+                font-size: 0.88rem;
+                line-height: 1.45;
+            }
+
+            .welcome-services {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.55rem;
+                margin: 0.75rem 0;
+            }
+
+            .welcome-service {
+                min-height: 0;
+                padding: 0.65rem;
+            }
+
+            .welcome-service-icon {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 0.35rem;
+            }
+
+            .welcome-service h3 {
+                font-size: 0.82rem;
+            }
+
+            .welcome-service p {
+                font-size: 0.72rem;
+                line-height: 1.4;
+            }
+
+            .welcome-footer {
+                gap: 0.65rem;
+                padding-top: 0.75rem;
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .welcome-service-note {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .welcome-actions {
+                display: flex;
+                justify-content: stretch;
+                gap: 0.45rem;
+            }
+
+            .welcome-actions .primary-btn,
+            .welcome-actions .secondary-btn {
+                flex: 1 1 0;
+                min-width: 0;
+                padding: 0.7rem 0.45rem;
+                font-size: 0.78rem;
+            }
+
+            .nav {
+                justify-content: space-between;
+                padding: 0.6rem 0 0;
+            }
+
+            .logo-block {
+                min-width: 0;
+                gap: 0.55rem;
+            }
+
+            .logo-emblem {
+                flex-basis: 54px;
+                width: 54px;
+                height: 54px;
+            }
+
+            .logo-mark {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text {
+                max-width: 185px;
+                font-size: 0.76rem;
+            }
+
+            .nav-links {
+                order: 3;
+                flex: 0 0 100%;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 0.25rem;
+                overflow-x: auto;
+                padding: 0.4rem 0.1rem 0.7rem;
+                scrollbar-width: none;
+            }
+
+            .nav-links::-webkit-scrollbar,
+            .service-brands-inner::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-links a {
+                flex: 0 0 auto;
+                padding: 0.4rem 0.55rem;
+            }
+
+            .nav > .small-btn {
+                display: none;
+            }
+
+            .service-brands-inner {
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+                overflow-x: auto;
+                padding: 0.55rem 0;
+                scrollbar-width: none;
+            }
+
+            .service-brands-label {
+                flex: 0 0 104px;
+                text-align: left;
+            }
+
+            .service-brand {
+                flex: 0 0 82px;
             }
 
             .home-overview {
                 grid-template-columns: 1fr;
+            }
+
+            .workflow-steps {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .workflow-step {
+                min-height: 0;
+            }
+
+            .workflow-support {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-support .secondary-btn {
+                grid-column: auto;
+                justify-self: start;
             }
 
             .client-insight-grid {
@@ -1968,6 +2590,7 @@
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
+                animation-delay: 0ms !important;
                 scroll-behavior: auto !important;
                 transition-duration: 0.01ms !important;
             }
@@ -2012,6 +2635,61 @@
             <a class="service-brand service-trigger" href="#dynamics-365" data-service="dynamics-365"><img class="brand-logo-image" src="dynamics365.svg" alt="Dynamics 365 logo">Dynamics 365</a>
         </div>
     </div>
+    <div class="global-capabilities" aria-label="International service coverage">
+        <span><strong>Remote service coverage:</strong> United States, Canada, Australia, Europe, and other regions</span>
+    </div>
+
+    <dialog class="welcome-dialog" id="welcome-dialog" aria-labelledby="welcome-heading" aria-describedby="welcome-intro">
+        <div class="welcome-header">
+            <div>
+                <span class="welcome-eyebrow">Atul Maurya Cloud Solution</span>
+                <h2 class="welcome-heading" id="welcome-heading">Welcome. Cloud and IT, made simpler.</h2>
+                <p class="welcome-intro" id="welcome-intro">Explore practical cloud, Microsoft, security, software, and support services for your business.</p>
+            </div>
+            <button class="welcome-close" type="button" aria-label="Close welcome dialog" autofocus>&times;</button>
+        </div>
+
+        <div class="welcome-services" aria-label="Our services">
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">☁</span>
+                <h3>Cloud &amp; Azure</h3>
+                <p>Azure setup, migration, and cost optimization.</p>
+            </article>
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">▦</span>
+                <h3>Microsoft 365 &amp; Teams</h3>
+                <p>Email, collaboration, and secure identity.</p>
+            </article>
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">◇</span>
+                <h3>Security &amp; compliance</h3>
+                <p>Identity, endpoint protection, and compliance.</p>
+            </article>
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">↗</span>
+                <h3>Networks &amp; infrastructure</h3>
+                <p>Networks, infrastructure, backup, and recovery.</p>
+            </article>
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">⟳</span>
+                <h3>Apps, automation &amp; analytics</h3>
+                <p>Business apps, workflows, integrations, and BI.</p>
+            </article>
+            <article class="welcome-service">
+                <span class="welcome-service-icon" aria-hidden="true">⌘</span>
+                <h3>Software &amp; managed support</h3>
+                <p>Websites, software, monitoring, and IT support.</p>
+            </article>
+        </div>
+
+        <div class="welcome-footer">
+            <p class="welcome-service-note">Remote service for clients worldwide. 24×7 managed support is available on selected plans.</p>
+            <div class="welcome-actions">
+                <button class="secondary-btn" type="button" data-welcome-navigate="services">Explore all services</button>
+                <button class="primary-btn" type="button" data-welcome-navigate="contact">Plan a consultation</button>
+            </div>
+        </div>
+    </dialog>
 
     <div class="service-detail-backdrop" id="service-detail-backdrop" role="dialog" aria-modal="true" aria-labelledby="service-detail-title">
         <article class="service-detail">
@@ -2035,8 +2713,8 @@
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
                     <h1>Transform your vision into value in the cloud<span class="highlight"> Success starts in the cloud.</span></h1>
                     <p>
-                        Atul Maurya Cloud Solution Pvt. Ltd. is a global end-to-end cloud and IT partner for infrastructure, workplace productivity, cybersecurity, networking, data, software, and managed support. We plan, build, secure, migrate, manage, and improve technology for startups, small businesses, and growing organizations worldwide.
-                        Founded by <strong>Mr. Atul Maurya</strong>, we deliver practical solutions that improve productivity, reduce risk, and help organizations grow with confidence.
+                        Atul Maurya Cloud Solution Pvt. Ltd. works with businesses in the United States, Canada, Australia, Europe, and other regions. We plan, build, secure, migrate, and support cloud, workplace, cybersecurity, networking, data, and software solutions.
+                        Founded by <strong>Mr. Atul Maurya</strong>, we help organizations simplify operations with practical technology and carefully designed workflow automation.
                     </p>
                     <div class="cta-row">
                         <a href="#contact" class="primary-btn">Talk to an Expert</a>
@@ -2065,12 +2743,12 @@
                     <span>Business clients</span>
                 </div>
                 <div class="stat-box">
-                    <strong>Plan-led</strong>
-                    <span>Response and resolution targets</span>
+                    <strong>24×7</strong>
+                    <span>Support coverage available by plan</span>
                 </div>
                 <div class="stat-box">
-                    <strong>Step-by-step</strong>
-                    <span>Issue assessment and resolution</span>
+                    <strong>End-to-end</strong>
+                    <span>Project delivery from discovery to handover</span>
                 </div>
                 <div class="stat-box">
                     <strong>Feedback-led</strong>
@@ -2096,14 +2774,14 @@
                             <span class="client-insight-note">The 150+ client figure above is company-reported, not a live analytics counter.</span>
                         </article>
                         <article class="client-insight-card">
-                            <span class="client-insight-label">Support journey</span>
-                            <h3>Resolution, with clear steps</h3>
+                            <span class="client-insight-label">24×7 support option</span>
+                            <h3>Incident response, step by step</h3>
                             <ol class="resolution-flow" aria-label="Report, assess, resolve">
                                 <li>Report</li>
-                                <li>Assess</li>
+                                <li>Triage</li>
                                 <li>Resolve</li>
                             </ol>
-                            <p class="resolution-disclaimer">Resolution time depends on issue severity, access, external dependencies, and the selected support plan. Response targets are agreed before work begins.</p>
+                            <p class="resolution-disclaimer">Requests are logged, prioritized, investigated, resolved or escalated, and followed through to service confirmation. 24×7 coverage and response targets are available under selected managed support plans; resolution time depends on severity, access, and third-party dependencies.</p>
                         </article>
                         <article class="client-insight-card">
                             <span class="client-insight-label">Client feedback</span>
@@ -2118,7 +2796,7 @@
                         </article>
                     </div>
                 </section>
-                <p class="stats-note">Response and resolution commitments are defined by the agreed service scope; no fixed resolution-time guarantee is implied.</p>
+                <p class="stats-note">24×7 coverage, response targets, and resolution scope depend on the selected support plan and agreed service level.</p>
             </div>
 
             <div class="container">
@@ -2141,14 +2819,63 @@
                     </article>
                 </div>
 
-                <div class="home-process">
-                    <strong>How we work:</strong>
-                    <span>Discover</span>
-                    <span>Design</span>
-                    <span>Implement</span>
-                    <span>Secure</span>
-                    <span>Support and optimize</span>
-                </div>
+                <section class="project-workflow reveal" aria-labelledby="project-workflow-title">
+                    <header class="project-workflow-header">
+                        <span class="eyebrow">From first conversation to ongoing care</span>
+                        <h2 id="project-workflow-title">A complete project, step by step</h2>
+                        <p>Every deployment follows a visible delivery path. Scope, approvals, access, milestones, and acceptance criteria are agreed with you before implementation begins.</p>
+                    </header>
+                    <ol class="workflow-steps" aria-label="Eight stages of project delivery">
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">01</span>
+                            <h3>Discover goals</h3>
+                            <p>Understand your business needs, users, current systems, constraints, and desired outcomes.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">02</span>
+                            <h3>Assess and scope</h3>
+                            <p>Review dependencies, risks, security, licensing, budget, success measures, and project boundaries.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">03</span>
+                            <h3>Design and approve</h3>
+                            <p>Present the proposed architecture, work plan, responsibilities, testing approach, and rollback plan for approval.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">04</span>
+                            <h3>Build and configure</h3>
+                            <p>Set up agreed cloud and business systems with repeatable infrastructure-as-code, CI/CD pipelines, API integrations, and Power Automate flows where they fit.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">05</span>
+                            <h3>Secure and validate</h3>
+                            <p>Apply agreed security controls, test configurations, verify backups, and complete client acceptance checks.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">06</span>
+                            <h3>Deploy and migrate</h3>
+                            <p>Release in planned stages, migrate approved workloads or data, monitor cutover, and address deployment issues.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">07</span>
+                            <h3>Train and hand over</h3>
+                            <p>Provide user or administrator guidance, runbooks, configuration records, knowledge transfer, and agreed sign-off.</p>
+                        </li>
+                        <li class="workflow-step">
+                            <span class="workflow-step-number" aria-hidden="true">08</span>
+                            <h3>Support and improve</h3>
+                            <p>Monitor agreed service measures, automate routine checks and alerts, track requests, and plan improvements with client feedback.</p>
+                        </li>
+                    </ol>
+                    <aside class="workflow-support" aria-label="Managed support availability">
+                        <span class="support-status" aria-hidden="true">24×7<br>OPTION</span>
+                        <div>
+                            <h3>Round-the-clock support, when included in your plan</h3>
+                            <p>Selected managed support plans can include 24×7 monitoring and incident intake, severity-based triage, troubleshooting, escalation, recovery updates, and closure confirmation. Coverage, response targets, and responsibilities are set in the agreed service level. Resolution timing varies with the issue and any provider dependencies.</p>
+                        </div>
+                        <a class="secondary-btn" href="#contact">Discuss support plans</a>
+                    </aside>
+                </section>
 
                 <div class="feature-showcase reveal">
                     <div class="section-header" style="margin-bottom: 1rem;">
@@ -2187,8 +2914,8 @@
         <section id="services" class="section page-view">
             <div class="container">
                 <div class="section-header">
-                    <h2>Complete Cloud & IT Services</h2>
-                    <p>From business planning to daily operations, we provide the people, technology, and support needed to run a secure, productive, and scalable digital workplace.</p>
+                    <h2>Complete Cloud, IT & Automation Services</h2>
+                    <p>We support organizations across the United States, Canada, Australia, Europe, and other regions. Our specialists bring cloud, Microsoft, security, and software expertise together with practical process automation—from approvals and system integrations to reporting, deployment pipelines, and routine cloud operations.</p>
                 </div>
 
                 <div class="services-wrap">
@@ -2196,7 +2923,7 @@
                         <article class="service-card">
                             <div class="icon">☁️</div>
                             <h3>Azure Cloud Migration</h3>
-                            <p>Move your workloads to Azure with planning, migration, security, and cost optimization.</p>
+                            <p>Move your workloads to Azure with planned migration, secure infrastructure-as-code deployment, monitoring, and cost optimization.</p>
                             <ul class="service-list">
                                 <li>Virtual Machines</li>
                                 <li>Azure SQL & Storage</li>
@@ -2207,7 +2934,7 @@
                         <article class="service-card">
                             <div class="icon">🛡️</div>
                             <h3>Microsoft 365</h3>
-                            <p>Deploy Microsoft 365 for email, productivity, collaboration, and secure employee access.</p>
+                            <p>Deploy Microsoft 365 for email, productivity, collaboration, and secure employee access; automate approvals, onboarding, and routine workflows where appropriate.</p>
                             <ul class="service-list">
                                 <li>Outlook & Teams</li>
                                 <li>SharePoint & OneDrive</li>
@@ -2218,7 +2945,7 @@
                         <article class="service-card">
                             <div class="icon">🔐</div>
                             <h3>Security & Compliance</h3>
-                            <p>Protect your business with identity, endpoint, and data protection solutions.</p>
+                            <p>Protect your business with identity, endpoint, and data protection, plus automated alert routing and repeatable response workflows.</p>
                             <ul class="service-list">
                                 <li>Defender for Endpoint</li>
                                 <li>Conditional Access</li>
@@ -2229,7 +2956,7 @@
                         <article class="service-card">
                             <div class="icon">📊</div>
                             <h3>Power Platform</h3>
-                            <p>Automate operations and build custom business apps without heavy engineering effort.</p>
+                            <p>Automate approvals, notifications, data movement, and reporting with Power Automate, while building custom business apps with Power Apps.</p>
                             <ul class="service-list">
                                 <li>Power BI</li>
                                 <li>Power Apps</li>
@@ -2240,7 +2967,7 @@
                         <article class="service-card">
                             <div class="icon">🔄</div>
                             <h3>Backup & Disaster Recovery</h3>
-                            <p>Keep your data protected with dependable backup strategies and business continuity planning.</p>
+                            <p>Keep your data protected with dependable backup strategies, automated backup checks, recovery exercises, and business continuity planning.</p>
                             <ul class="service-list">
                                 <li>Cloud Backup</li>
                                 <li>Recovery Planning</li>
@@ -2251,7 +2978,7 @@
                         <article class="service-card">
                             <div class="icon">💼</div>
                             <h3>Managed Cloud Support</h3>
-                            <p>Get expert monitoring, optimization, and support for day-to-day cloud operations.</p>
+                            <p>Get monitoring, automated alerts and routine operational runbooks, optimization, and support for day-to-day cloud operations.</p>
                             <ul class="service-list">
                                 <li>Monitoring & Alerts</li>
                                 <li>Performance Tuning</li>
@@ -2262,7 +2989,7 @@
 
                     <div class="list-card">
                         <h3>Everything Your Business Needs</h3>
-                        <p>We work across the full technology lifecycle, from assessment and design to implementation, monitoring, optimization, and support.</p>
+                        <p>We work across the full technology lifecycle, using the right automation for repeatable tasks while keeping approvals, testing, security checks, and human decisions in the process.</p>
                         <ul>
                             <li>Microsoft Azure Infrastructure</li>
                             <li>Cloud Assessment, Architecture & Migration</li>
@@ -2272,6 +2999,8 @@
                             <li>Dynamics 365 Business Applications</li>
                             <li>Power BI Reporting & Analytics</li>
                             <li>Power Apps & Power Automate Workflows</li>
+                            <li>API integrations, approvals, notifications, and data synchronization</li>
+                            <li>CI/CD pipelines and infrastructure as code</li>
                             <li>Identity & Access Management</li>
                             <li>Endpoint Security with Microsoft Defender</li>
                             <li>Network Design, Wi-Fi, Firewall & VPN</li>
@@ -2290,7 +3019,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Service & Microsoft Pricing</h2>
-                    <p>Choose a support package from us, review Microsoft licensing, and estimate your complete technology cost in the currency used by your organization anywhere in the world.</p>
+                    <p>Choose a support package, review Microsoft licensing, and estimate services for your organization in a range of currencies. We work remotely with clients in the United States, Canada, Australia, Europe, and other regions.</p>
                 </div>
 
                 <div class="pricing-grid">
@@ -2314,7 +3043,7 @@
                         <p>Designed for growing businesses that need deeper cloud coverage.</p>
                         <ul>
                             <li>Azure Environment Setup</li>
-                            <li>Power BI & Automation</li>
+                            <li>Power BI, workflow automation & integrations</li>
                             <li>Security Monitoring</li>
                             <li>Advanced Support</li>
                         </ul>
@@ -2353,11 +3082,11 @@
                     </article>
                 </div>
 
-                <p class="pricing-note"><strong>Global pricing note:</strong> Microsoft license prices can change by country, currency, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote in your preferred currency before implementation. Our service and support fees are separate from Microsoft licensing charges.</p>
+                <p class="pricing-note"><strong>Global pricing note:</strong> Microsoft license prices can change by country, currency, taxes, billing term, user count, plan, and usage. Azure is generally billed by consumption. We confirm the latest official Microsoft price and provide a complete quote in your preferred currency before implementation. Automation scope is estimated from the workflows, integrations, and environments involved. Our service and support fees are separate from Microsoft licensing charges.</p>
 
                 <div class="pricing-calculator" id="pricing-calculator">
                     <h3>Estimate your complete monthly cost</h3>
-                    <p class="calculator-intro">Choose your service need, user count, currency, and local tax rate. We work globally, so the estimate separates our service fee from Microsoft licensing and converts the result for international planning.</p>
+                    <p class="calculator-intro">Choose your service need, user count, currency, and local tax rate. We work remotely with clients in the United States, Canada, Australia, Europe, and other regions; the estimate separates service fees from Microsoft licensing for international planning.</p>
                     <div class="calculator-fields">
                         <label>
                             Service package
@@ -2523,26 +3252,26 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Business solutions that move work forward</h2>
-                    <p>We create practical, scalable solutions for operations, productivity, and transformation across every part of your technology environment.</p>
+                    <p>We create practical, scalable solutions for operations, productivity, and transformation, then automate suitable workflows across your technology environment.</p>
                 </div>
 
                 <div class="solutions-grid">
                     <article class="info-card">
                         <div class="icon">☁️</div>
                         <h3>Cloud Modernization</h3>
-                        <p>Upgrade legacy environments into resilient, secure, and cost-aware Azure-based platforms.</p>
+                        <p>Upgrade legacy environments into resilient Azure platforms, using infrastructure as code and repeatable deployment pipelines where appropriate.</p>
                     </article>
 
                     <article class="info-card">
                         <div class="icon">🧠</div>
                         <h3>Business Intelligence</h3>
-                        <p>Turn scattered reporting into actionable dashboards that help teams make faster, smarter decisions.</p>
+                        <p>Connect data sources, automate refresh and reporting workflows, and turn business data into actionable dashboards.</p>
                     </article>
 
                     <article class="info-card">
                         <div class="icon">📱</div>
                         <h3>Digital Workplace</h3>
-                        <p>Enable secure collaboration, identity, and productivity with Microsoft 365 and Teams.</p>
+                        <p>Enable secure Microsoft 365 collaboration with automated approvals, onboarding steps, notifications, and Teams-based workflows.</p>
                     </article>
                 </div>
             </div>
@@ -2552,26 +3281,26 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Industry-focused support</h2>
-                    <p>Our services adapt to the needs of growth-stage businesses, service teams, operations-driven companies, and digital-first organizations.</p>
+                    <p>We remotely support organizations in the United States, Canada, Australia, Europe, and other regions, adapting cloud services and process automation to each industry's operating needs.</p>
                 </div>
 
                 <div class="industry-grid">
                     <article class="info-card">
                         <div class="icon">🏢</div>
                         <h3>Professional Services</h3>
-                        <p>Support client engagement, secure data operations, and managed digital workflows across teams.</p>
+                        <p>Automate client intake, approvals, document routing, and service updates while protecting business data across teams.</p>
                     </article>
 
                     <article class="info-card">
                         <div class="icon">🏭</div>
                         <h3>Manufacturing & Operations</h3>
-                        <p>Improve visibility, monitoring, and process automation with connected systems and secure infrastructure.</p>
+                        <p>Connect operational systems and automate inspection reminders, maintenance alerts, reporting, and handoffs over secure infrastructure.</p>
                     </article>
 
                     <article class="info-card">
                         <div class="icon">📦</div>
                         <h3>Retail & Distribution</h3>
-                        <p>Build smoother inventory, customer, and sales operations using cloud tools and data visibility.</p>
+                        <p>Connect inventory and sales data to automate stock alerts, order updates, and customer follow-ups.</p>
                     </article>
                 </div>
             </div>
@@ -2581,7 +3310,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Insights & expert guidance</h2>
-                    <p>Explore practical ideas and digital guidance for modernization, cloud adoption, security, and productivity improvements.</p>
+                    <p>Explore practical guidance for cloud adoption, security, global service delivery, and automation that reduces repetitive work without skipping human review.</p>
                 </div>
 
                 <div class="insight-grid">
@@ -2599,8 +3328,8 @@
 
                     <article class="info-card">
                         <div class="icon">📈</div>
-                        <h3>Workplace productivity</h3>
-                        <p>Learn how better automation and better collaboration can remove manual effort and delays.</p>
+                        <h3>Workflow automation patterns</h3>
+                        <p>Map a process, define approvals and exception paths, connect systems with APIs or Power Automate, then test permissions, alerts, and failure recovery before rollout.</p>
                     </article>
                 </div>
             </div>
@@ -2610,19 +3339,20 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Why businesses choose us</h2>
-                    <p>We combine cloud expertise, infrastructure knowledge, security discipline, software capability, and practical support in one business-first partnership.</p>
+                    <p>We serve clients across the United States, Canada, Australia, Europe, and other regions—combining cloud, infrastructure, security, software, and workflow automation in one business-first partnership.</p>
                 </div>
 
                 <div class="about-boxes">
                     <div class="company-box">
                         <h3>About the Company</h3>
                         <p>
-                            Atul Maurya Cloud Solution Pvt. Ltd. is an Ayodhya-based cloud and IT services company serving clients in India and globally. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
+                            Atul Maurya Cloud Solution Pvt. Ltd. is a cloud and IT services company serving clients globally. We help startups, small businesses, and growing organizations plan, implement, modernize, protect, and manage their technology.
                             We work across cloud infrastructure, Microsoft solutions, networks, security, applications, data, and support to provide one accountable technology partner.
                         </p>
                         <ul>
                             <li>Business-focused cloud strategy</li>
                             <li>Reliable implementation and migration support</li>
+                            <li>Automation for approvals, integrations, reporting, and repeatable operations</li>
                             <li>Cloud, infrastructure, security, software, and support under one roof</li>
                             <li>Strong focus on cost-efficiency, reliability, and security</li>
                         </ul>
@@ -2652,6 +3382,8 @@
                             <li>Microsoft Licensing</li>
                             <li>Customer Success</li>
                             <li>Technical Support & Troubleshooting</li>
+                            <li>Power Automate & Workflow Design</li>
+                            <li>CI/CD & Infrastructure as Code</li>
                             <li>User Adoption & Training</li>
                             <li>Digital Transformation</li>
                             <li>Solution Consulting</li>
@@ -2666,7 +3398,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Meet Our Team</h2>
-                    <p>Experienced people helping businesses build secure, reliable, and practical technology solutions.</p>
+                    <p>Our team delivers secure cloud, software, and automation projects remotely for businesses across the United States, Canada, Australia, Europe, and other regions.</p>
                 </div>
 
                 <div class="team-grid">
@@ -2675,7 +3407,7 @@
                         <div>
                             <h3>Ravi Gupta</h3>
                             <span class="team-role">Network, Database & Security Specialist</span>
-                            <p>Designs secure networks, manages databases, strengthens identity and endpoint protection, and helps organizations monitor, protect, and maintain their technology environments.</p>
+                            <p>Designs secure networks and database environments, strengthens identity and endpoint protection, and configures monitoring and alerting to help teams respond consistently.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/ravi-gupta-02b3a5235/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -2685,7 +3417,7 @@
                         <div>
                             <h3>Vijay Singh</h3>
                             <span class="team-role">Full-Stack Developer & Cloud Solutions Architect</span>
-                            <p>Builds complete web applications and cloud solutions, connecting user experience, APIs, databases, architecture, deployment, and ongoing technical improvements.</p>
+                            <p>Builds web applications and cloud solutions, connecting APIs, databases, deployment pipelines, and integrations to automate repeatable delivery and business tasks.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/vijay-singh-949456237/?locale=en" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -2708,7 +3440,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Careers & growth opportunities</h2>
-                    <p>All roles are flexible and remote-ready, with a flexible delivery culture focused on cloud transformation, DevOps automation, Microsoft 365 modernization, and secure digital platform delivery.</p>
+                    <p>We deliver cloud, Microsoft, and automation projects for international clients, including the United States, Canada, Australia, and Europe. Roles are remote-ready; managed-service roles may participate in an agreed support rotation.</p>
                 </div>
 
                 <div class="career-grid">
@@ -2719,7 +3451,7 @@
                             <div class="job-meta">
                                 <span>Flexible</span>
                                 <span>Remote / Hybrid</span>
-                                <span>24x7 support culture</span>
+                                <span>Managed support rotation</span>
                                 <span>1-4 years</span>
                             </div>
                             <p>Design, deploy, and secure cloud environments with a strong focus on Azure infrastructure, networking, performance, and resilience.</p>
@@ -2737,7 +3469,7 @@
                             <div class="job-meta">
                                 <span>Flexible</span>
                                 <span>Remote / Hybrid</span>
-                                <span>24x7 delivery</span>
+                                <span>Managed support rotation</span>
                                 <span>2-5 years</span>
                             </div>
                             <p>Build CI/CD pipelines, improve release automation, support infrastructure as code, and help teams ship software reliably.</p>
@@ -2755,7 +3487,7 @@
                             <div class="job-meta">
                                 <span>Flexible</span>
                                 <span>Remote / On-site</span>
-                                <span>24x7 support model</span>
+                                <span>Managed support rotation</span>
                                 <span>1-3 years</span>
                             </div>
                             <p>Support Microsoft 365 environments, security policies, Teams, Exchange, identity, user lifecycle, and workplace modernization.</p>
@@ -2773,7 +3505,7 @@
                             <div class="job-meta">
                                 <span>Flexible</span>
                                 <span>Remote</span>
-                                <span>24x7 support ready</span>
+                                <span>Managed support rotation</span>
                                 <span>0-2 years</span>
                             </div>
                             <p>Assist with user support, environment checks, documentation, and troubleshooting for cloud, identity, and Microsoft services.</p>
@@ -2791,17 +3523,16 @@
             <div class="container contact-wrapper">
                 <div class="contact-box">
                     <h3>Contact Us</h3>
-                    <p>Let’s discuss your cloud needs, Microsoft environment, and the best solution for your business.</p>
+                    <p>We work remotely with clients in the United States, Canada, Australia, Europe, and other regions. Let’s discuss your cloud needs, Microsoft environment, and the right solution for your business.</p>
                     <ul class="contact-list">
                         <li><strong>Email:</strong> <a href="mailto:samratatulmaurya9415@outlook.com">samratatulmaurya9415@outlook.com</a></li>
                         <li><strong>Phone:</strong> <a href="tel:+918429395452">+91 8429395452</a></li>
-                        <li><strong>Location:</strong> <span>Kaushalpuri Colony Phase-2, Ayodhya, India</span></li>
                     </ul>
                 </div>
 
                 <div class="contact-box">
                     <h3>Get a Free Consultation</h3>
-                    <p>Tell us what you need and we’ll guide you toward the right Microsoft cloud solution for your business goals.</p>
+                    <p>Tell us about your goals, location, time zone, and any repetitive work you would like to automate. We can arrange a remote consultation and recommend a practical next step.</p>
                     <form class="meeting-form" id="meeting-form">
                         <label>
                             Your name
@@ -2834,8 +3565,10 @@
                                 <option value="America/Chicago">Central Time (CT, UTC-6/-5)</option>
                                 <option value="America/Denver">Mountain Time (MT, UTC-7/-6)</option>
                                 <option value="America/Los_Angeles">Pacific Time (PT, UTC-8/-7)</option>
+                                <option value="America/Toronto">Canada Eastern Time (ET)</option>
                                 <option value="Europe/London">United Kingdom Time (GMT/BST)</option>
                                 <option value="Europe/Berlin">Central European Time (CET/CEST)</option>
+                                <option value="Australia/Sydney">Australian Eastern Time (AET)</option>
                                 <option value="Asia/Dubai">Gulf Standard Time (GST, UTC+4)</option>
                                 <option value="Asia/Singapore">Singapore Time (SGT, UTC+8)</option>
                             </select>
@@ -2848,6 +3581,7 @@
                                 <option>Microsoft 365 setup</option>
                                 <option>Network and security</option>
                                 <option>Web development</option>
+                                <option>Workflow automation and integrations</option>
                                 <option>Other</option>
                             </select>
                         </label>
@@ -2952,7 +3686,6 @@
                                 Preferred location
                                 <select name="location" required>
                                     <option value="">Select</option>
-                                    <option value="Ayodhya">Ayodhya</option>
                                     <option value="Remote">Remote</option>
                                     <option value="Hybrid">Hybrid</option>
                                     <option value="Any">Any</option>
@@ -2991,18 +3724,12 @@
                     <p>Cloud strategy, Microsoft solutions, security, infrastructure, software, and support for businesses building better digital operations.</p>
                 </div>
 
-                <div class="footer-info">
-                    <h3>Office Location</h3>
-                    <p>Kaushalpuri Colony Phase-2<br>Ayodhya, Uttar Pradesh, India</p>
-                    <p>Open for client consultations, remote support, and strategic project planning.</p>
-                </div>
-
                 <div class="footer-links">
                     <h3>Important Information</h3>
                     <ul>
-                        <li>Business hours: Mon–Sat, 9:00 AM–7:00 PM</li>
-                        <li>Service support: Remote + on-site coordination</li>
-                        <li>Global consultations available</li>
+                        <li>Consultations: Mon–Sat, 9:00 AM–7:00 PM</li>
+                        <li>24×7 managed support: available under selected service plans</li>
+                        <li>Remote services: US, Canada, Australia, Europe & other regions</li>
                         <li>Microsoft licensing and Azure charges are separate</li>
                     </ul>
                 </div>
@@ -3085,6 +3812,14 @@
 
             pageViews.forEach(function (page) {
                 page.classList.toggle('active', page === activePage);
+            });
+
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+                if (link.getAttribute('href') === `#${activePage.id}`) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
             });
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3324,8 +4059,42 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(function (link) {
             link.addEventListener('click', function (event) {
+                if (link.classList.contains('service-trigger')) return;
                 event.preventDefault();
                 showPage(link.getAttribute('href').slice(1), true);
+            });
+        });
+
+        const welcomeDialog = document.getElementById('welcome-dialog');
+        const welcomeStorageKey = 'atul-maurya-welcome-dismissed';
+        const welcomeCloseButton = welcomeDialog.querySelector('.welcome-close');
+
+        function closeWelcomeDialog() {
+            if (!welcomeDialog.open) return;
+            sessionStorage.setItem(welcomeStorageKey, 'true');
+            welcomeDialog.close();
+        }
+
+        welcomeCloseButton.addEventListener('click', closeWelcomeDialog);
+        welcomeDialog.addEventListener('click', function (event) {
+            if (event.target === welcomeDialog) closeWelcomeDialog();
+        });
+        welcomeDialog.addEventListener('cancel', function () {
+            sessionStorage.setItem(welcomeStorageKey, 'true');
+        });
+        welcomeDialog.addEventListener('close', function () {
+            sessionStorage.setItem(welcomeStorageKey, 'true');
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && welcomeDialog.open) {
+                closeWelcomeDialog();
+            }
+        });
+        welcomeDialog.querySelectorAll('[data-welcome-navigate]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const destination = button.dataset.welcomeNavigate;
+                closeWelcomeDialog();
+                showPage(destination, true);
             });
         });
 
@@ -3334,6 +4103,11 @@
         });
 
         showPage(window.location.hash.slice(1) || 'home', false);
+        if (sessionStorage.getItem(welcomeStorageKey) !== 'true') {
+            window.setTimeout(function () {
+                welcomeDialog.showModal();
+            }, 450);
+        }
 
         const meetingDate = document.getElementById('meeting-date');
         meetingDate.min = new Date().toISOString().split('T')[0];
