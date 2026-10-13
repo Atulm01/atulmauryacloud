@@ -2649,24 +2649,23 @@
             }
 
             .nav-links {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 order: 3;
                 flex: 0 0 100%;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-                gap: 0.25rem;
-                overflow-x: auto;
-                padding: 0.4rem 0.1rem 0.7rem;
-                scrollbar-width: none;
+                gap: 0.2rem;
+                padding: 0.4rem 0 0.65rem;
             }
 
-            .nav-links::-webkit-scrollbar,
             .service-brands-inner::-webkit-scrollbar {
                 display: none;
             }
 
             .nav-links a {
-                flex: 0 0 auto;
-                padding: 0.4rem 0.55rem;
+                min-width: 0;
+                padding: 0.4rem 0.2rem;
+                font-size: 0.8rem;
+                white-space: normal;
             }
 
             .nav > .small-btn {
