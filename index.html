@@ -168,6 +168,8 @@
 
         .logo-block {
             display: flex;
+            flex: 0 1 340px;
+            min-width: 0;
             align-items: center;
             gap: 0.8rem;
         }
@@ -215,10 +217,13 @@
         }
 
         .logo-text {
-            max-width: 280px;
-            font-size: clamp(0.78rem, 1.35vw, 0.98rem);
+            display: grid;
+            min-width: 0;
+            max-width: 250px;
+            gap: 0.16rem;
+            font-size: clamp(0.78rem, 1.2vw, 0.96rem);
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.08;
             letter-spacing: 0.01em;
             font-family: "Inter", "Segoe UI", sans-serif;
             background: linear-gradient(110deg, #ffffff 0%, #b7f2df 58%, #78cfe0 100%);
@@ -2620,6 +2625,7 @@
             }
 
             .logo-block {
+                flex: 1 1 auto;
                 min-width: 0;
                 gap: 0.55rem;
             }
@@ -2636,8 +2642,10 @@
             }
 
             .logo-text {
-                max-width: 185px;
-                font-size: 0.76rem;
+                max-width: 195px;
+                gap: 0.12rem;
+                font-size: clamp(0.7rem, 3.1vw, 0.82rem);
+                line-height: 1.1;
             }
 
             .nav-links {
@@ -2749,7 +2757,10 @@
                 <span class="logo-emblem">
                     <img class="logo-mark" src="logo.png.png" alt="Atul Maurya Cloud Solution Pvt. Ltd. logo">
                 </span>
-                <div class="logo-text">Atul Maurya Cloud Solution Pvt. Ltd.</div>
+                <div class="logo-text" aria-label="Atul Maurya Cloud Solution Pvt. Ltd.">
+                    <span>Atul Maurya</span>
+                    <span>Cloud Solution Pvt. Ltd.</span>
+                </div>
             </div>
             <nav class="nav-links" aria-label="Main navigation">
                 <a href="#home">Home</a>
