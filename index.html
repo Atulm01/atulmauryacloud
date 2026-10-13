@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#102a43">
-    <meta name="description" content="Cloud, Microsoft, cybersecurity, infrastructure, software, and managed support for organizations in the United States, Canada, Australia, Europe, and other regions.">
+    <meta name="description" content="Cloud, Microsoft, cybersecurity, infrastructure, software, and managed support for organizations worldwide.">
     <title>Atul Maurya Cloud Solution Pvt. Ltd. | Cloud &amp; IT Services</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
@@ -100,6 +100,22 @@
                 radial-gradient(ellipse at 18% 78%, rgba(21, 155, 131, 0.1), transparent 34%);
             animation-duration: 38s;
             animation-direction: alternate-reverse;
+        }
+
+        .diwali-fireworks {
+            position: fixed;
+            z-index: 40;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .diwali-fireworks canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         @keyframes cloud-flow {
@@ -224,16 +240,21 @@
         }
 
         .nav-links {
+            flex: 1;
             display: flex;
-            gap: 1.5rem;
+            justify-content: space-evenly;
+            gap: 0.2rem;
             color: var(--muted);
-            font-size: 0.96rem;
+            font-size: 0.86rem;
         }
 
         .nav-links a {
-            padding: 0.4rem 0.55rem;
+            flex: 1 1 0;
+            padding: 0.4rem 0.25rem;
             border-radius: 7px;
             color: rgba(255, 255, 255, 0.86);
+            text-align: center;
+            white-space: nowrap;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
@@ -1245,7 +1266,6 @@
         }
 
         .solutions-grid,
-        .industry-grid,
         .insight-grid,
         .career-grid {
             display: grid;
@@ -1254,7 +1274,6 @@
         }
 
         .solutions-grid,
-        .industry-grid,
         .insight-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
@@ -1606,8 +1625,8 @@
         }
 
         .section-header {
-            max-width: 820px;
-            margin: 0 auto 2.25rem;
+            width: 100%;
+            margin: 0 0 2.25rem;
         }
 
         .section-header h2 {
@@ -1631,7 +1650,6 @@
         .page-view.active .section-header,
         .page-view.active article,
         .page-view.active .company-box,
-        .page-view.active .contact-box,
         .page-view.active .pricing-reference,
         .page-view.active .project-workflow,
         .page-view.active .client-insights {
@@ -1644,10 +1662,8 @@
             .team-grid,
             .about-boxes,
             .home-overview,
-            .contact-wrapper,
             .info-grid,
             .solutions-grid,
-            .industry-grid,
             .insight-grid,
             .career-grid
         ) > :nth-child(2) { animation-delay: 0.06s; }
@@ -1658,10 +1674,8 @@
             .team-grid,
             .about-boxes,
             .home-overview,
-            .contact-wrapper,
             .info-grid,
             .solutions-grid,
-            .industry-grid,
             .insight-grid,
             .career-grid
         ) > :nth-child(3) { animation-delay: 0.12s; }
@@ -1672,10 +1686,8 @@
             .team-grid,
             .about-boxes,
             .home-overview,
-            .contact-wrapper,
             .info-grid,
             .solutions-grid,
-            .industry-grid,
             .insight-grid,
             .career-grid
         ) > :nth-child(n+4) { animation-delay: 0.18s; }
@@ -1734,8 +1746,7 @@
         .feature-box p,
         .pricing-card p,
         .list-card p,
-        .company-box p,
-        .contact-box p {
+        .company-box p {
             margin: 0;
             color: var(--muted);
         }
@@ -2014,7 +2025,7 @@
             box-shadow: var(--shadow);
         }
 
-        .company-box h3, .contact-box h3 {
+        .company-box h3 {
             margin: 0 0 0.8rem;
             font-size: 1.3rem;
         }
@@ -2103,119 +2114,6 @@
 
         .linkedin-link:hover { color: var(--primary-2); }
 
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 1.5rem;
-            align-items: stretch;
-        }
-
-        .contact-box {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.6rem;
-            box-shadow: var(--shadow);
-            height: 100%;
-        }
-
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0;
-            color: var(--muted);
-        }
-
-        .contact-list li {
-            display: grid;
-            grid-template-columns: 92px 1fr;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-            overflow-wrap: anywhere;
-        }
-
-        .contact-list strong {
-            color: var(--primary);
-        }
-
-        .meeting-form {
-            display: grid;
-            gap: 0.85rem;
-            margin-top: 1.2rem;
-        }
-
-        .meeting-form label {
-            color: var(--muted);
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        .meeting-form input,
-        .meeting-form select,
-        .meeting-form textarea {
-            width: 100%;
-            margin-top: 0.35rem;
-            padding: 0.75rem 0.85rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            background: #fff;
-            color: var(--text);
-            color: var(--text);
-            font: inherit;
-        }
-
-        .meeting-form input[type="date"] {
-            min-height: 48px;
-            cursor: pointer;
-            color-scheme: light;
-        }
-
-        .meeting-form input[type="time"] {
-            min-height: 48px;
-            cursor: pointer;
-            color-scheme: light;
-        }
-
-        .picker-row {
-            display: flex;
-            align-items: stretch;
-            gap: 0.5rem;
-            margin-top: 0.35rem;
-        }
-
-        .picker-row input {
-            flex: 1;
-            margin-top: 0;
-        }
-
-        .picker-btn {
-            border: 1px solid #b9d8f0;
-            border-radius: 4px;
-            background: #e8f3fc;
-            color: var(--primary);
-            padding: 0 0.8rem;
-            font: inherit;
-            font-weight: 700;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .picker-btn:hover {
-            background: #d7ebf9;
-        }
-
-        .meeting-form textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
-
-        .meeting-form input:focus,
-        .meeting-form select:focus,
-        .meeting-form textarea:focus {
-            outline: 2px solid rgba(58,160,255,0.6);
-            outline-offset: 1px;
-        }
-
         footer {
             background: linear-gradient(180deg, #edf5f3 0%, #e4efed 100%);
             border-top: 1px solid var(--border);
@@ -2285,8 +2183,10 @@
             }
 
             .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
+                flex: 0 0 100%;
+                order: 3;
+                justify-content: space-evenly;
+                flex-wrap: nowrap;
             }
         }
 
@@ -2297,7 +2197,6 @@
 
             .hero-inner,
             .services-wrap,
-            .contact-wrapper,
             .about-boxes,
             .team-grid,
             .pricing-grid,
@@ -2418,6 +2317,30 @@
         }
 
         @media (max-width: 560px) {
+            .services-grid,
+            .pricing-grid,
+            .about-boxes,
+            .team-grid,
+            .solutions-grid,
+            .insight-grid,
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-card {
+                grid-template-columns: 96px minmax(0, 1fr);
+                gap: 0.85rem;
+            }
+
+            .team-photo {
+                width: 96px;
+                height: 96px;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .welcome-dialog {
                 width: calc(100% - 1rem);
                 max-height: calc(100% - 1rem);
@@ -2612,11 +2535,16 @@
                 scroll-behavior: auto !important;
                 transition-duration: 0.01ms !important;
             }
+
+            .diwali-fireworks { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="ambient-animation" aria-hidden="true"></div>
+    <div class="diwali-fireworks" aria-hidden="true">
+        <canvas id="fireworks-canvas"></canvas>
+    </div>
     <header class="site-header">
         <div class="container nav">
             <div class="logo-block">
@@ -2629,15 +2557,13 @@
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#solutions">Solutions</a>
-                <a href="#industries">Industries</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#insights">Insights</a>
                 <a href="#about">About</a>
                 <a href="#team">Team</a>
                 <a href="#careers">Careers</a>
-                <a href="#contact">Contact</a>
             </nav>
-            <a href="#contact" class="small-btn">Book Consultation</a>
+            <a href="mailto:samratatulmaurya9415@outlook.com?subject=Consultation%20request" class="small-btn">Book Consultation</a>
         </div>
     </header>
 
@@ -2654,7 +2580,7 @@
         </div>
     </div>
     <div class="global-capabilities" aria-label="International service coverage">
-        <span><strong>Remote service coverage:</strong> United States, Canada, Australia, Europe, and other regions</span>
+        <span><strong>Remote service coverage:</strong> Worldwide</span>
     </div>
 
     <dialog class="welcome-dialog" id="welcome-dialog" aria-labelledby="welcome-heading" aria-describedby="welcome-intro">
@@ -2720,7 +2646,7 @@
             <ul id="service-detail-deliverables"></ul>
             <span class="service-price" id="service-detail-price"></span>
             <p id="service-detail-note" style="margin-top:0.8rem; font-size:0.88rem;"></p>
-            <a href="#contact" class="primary-btn" id="service-detail-contact" style="margin-top:1.2rem;">Request this service</a>
+            <a href="mailto:samratatulmaurya9415@outlook.com?subject=Service%20inquiry" class="primary-btn" id="service-detail-contact" style="margin-top:1.2rem;">Request this service</a>
         </article>
     </div>
 
@@ -2731,11 +2657,11 @@
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
                     <h1>Cloud and IT, made simple.<span class="highlight"> From plan to go-live.</span></h1>
                     <p>
-                        Atul Maurya Cloud Solution Pvt. Ltd. works with businesses in the United States, Canada, Australia, Europe, and other regions. We plan, build, secure, migrate, and support cloud, workplace, cybersecurity, networking, data, and software solutions.
+                        Atul Maurya Cloud Solution Pvt. Ltd. works with businesses worldwide. We plan, build, secure, migrate, and support cloud, workplace, cybersecurity, networking, data, and software solutions.
                         Founded by <strong>Mr. Atul Maurya</strong>, we help organizations simplify operations with practical technology and carefully designed workflow automation.
                     </p>
                     <div class="cta-row">
-                        <a href="#contact" class="primary-btn">Talk to an Expert</a>
+                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Cloud%20and%20IT%20consultation" class="primary-btn">Talk to an Expert</a>
                         <a href="#pricing" class="secondary-btn">View Pricing</a>
                     </div>
 
@@ -2851,7 +2777,7 @@
                             <h3>Round-the-clock support, when included in your plan</h3>
                             <p>Selected plans include 24×7 monitoring and incident response. Coverage and response targets are agreed in the service level; resolution time depends on the issue and provider dependencies.</p>
                         </div>
-                        <a class="secondary-btn" href="#contact">Discuss support plans</a>
+                        <a class="secondary-btn" href="mailto:samratatulmaurya9415@outlook.com?subject=Support%20plan%20inquiry">Discuss support plans</a>
                     </aside>
                 </section>
 
@@ -2893,7 +2819,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Complete Cloud, IT & Automation Services</h2>
-                    <p>We support organizations across the United States, Canada, Australia, Europe, and other regions. Our specialists bring cloud, Microsoft, security, and software expertise together with practical process automation—from approvals and system integrations to reporting, deployment pipelines, and routine cloud operations.</p>
+                    <p>We support organizations worldwide. Our specialists bring cloud, Microsoft, security, and software expertise together with practical process automation—from approvals and system integrations to reporting, deployment pipelines, and routine cloud operations.</p>
                 </div>
 
                 <div class="services-wrap">
@@ -2997,7 +2923,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Service & Microsoft Pricing</h2>
-                    <p>Choose a support package, review Microsoft licensing, and estimate services for your organization in a range of currencies. We work remotely with clients in the United States, Canada, Australia, Europe, and other regions.</p>
+                    <p>Choose a support package, review Microsoft licensing, and estimate services for your organization in a range of currencies. We work remotely with clients worldwide.</p>
                 </div>
 
                 <div class="pricing-grid">
@@ -3011,7 +2937,7 @@
                             <li>Basic Security Setup</li>
                             <li>Monthly Support</li>
                         </ul>
-                        <a href="#contact" class="secondary-btn">Get Started</a>
+                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Starter%20plan%20inquiry" class="secondary-btn">Get Started</a>
                     </div>
 
                     <div class="pricing-card featured">
@@ -3025,7 +2951,7 @@
                             <li>Security Monitoring</li>
                             <li>Advanced Support</li>
                         </ul>
-                        <a href="#contact" class="primary-btn">Choose Growth</a>
+                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Growth%20plan%20inquiry" class="primary-btn">Choose Growth</a>
                     </div>
 
                     <div class="pricing-card">
@@ -3038,7 +2964,7 @@
                             <li>Identity & Access Control</li>
                             <li>Priority Dedicated Support</li>
                         </ul>
-                        <a href="#contact" class="secondary-btn">Talk to Us</a>
+                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Enterprise%20plan%20inquiry" class="secondary-btn">Talk to Us</a>
                     </div>
                 </div>
 
@@ -3064,7 +2990,7 @@
 
                 <div class="pricing-calculator" id="pricing-calculator">
                     <h3>Estimate your complete monthly cost</h3>
-                    <p class="calculator-intro">Choose your service need, user count, currency, and local tax rate. We work remotely with clients in the United States, Canada, Australia, Europe, and other regions; the estimate separates service fees from Microsoft licensing for international planning.</p>
+                    <p class="calculator-intro">Choose your service need, user count, currency, and local tax rate. We work remotely with clients worldwide; the estimate separates service fees from Microsoft licensing for international planning.</p>
                     <div class="calculator-fields">
                         <label>
                             Service package
@@ -3255,35 +3181,6 @@
             </div>
         </section>
 
-        <section id="industries" class="section page-view">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Industry-focused support</h2>
-                    <p>We remotely support organizations in the United States, Canada, Australia, Europe, and other regions, adapting cloud services and process automation to each industry's operating needs.</p>
-                </div>
-
-                <div class="industry-grid">
-                    <article class="info-card">
-                        <div class="icon">🏢</div>
-                        <h3>Professional Services</h3>
-                        <p>Automate client intake, approvals, document routing, and service updates while protecting business data across teams.</p>
-                    </article>
-
-                    <article class="info-card">
-                        <div class="icon">🏭</div>
-                        <h3>Manufacturing & Operations</h3>
-                        <p>Connect operational systems and automate inspection reminders, maintenance alerts, reporting, and handoffs over secure infrastructure.</p>
-                    </article>
-
-                    <article class="info-card">
-                        <div class="icon">📦</div>
-                        <h3>Retail & Distribution</h3>
-                        <p>Connect inventory and sales data to automate stock alerts, order updates, and customer follow-ups.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section id="insights" class="section page-view">
             <div class="container">
                 <div class="section-header">
@@ -3317,7 +3214,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Why businesses choose us</h2>
-                    <p>We serve clients across the United States, Canada, Australia, Europe, and other regions—combining cloud, infrastructure, security, software, and workflow automation in one business-first partnership.</p>
+                    <p>We serve clients worldwide—combining cloud, infrastructure, security, software, and workflow automation in one business-first partnership.</p>
                 </div>
 
                 <div class="about-boxes">
@@ -3376,7 +3273,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Meet Our Team</h2>
-                    <p>Our team delivers secure cloud, software, and automation projects remotely for businesses across the United States, Canada, Australia, Europe, and other regions.</p>
+                    <p>Our team delivers secure cloud, software, and automation projects remotely for businesses worldwide.</p>
                 </div>
 
                 <div class="team-grid">
@@ -3385,7 +3282,7 @@
                         <div>
                             <h3>Ravi Gupta</h3>
                             <span class="team-role">Network, Database & Security Specialist</span>
-                            <p>Designs secure networks and database environments, strengthens identity and endpoint protection, and configures monitoring and alerting to help teams respond consistently.</p>
+                            <p>Secures networks, databases, and endpoints with strong identity controls and monitoring.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/ravi-gupta-02b3a5235/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -3395,7 +3292,7 @@
                         <div>
                             <h3>Vijay Singh</h3>
                             <span class="team-role">Full-Stack Developer & Cloud Solutions Architect</span>
-                            <p>Builds web applications and cloud solutions, connecting APIs, databases, deployment pipelines, and integrations to automate repeatable delivery and business tasks.</p>
+                            <p>Builds web apps and cloud solutions, integrating APIs, databases, and deployment pipelines.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/vijay-singh-949456237/?locale=en" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -3405,8 +3302,7 @@
                         <div>
                             <h3>Abdullah Ahmad</h3>
                             <span class="team-role">Project Engineer</span>
-                            <p>Project Engineer with nearly four years of hands-on experience delivering projects and supervising electrical operations and maintenance, including contributions to net-zero initiatives. His MBA strengthens his technical background with project, operations management, business strategy, and leadership expertise. He is also working toward the NEBOSH IGC certification.</p>
-                            <p>Influenced by <em>Operations and Process Management: Principles and Practice for Strategic Impact</em> by Nigel Slack and Alistair Brandon-Jones.</p>
+                            <p>Project Engineer with nearly four years’ experience in electrical operations, maintenance, and net-zero initiatives. MBA graduate pursuing NEBOSH IGC certification.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/abdullahkw/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -3497,81 +3393,6 @@
             </div>
         </section>
 
-        <section id="contact" class="section page-view">
-            <div class="container contact-wrapper">
-                <div class="contact-box">
-                    <h3>Contact Us</h3>
-                    <p>We work remotely with clients in the United States, Canada, Australia, Europe, and other regions. Let’s discuss your cloud needs, Microsoft environment, and the right solution for your business.</p>
-                    <ul class="contact-list">
-                        <li><strong>Email:</strong> <a href="mailto:samratatulmaurya9415@outlook.com">samratatulmaurya9415@outlook.com</a></li>
-                        <li><strong>Phone:</strong> <a href="tel:+918429395452">+91 8429395452</a></li>
-                    </ul>
-                </div>
-
-                <div class="contact-box">
-                    <h3>Get a Free Consultation</h3>
-                    <p>Tell us about your goals, location, time zone, and any repetitive work you would like to automate. We can arrange a remote consultation and recommend a practical next step.</p>
-                    <form class="meeting-form" id="meeting-form">
-                        <label>
-                            Your name
-                            <input type="text" name="name" required>
-                        </label>
-                        <label>
-                            Your email
-                            <input type="email" name="email" required>
-                        </label>
-                        <label>
-                            Select a date from the calendar
-                            <span class="picker-row">
-                                <input type="date" name="date" id="meeting-date" aria-label="Choose a meeting date from the calendar" required>
-                                <button type="button" class="picker-btn" data-picker="meeting-date">Open calendar</button>
-                            </span>
-                        </label>
-                        <label>
-                            Select a preferred time
-                            <span class="picker-row">
-                                <input type="time" name="time" id="meeting-time" aria-label="Choose a preferred meeting time" required>
-                                <button type="button" class="picker-btn" data-picker="meeting-time">Choose time</button>
-                            </span>
-                        </label>
-                        <label>
-                            Time zone
-                            <select name="timezone" required>
-                                <option value="Asia/Kolkata" selected>India Standard Time (IST, UTC+5:30)</option>
-                                <option value="UTC">UTC</option>
-                                <option value="America/New_York">Eastern Time (ET, UTC-5/-4)</option>
-                                <option value="America/Chicago">Central Time (CT, UTC-6/-5)</option>
-                                <option value="America/Denver">Mountain Time (MT, UTC-7/-6)</option>
-                                <option value="America/Los_Angeles">Pacific Time (PT, UTC-8/-7)</option>
-                                <option value="America/Toronto">Canada Eastern Time (ET)</option>
-                                <option value="Europe/London">United Kingdom Time (GMT/BST)</option>
-                                <option value="Europe/Berlin">Central European Time (CET/CEST)</option>
-                                <option value="Australia/Sydney">Australian Eastern Time (AET)</option>
-                                <option value="Asia/Dubai">Gulf Standard Time (GST, UTC+4)</option>
-                                <option value="Asia/Singapore">Singapore Time (SGT, UTC+8)</option>
-                            </select>
-                        </label>
-                        <label>
-                            Meeting purpose
-                            <select name="purpose" required>
-                                <option value="">Select a purpose</option>
-                                <option>Azure cloud consultation</option>
-                                <option>Microsoft 365 setup</option>
-                                <option>Network and security</option>
-                                <option>Web development</option>
-                                <option>Workflow automation and integrations</option>
-                                <option>Other</option>
-                            </select>
-                        </label>
-                        <label>
-                            Additional details
-                            <textarea name="details" placeholder="Tell us briefly how we can help."></textarea>
-                        </label>
-                        <button type="submit" class="primary-btn">Request Teams Meeting</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <div class="job-modal-backdrop" id="job-modal-backdrop" aria-modal="true" role="dialog">
@@ -3707,7 +3528,7 @@
                     <ul>
                         <li>Consultations: Mon–Sat, 9:00 AM–7:00 PM</li>
                         <li>24×7 managed support: available under selected service plans</li>
-                        <li>Remote services: US, Canada, Australia, Europe & other regions</li>
+                        <li>Remote services: Worldwide</li>
                         <li>Microsoft licensing and Azure charges are separate</li>
                     </ul>
                 </div>
@@ -3732,6 +3553,126 @@
         const revealItems = document.querySelectorAll('.reveal');
         const clientCounters = document.querySelectorAll('.client-count[data-count]');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const fireworksCanvas = document.getElementById('fireworks-canvas');
+        const fireworksContext = fireworksCanvas.getContext('2d');
+
+        if (fireworksContext && !prefersReducedMotion) {
+            const fireworks = [];
+            const colors = ['#ff4d6d', '#ffd166', '#06d6a0', '#4cc9f0', '#c77dff', '#ff8c42', '#f72585', '#00bbf9'];
+            const maxFireworks = 180;
+            const perspective = 360;
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            let frameRequest = 0;
+            let previousPointer = null;
+            let lastBurstTime = 0;
+            let lastFrameTime = 0;
+
+            function resizeFireworksCanvas() {
+                fireworksCanvas.width = Math.round(window.innerWidth * pixelRatio);
+                fireworksCanvas.height = Math.round(window.innerHeight * pixelRatio);
+                fireworksContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            }
+
+            function addFireworkBurst(x, y) {
+                const count = 30 + Math.floor(Math.random() * 15);
+                for (let index = 0; index < count; index += 1) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const elevation = (Math.random() * 2 - 1) * Math.PI / 2;
+                    const speed = 1.8 + Math.random() * 3.8;
+                    const horizontalSpeed = Math.cos(elevation) * speed;
+                    const life = 650 + Math.random() * 450;
+                    fireworks.push({
+                        x, y, z: 0,
+                        vx: Math.cos(angle) * horizontalSpeed,
+                        vy: Math.sin(angle) * horizontalSpeed,
+                        vz: Math.sin(elevation) * speed,
+                        life,
+                        maxLife: life,
+                        size: 1.1 + Math.random() * 1.7,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                }
+                if (fireworks.length > maxFireworks) {
+                    fireworks.splice(0, fireworks.length - maxFireworks);
+                }
+                if (!frameRequest) {
+                    lastFrameTime = performance.now();
+                    frameRequest = requestAnimationFrame(animateFireworks);
+                }
+            }
+
+            function animateFireworks(now) {
+                const delta = Math.min(now - lastFrameTime, 32);
+                const step = delta / 16.67;
+                lastFrameTime = now;
+                fireworksContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                for (let index = fireworks.length - 1; index >= 0; index -= 1) {
+                    const spark = fireworks[index];
+                    const oldX = spark.x;
+                    const oldY = spark.y;
+                    spark.x += spark.vx * step;
+                    spark.y += spark.vy * step;
+                    spark.z += spark.vz * step;
+                    spark.vy += 0.035 * step;
+                    spark.vx *= 0.985;
+                    spark.vy *= 0.985;
+                    spark.vz *= 0.985;
+                    spark.life -= delta;
+
+                    if (spark.life <= 0) {
+                        fireworks.splice(index, 1);
+                        continue;
+                    }
+
+                    const depth = Math.max(80, perspective + spark.z);
+                    const scale = perspective / depth;
+                    const opacity = Math.min(1, spark.life / 160) * (0.72 + 0.28 * Math.random());
+                    fireworksContext.globalAlpha = opacity;
+                    fireworksContext.strokeStyle = spark.color;
+                    fireworksContext.lineWidth = spark.size * scale;
+                    fireworksContext.shadowColor = spark.color;
+                    fireworksContext.shadowBlur = 9 * scale;
+                    fireworksContext.beginPath();
+                    fireworksContext.moveTo(
+                        (oldX - window.innerWidth / 2) * scale + window.innerWidth / 2,
+                        (oldY - window.innerHeight / 2) * scale + window.innerHeight / 2
+                    );
+                    fireworksContext.lineTo(
+                        (spark.x - window.innerWidth / 2) * scale + window.innerWidth / 2,
+                        (spark.y - window.innerHeight / 2) * scale + window.innerHeight / 2
+                    );
+                    fireworksContext.stroke();
+                }
+
+                fireworksContext.globalAlpha = 1;
+                fireworksContext.shadowBlur = 0;
+                frameRequest = fireworks.length ? requestAnimationFrame(animateFireworks) : 0;
+            }
+
+            window.addEventListener('resize', resizeFireworksCanvas);
+            window.addEventListener('pointermove', function (event) {
+                if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+                const now = performance.now();
+                if (now - lastBurstTime < 90) return;
+                if (previousPointer) {
+                    const distance = Math.hypot(event.clientX - previousPointer.x, event.clientY - previousPointer.y);
+                    if (distance < 24) return;
+                }
+                previousPointer = { x: event.clientX, y: event.clientY };
+                lastBurstTime = now;
+                addFireworkBurst(event.clientX, event.clientY);
+            });
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    fireworks.length = 0;
+                    if (frameRequest) cancelAnimationFrame(frameRequest);
+                    frameRequest = 0;
+                    fireworksContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                }
+            });
+            resizeFireworksCanvas();
+        }
 
         const counterObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -4087,20 +4028,6 @@
             }, 450);
         }
 
-        const meetingDate = document.getElementById('meeting-date');
-        meetingDate.min = new Date().toISOString().split('T')[0];
-
-        document.querySelectorAll('[data-picker]').forEach(function (button) {
-            button.addEventListener('click', function () {
-                const picker = document.getElementById(button.dataset.picker);
-                if (typeof picker.showPicker === 'function') {
-                    picker.showPicker();
-                } else {
-                    picker.focus();
-                }
-            });
-        });
-
         const calculatorPackage = document.getElementById('calculator-package');
         const calculatorLicense = document.getElementById('calculator-license');
         const calculatorUsers = document.getElementById('calculator-users');
@@ -4130,22 +4057,6 @@
             field.addEventListener('change', updatePricingCalculator);
         });
         updatePricingCalculator();
-
-        document.getElementById('meeting-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const subject = `Teams meeting request - ${formData.get('name')}`;
-            const body = [
-                `Name: ${formData.get('name')}`,
-                `Email: ${formData.get('email')}`,
-                `Preferred date: ${formData.get('date')}`,
-                `Preferred time: ${formData.get('time')}`,
-                `Time zone: ${formData.get('timezone')}`,
-                `Meeting purpose: ${formData.get('purpose')}`,
-                `Additional details: ${formData.get('details') || 'None'}`
-            ].join('\n');
-            window.location.href = `mailto:samratatulmaurya9415@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        });
 
         document.getElementById('job-application-form').addEventListener('submit', function (event) {
             event.preventDefault();
