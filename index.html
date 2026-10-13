@@ -103,22 +103,6 @@
             animation-direction: alternate-reverse;
         }
 
-        .diwali-fireworks {
-            position: fixed;
-            z-index: 40;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .diwali-fireworks canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
         @keyframes cloud-flow {
             from { transform: translate3d(-2%, -1%, 0) scale(0.96) rotate(-2deg); }
             to { transform: translate3d(2%, 1.5%, 0) scale(1.04) rotate(2deg); }
@@ -1070,11 +1054,25 @@
         }
 
         .home-overview-card {
+            display: block;
             padding: 1.2rem;
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 6px;
             box-shadow: var(--shadow);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-overview-card:hover,
+        .home-overview-card:focus-visible {
+            border-color: var(--primary);
+            box-shadow: 0 12px 26px rgba(16, 42, 67, 0.14);
+            transform: translateY(-3px);
+        }
+
+        .home-overview-card:focus-visible {
+            outline: 3px solid rgba(8, 127, 140, 0.42);
+            outline-offset: 3px;
         }
 
         .home-overview-card strong {
@@ -1192,92 +1190,6 @@
             font-size: 0.78rem;
         }
 
-        .client-insights {
-            margin-top: 1.25rem;
-            padding: clamp(1.1rem, 2.3vw, 1.6rem);
-            border-color: var(--border);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.94);
-            box-shadow: 0 8px 24px rgba(16, 42, 67, 0.06);
-        }
-
-        .client-insights-header {
-            max-width: none;
-            margin-bottom: 0.9rem;
-        }
-
-        .client-insights-header h2 {
-            margin-top: 0;
-            margin-bottom: 0.2rem;
-            color: var(--text);
-            font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-        }
-
-        .client-insights-header p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .support-process {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.6rem;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .support-process li {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            min-width: 0;
-            padding: 0.65rem 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--panel-2);
-            color: var(--text);
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .support-process li::before {
-            display: grid;
-            width: 26px;
-            height: 26px;
-            flex: 0 0 26px;
-            place-items: center;
-            border-radius: 50%;
-            background: #e0f2ee;
-            color: var(--primary);
-            content: counter(list-item, decimal-leading-zero);
-            font-size: 0.7rem;
-            font-weight: 800;
-        }
-
-        .support-process-note {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 0.8rem;
-            color: var(--muted);
-            font-size: 0.78rem;
-        }
-
-        .support-process-note p {
-            margin: 0;
-        }
-
-        .support-process-note a {
-            flex: 0 0 auto;
-            color: var(--primary);
-            font-weight: 700;
-            text-underline-offset: 3px;
-        }
-
         .project-workflow {
             margin-top: 1.5rem;
         }
@@ -1324,26 +1236,7 @@
         }
 
         .workflow-pipeline::after {
-            position: absolute;
-            top: 20px;
-            left: 8%;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #78e0c2;
-            box-shadow: 0 0 0 4px rgba(21, 155, 131, 0.14), 0 0 14px rgba(21, 155, 131, 0.7);
-            content: "";
-            opacity: 0;
-        }
-
-        .home-motion-active .project-workflow .workflow-pipeline::after {
-            opacity: 1;
-            animation: pipeline-data-flow var(--motion-cycle) linear infinite;
-        }
-
-        @keyframes pipeline-data-flow {
-            from { left: 8%; }
-            to { left: 92%; }
+            display: none;
         }
 
         .pipeline-stage {
@@ -1369,7 +1262,7 @@
             font-size: 0.72rem;
             font-weight: 800;
             font-variant-numeric: tabular-nums;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
         }
 
         .pipeline-stage h3 {
@@ -1387,32 +1280,20 @@
             line-height: 1.5;
         }
 
-        .home-motion-active .project-workflow .pipeline-stage {
-            animation: pipeline-stage-highlight var(--motion-cycle) ease-in-out infinite;
+        .workflow-pipeline .pipeline-stage {
+            opacity: 0.82;
+            transition: opacity 0.35s ease;
         }
 
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(2) { animation-delay: 2s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(3) { animation-delay: 4s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(4) { animation-delay: 6s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(5) { animation-delay: 8s; }
-
-        .home-motion-active .project-workflow .pipeline-stage .pipeline-node {
-            animation: pipeline-node-highlight var(--motion-cycle) ease-in-out infinite;
+        .workflow-pipeline .pipeline-stage.is-active {
+            opacity: 1;
         }
 
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(2) .pipeline-node { animation-delay: 2s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(3) .pipeline-node { animation-delay: 4s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(4) .pipeline-node { animation-delay: 6s; }
-        .home-motion-active .project-workflow .pipeline-stage:nth-child(5) .pipeline-node { animation-delay: 8s; }
-
-        @keyframes pipeline-stage-highlight {
-            0%, 14%, 100% { opacity: 0.72; }
-            7% { opacity: 1; }
-        }
-
-        @keyframes pipeline-node-highlight {
-            0%, 14%, 100% { background: #fff; color: var(--pipeline-ink); transform: translateY(0); }
-            7% { background: var(--pipeline-ink); color: #fff; transform: translateY(-3px); }
+        .workflow-pipeline .pipeline-stage.is-active .pipeline-node {
+            background: var(--pipeline-ink);
+            color: #fff;
+            box-shadow: 0 7px 18px rgba(11, 114, 133, 0.28);
+            transform: translateY(-3px);
         }
 
         .home-motion-active .coverage-satellite {
@@ -1445,6 +1326,268 @@
         .workflow-support .secondary-btn {
             padding: 0.65rem 0.9rem;
             font-size: 0.8rem;
+        }
+
+        .diwali-cta {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin: 0 0 1.6rem;
+            padding: 1rem 1.15rem;
+            border: 1px solid rgba(255, 209, 102, 0.42);
+            border-radius: 16px;
+            background:
+                radial-gradient(circle at 8% 50%, rgba(255, 209, 102, 0.22), transparent 27%),
+                linear-gradient(115deg, #18213a, #252744 68%, #3a2c3d);
+            box-shadow: 0 12px 28px rgba(16, 24, 45, 0.16);
+            color: #fff;
+        }
+
+        .diwali-cta-icon {
+            display: grid;
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
+            place-items: center;
+            border: 1px solid rgba(255, 209, 102, 0.48);
+            border-radius: 15px;
+            background: rgba(255, 209, 102, 0.12);
+            color: #ffd166;
+            font-size: 1.6rem;
+        }
+
+        .diwali-cta-copy { flex: 1 1 auto; }
+
+        .diwali-cta-copy strong {
+            display: block;
+            color: #ffe39a;
+            font-size: 0.94rem;
+        }
+
+        .diwali-cta-copy p {
+            margin: 0.12rem 0 0;
+            color: #d4d9e7;
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .diwali-cta .primary-btn {
+            flex: 0 0 auto;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ffd166, #ffad4f);
+            color: #342441;
+            box-shadow: 0 5px 16px rgba(255, 173, 79, 0.22);
+            white-space: nowrap;
+        }
+
+        .diwali-cta .primary-btn:hover { background: #ffe39a; }
+
+        .diwali-game-dialog {
+            width: min(760px, calc(100vw - 1.5rem));
+            max-width: none;
+            max-height: min(780px, calc(100vh - 1.5rem));
+            max-height: min(780px, calc(100dvh - 1.5rem));
+            padding: clamp(0.75rem, 3vw, 1.25rem);
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            border: 1px solid rgba(255, 209, 102, 0.42);
+            border-radius: 22px;
+            background: #101d35;
+            color: #fff;
+            box-shadow: 0 28px 90px rgba(3, 11, 28, 0.55);
+        }
+
+        .diwali-game-dialog::backdrop { background: rgba(4, 12, 25, 0.76); }
+
+        .diwali-game-header,
+        .diwali-game-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .diwali-game-header { margin-bottom: 0.6rem; }
+
+        .diwali-game-header h2 {
+            margin: 0;
+            color: #ffe39a;
+            font-size: clamp(1.15rem, 3vw, 1.55rem);
+        }
+
+        .diwali-game-header p,
+        .diwali-game-instructions {
+            margin: 0.2rem 0 0;
+            color: #c7d2e4;
+            font-size: 0.85rem;
+        }
+
+        .diwali-game-hud {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.25fr;
+            gap: 0.65rem;
+            margin-top: 0.9rem;
+        }
+
+        .diwali-game-stat {
+            display: flex;
+            min-height: 66px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.05rem;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .diwali-game-stat-label {
+            color: #b7c2d8;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .diwali-game-stat strong {
+            color: #ffe39a;
+            font-size: 1.35rem;
+            line-height: 1.25;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .diwali-game-stat--time strong { color: #fff; }
+
+        .diwali-game-time-track {
+            height: 5px;
+            overflow: hidden;
+            margin-top: 0.35rem;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .diwali-game-time-bar {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #ff8e53, #ffd166);
+            transition: width 0.25s linear;
+        }
+
+        .diwali-game-close {
+            display: grid;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.45rem;
+        }
+
+        #diwali-game-canvas {
+            display: block;
+            width: 100%;
+            height: clamp(180px, 38vh, 320px);
+            min-height: 180px;
+            margin-top: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 14px;
+            background: radial-gradient(ellipse at 50% 100%, #24334c, #101d35 72%);
+            cursor: crosshair;
+            touch-action: manipulation;
+        }
+
+        .diwali-game-toolbar { margin-top: 0.75rem; }
+        .diwali-game-status { margin: 0; color: #c7d2e4; font-size: 0.85rem; }
+        .diwali-game-status.is-complete { color: #ffe39a; font-weight: 700; }
+
+        .diwali-game-toolbar .secondary-btn {
+            min-height: 42px;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: #fff;
+        }
+
+        .diwali-game-dialog :focus-visible {
+            outline: 3px solid #ffd166;
+            outline-offset: 3px;
+        }
+
+        .support-contact-dialog {
+            width: min(460px, calc(100vw - 2rem));
+            max-width: none;
+            padding: 1.4rem;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: #fff;
+            color: var(--text);
+            box-shadow: 0 24px 80px rgba(16, 42, 67, 0.28);
+        }
+
+        .support-contact-dialog::backdrop { background: rgba(9, 28, 45, 0.58); }
+        .support-contact-dialog .diwali-game-close {
+            border-color: var(--border);
+            color: var(--text);
+        }
+        .support-contact-dialog .diwali-game-close:hover { background: var(--panel-2); }
+
+        .support-contact-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .support-contact-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .support-contact-dialog > p {
+            margin: 0.55rem 0 1rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .support-contact-email {
+            display: block;
+            overflow-wrap: anywhere;
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--panel-2);
+            color: var(--text);
+            font-weight: 700;
+            user-select: all;
+        }
+
+        .support-contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .support-contact-actions .primary-btn,
+        .support-contact-actions .secondary-btn {
+            min-height: 44px;
+        }
+
+        .support-contact-status {
+            min-height: 1.4em;
+            margin: 0.65rem 0 0 !important;
+            color: var(--success) !important;
+            font-size: 0.82rem !important;
+        }
+
+        @media (max-height: 620px) {
+            .diwali-game-dialog { max-height: calc(100vh - 1rem); }
+            .diwali-game-dialog { max-height: calc(100dvh - 1rem); }
+            #diwali-game-canvas { height: 30vh; min-height: 140px; }
         }
 
         .solutions-grid,
@@ -1833,8 +1976,7 @@
         .page-view.active article,
         .page-view.active .company-box,
         .page-view.active .pricing-reference,
-        .page-view.active .project-workflow,
-        .page-view.active .client-insights {
+        .page-view.active .project-workflow {
             animation: tab-content-enter 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
         }
 
@@ -2423,20 +2565,6 @@
                 height: auto;
             }
 
-            .workflow-pipeline::after {
-                top: 24px;
-                left: 20px;
-            }
-
-            .home-motion-active .project-workflow .workflow-pipeline::after {
-                animation-name: pipeline-data-flow-vertical;
-            }
-
-            @keyframes pipeline-data-flow-vertical {
-                from { top: 24px; }
-                to { top: calc(100% - 32px); }
-            }
-
             .pipeline-stage {
                 display: grid;
                 grid-template-columns: 48px minmax(0, 1fr);
@@ -2471,6 +2599,19 @@
             .workflow-support .secondary-btn {
                 grid-column: 2;
                 justify-self: start;
+            }
+
+            .diwali-cta {
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: 0.7rem;
+            }
+
+            .diwali-cta-copy { flex-basis: calc(100% - 64px); }
+
+            .diwali-cta .primary-btn {
+                width: 100%;
+                white-space: normal;
             }
 
             .footer-grid {
@@ -2703,15 +2844,38 @@
                 justify-self: start;
             }
 
-            .support-process {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            .diwali-game-dialog {
+                padding: 0.85rem;
+                border-radius: 16px;
             }
 
-            .support-process-note {
+            #diwali-game-canvas {
+                height: clamp(180px, 34vh, 280px);
+                min-height: 180px;
+            }
+
+            .diwali-game-toolbar {
                 align-items: flex-start;
                 flex-direction: column;
+            }
+
+            .diwali-game-hud {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 0.4rem;
             }
+
+            .diwali-game-stat {
+                min-height: 60px;
+                padding: 0.45rem;
+            }
+
+            .diwali-game-stat-label {
+                font-size: 0.55rem;
+                letter-spacing: 0.06em;
+            }
+
+            .diwali-game-stat strong { font-size: 1.15rem; }
+            .diwali-game-stat--best { grid-column: auto; }
 
             .hero {
                 padding-top: 3.5rem;
@@ -2740,16 +2904,12 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .diwali-fireworks { display: none; }
             .coverage-satellite, .coverage-traffic { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="ambient-animation" aria-hidden="true"></div>
-    <div class="diwali-fireworks" aria-hidden="true">
-        <canvas id="fireworks-canvas"></canvas>
-    </div>
     <header class="site-header">
         <div class="container nav">
             <div class="logo-block">
@@ -2770,7 +2930,7 @@
                 <a href="#team">Team</a>
                 <a href="#careers">Careers</a>
             </nav>
-            <a href="mailto:samratatulmaurya9415@outlook.com?subject=Consultation%20request" class="small-btn">Book Consultation</a>
+            <a href="https://calendar.app.google/Keq58kLdWUuqwNYh7" class="small-btn" target="_blank" rel="noopener noreferrer">Book Consultation</a>
         </div>
     </header>
 
@@ -2943,8 +3103,55 @@
             <p class="welcome-service-note">Remote service for clients worldwide. 24×7 managed support is available on selected plans.</p>
             <div class="welcome-actions">
                 <button class="secondary-btn" type="button" data-welcome-navigate="solutions">Explore all services</button>
-                <button class="primary-btn" type="button" data-welcome-navigate="contact">Plan a consultation</button>
+                <a class="primary-btn" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">Plan a consultation</a>
             </div>
+        </div>
+    </dialog>
+
+    <dialog class="support-contact-dialog" id="support-contact-dialog" aria-labelledby="support-contact-title" aria-describedby="support-contact-description">
+        <div class="support-contact-header">
+            <h2 id="support-contact-title">Discuss support plans</h2>
+            <button class="diwali-game-close" id="support-contact-close" type="button" aria-label="Close support contact details">&times;</button>
+        </div>
+        <p id="support-contact-description">Contact us to discuss 24×7 monitoring, incident response, coverage, and support plans.</p>
+        <a class="support-contact-email" href="mailto:samratatulmaurya9415@outlook.com?subject=Support%20plan%20inquiry">samratatulmaurya9415@outlook.com</a>
+        <div class="support-contact-actions">
+            <button class="primary-btn" id="support-contact-copy" type="button">Copy email address</button>
+            <a class="secondary-btn" href="mailto:samratatulmaurya9415@outlook.com?subject=Support%20plan%20inquiry">Open email app</a>
+        </div>
+        <p class="support-contact-status" id="support-contact-status" aria-live="polite"></p>
+    </dialog>
+
+    <dialog class="diwali-game-dialog" id="diwali-game-dialog" aria-labelledby="diwali-game-title" aria-describedby="diwali-game-instructions">
+        <div class="diwali-game-header">
+            <div>
+                <h2 id="diwali-game-title">Diwali Rocket Game</h2>
+                <p>Take aim, launch a rocket, and light up the night!</p>
+            </div>
+            <button class="diwali-game-close" type="button" aria-label="Close Diwali Rocket Game">&times;</button>
+        </div>
+        <p class="diwali-game-instructions" id="diwali-game-instructions">Tap or click near the glowing diya to score. On a keyboard, press Space to launch.</p>
+        <div class="diwali-game-hud" aria-label="Game scoreboard">
+            <div class="diwali-game-stat">
+                <span class="diwali-game-stat-label">YOUR SCORE</span>
+                <strong id="diwali-game-score" aria-live="polite">0</strong>
+            </div>
+            <div class="diwali-game-stat diwali-game-stat--time">
+                <span class="diwali-game-stat-label">TIME LEFT</span>
+                <strong><span id="diwali-game-time" aria-live="off">30</span><span aria-hidden="true">s</span></strong>
+                <div class="diwali-game-time-track" role="progressbar" aria-label="Time remaining" aria-valuemin="0" aria-valuemax="30" aria-valuenow="30" id="diwali-game-time-track">
+                    <div class="diwali-game-time-bar" id="diwali-game-time-bar"></div>
+                </div>
+            </div>
+            <div class="diwali-game-stat diwali-game-stat--best">
+                <span class="diwali-game-stat-label">BEST THIS VISIT</span>
+                <strong id="diwali-game-best">0</strong>
+            </div>
+        </div>
+        <canvas id="diwali-game-canvas" tabindex="0" aria-label="Rocket game play area. Tap or click to launch a rocket toward the target."></canvas>
+        <div class="diwali-game-toolbar">
+            <p class="diwali-game-status" id="diwali-game-status" aria-live="polite">Hit the glowing diya before the timer runs out!</p>
+            <button class="secondary-btn" id="diwali-game-restart" type="button">Play again</button>
         </div>
     </dialog>
 
@@ -2967,6 +3174,14 @@
         <section id="home" class="hero page-view active">
             <div class="container hero-inner">
                 <div class="hero-copy">
+                    <div class="diwali-cta" aria-label="Diwali rocket game">
+                        <span class="diwali-cta-icon" aria-hidden="true">🪔</span>
+                        <div class="diwali-cta-copy">
+                            <strong>Diwali Rocket Game</strong>
+                            <p>Celebrate the festival of lights. Aim, launch, and beat your high score!</p>
+                        </div>
+                        <button class="primary-btn" id="diwali-game-open" type="button">Play the game <span aria-hidden="true">&nbsp;→</span></button>
+                    </div>
                     <span class="eyebrow">End-to-End Cloud Service Partner</span>
                     <h1>Cloud and IT, made simple.<span class="highlight"> From plan to go-live.</span></h1>
                     <p>
@@ -2974,7 +3189,7 @@
                         Founded by <strong>Mr. Atul Maurya</strong>, we help organizations simplify operations with practical technology and carefully designed workflow automation.
                     </p>
                     <div class="cta-row">
-                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Cloud%20and%20IT%20consultation" class="primary-btn">Talk to an Expert</a>
+                        <a href="https://calendar.app.google/Keq58kLdWUuqwNYh7" class="primary-btn" target="_blank" rel="noopener noreferrer">Talk to an Expert</a>
                         <a href="#pricing" class="secondary-btn">View Pricing</a>
                     </div>
 
@@ -3013,42 +3228,23 @@
                 </div>
             </div>
             <div class="container">
-                <section class="client-insights reveal" aria-labelledby="client-insights-title">
-                    <header class="client-insights-header">
-                        <h2 id="client-insights-title">Need help? Here’s what happens.</h2>
-                        <p>One simple support process, from your first message to confirmed resolution.</p>
-                    </header>
-                    <ol class="support-process" aria-label="Support process: report, review, resolve, confirm">
-                        <li>Tell us what’s wrong</li>
-                        <li>We check and prioritize it</li>
-                        <li>We fix it or escalate</li>
-                        <li>We confirm it’s resolved</li>
-                    </ol>
-                    <div class="support-process-note">
-                        <p>24×7 coverage is available on selected plans. Resolution time depends on the issue and agreed service level.</p>
-                        <a href="mailto:samratatulmaurya9415@outlook.com?subject=Client%20feedback">Share feedback</a>
-                    </div>
-                </section>
-            </div>
-
-            <div class="container">
                 <div class="home-overview">
-                    <article class="home-overview-card">
+                    <a class="home-overview-card service-trigger" href="#azure" data-service="azure">
                         <strong>Cloud Foundation</strong>
                         <span>Azure architecture, migration, virtual machines, storage, databases, backup, and cost governance.</span>
-                    </article>
-                    <article class="home-overview-card">
+                    </a>
+                    <a class="home-overview-card service-trigger" href="#microsoft-365" data-service="microsoft-365">
                         <strong>Modern Workplace</strong>
                         <span>Microsoft 365, email, Teams, SharePoint, OneDrive, identity, devices, and collaboration.</span>
-                    </article>
-                    <article class="home-overview-card">
+                    </a>
+                    <a class="home-overview-card service-trigger" href="#defender" data-service="defender">
                         <strong>Secure Operations</strong>
                         <span>Networks, firewalls, VPN, Defender, compliance, monitoring, disaster recovery, and managed support.</span>
-                    </article>
-                    <article class="home-overview-card">
+                    </a>
+                    <a class="home-overview-card service-trigger" href="#power-apps" data-service="power-apps">
                         <strong>Digital Products</strong>
                         <span>Websites, full-stack applications, APIs, Power Platform automation, analytics, and business systems.</span>
-                    </article>
+                    </a>
                 </div>
 
                 <section class="project-workflow reveal" aria-labelledby="project-workflow-title">
@@ -3090,7 +3286,7 @@
                             <h3>Round-the-clock support, when included in your plan</h3>
                             <p>Selected plans include 24×7 monitoring and incident response. Coverage and response targets are agreed in the service level; resolution time depends on the issue and provider dependencies.</p>
                         </div>
-                        <a class="secondary-btn" href="mailto:samratatulmaurya9415@outlook.com?subject=Support%20plan%20inquiry">Discuss support plans</a>
+                        <button class="secondary-btn" id="support-contact-open" type="button">Discuss support plans</button>
                     </aside>
                 </section>
 
@@ -3617,7 +3813,7 @@
                         <div>
                             <h3>Abdullah Ahmad</h3>
                             <span class="team-role">Project Engineer</span>
-                            <p>Project Engineer with nearly four years’ experience in electrical operations, maintenance, and net-zero initiatives. MBA graduate pursuing NEBOSH IGC certification.</p>
+                            <p>Project Engineer with nearly four years’ experience in operations, maintenance, and net-zero initiatives. MBA graduate pursuing NEBOSH IGC certification.</p>
                             <a class="linkedin-link" href="https://www.linkedin.com/in/abdullahkw/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
                         </div>
                     </article>
@@ -3868,126 +4064,406 @@
         const revealItems = document.querySelectorAll('.reveal');
         const clientCounters = document.querySelectorAll('.client-count[data-count]');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const fireworksCanvas = document.getElementById('fireworks-canvas');
-        const fireworksContext = fireworksCanvas.getContext('2d');
+        const supportContactDialog = document.getElementById('support-contact-dialog');
+        const supportContactStatus = document.getElementById('support-contact-status');
+        const supportEmail = 'samratatulmaurya9415@outlook.com';
 
-        if (fireworksContext && !prefersReducedMotion) {
-            const fireworks = [];
-            const colors = ['#ff4d6d', '#ffd166', '#06d6a0', '#4cc9f0', '#c77dff', '#ff8c42', '#f72585', '#00bbf9'];
-            const maxFireworks = 180;
-            const perspective = 360;
-            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
-            let frameRequest = 0;
-            let previousPointer = null;
-            let lastBurstTime = 0;
-            let lastFrameTime = 0;
-
-            function resizeFireworksCanvas() {
-                fireworksCanvas.width = Math.round(window.innerWidth * pixelRatio);
-                fireworksCanvas.height = Math.round(window.innerHeight * pixelRatio);
-                fireworksContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        document.getElementById('support-contact-open').addEventListener('click', function () {
+            supportContactStatus.textContent = '';
+            supportContactDialog.showModal();
+        });
+        document.getElementById('support-contact-close').addEventListener('click', function () {
+            supportContactDialog.close();
+        });
+        document.getElementById('support-contact-copy').addEventListener('click', async function () {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(supportEmail);
+                } else {
+                    const emailField = document.createElement('textarea');
+                    emailField.value = supportEmail;
+                    emailField.setAttribute('readonly', '');
+                    emailField.style.position = 'fixed';
+                    emailField.style.opacity = '0';
+                    document.body.appendChild(emailField);
+                    emailField.select();
+                    const copied = document.execCommand('copy');
+                    emailField.remove();
+                    if (!copied) throw new Error('Clipboard access is unavailable.');
+                }
+                supportContactStatus.textContent = 'Email address copied. Paste it into your email app.';
+            } catch (error) {
+                supportContactStatus.textContent = 'Copy was blocked. Select the email address above to copy it manually.';
             }
+        });
 
-            function addFireworkBurst(x, y) {
-                const count = 30 + Math.floor(Math.random() * 15);
-                for (let index = 0; index < count; index += 1) {
-                    const angle = Math.random() * Math.PI * 2;
-                    const elevation = (Math.random() * 2 - 1) * Math.PI / 2;
-                    const speed = 1.8 + Math.random() * 3.8;
-                    const horizontalSpeed = Math.cos(elevation) * speed;
-                    const life = 650 + Math.random() * 450;
-                    fireworks.push({
-                        x, y, z: 0,
-                        vx: Math.cos(angle) * horizontalSpeed,
-                        vy: Math.sin(angle) * horizontalSpeed,
-                        vz: Math.sin(elevation) * speed,
-                        life,
-                        maxLife: life,
-                        size: 1.1 + Math.random() * 1.7,
-                        color: colors[Math.floor(Math.random() * colors.length)]
-                    });
-                }
-                if (fireworks.length > maxFireworks) {
-                    fireworks.splice(0, fireworks.length - maxFireworks);
-                }
-                if (!frameRequest) {
-                    lastFrameTime = performance.now();
-                    frameRequest = requestAnimationFrame(animateFireworks);
-                }
-            }
+        const workflowPipeline = document.querySelector('.workflow-pipeline');
+        const pipelineStages = workflowPipeline ? workflowPipeline.querySelectorAll('.pipeline-stage') : [];
+        let activePipelineStage = 0;
 
-            function animateFireworks(now) {
-                const delta = Math.min(now - lastFrameTime, 32);
-                const step = delta / 16.67;
-                lastFrameTime = now;
-                fireworksContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-                for (let index = fireworks.length - 1; index >= 0; index -= 1) {
-                    const spark = fireworks[index];
-                    const oldX = spark.x;
-                    const oldY = spark.y;
-                    spark.x += spark.vx * step;
-                    spark.y += spark.vy * step;
-                    spark.z += spark.vz * step;
-                    spark.vy += 0.035 * step;
-                    spark.vx *= 0.985;
-                    spark.vy *= 0.985;
-                    spark.vz *= 0.985;
-                    spark.life -= delta;
-
-                    if (spark.life <= 0) {
-                        fireworks.splice(index, 1);
-                        continue;
-                    }
-
-                    const depth = Math.max(80, perspective + spark.z);
-                    const scale = perspective / depth;
-                    const opacity = Math.min(1, spark.life / 160) * (0.72 + 0.28 * Math.random());
-                    fireworksContext.globalAlpha = opacity;
-                    fireworksContext.strokeStyle = spark.color;
-                    fireworksContext.lineWidth = spark.size * scale;
-                    fireworksContext.shadowColor = spark.color;
-                    fireworksContext.shadowBlur = 9 * scale;
-                    fireworksContext.beginPath();
-                    fireworksContext.moveTo(
-                        (oldX - window.innerWidth / 2) * scale + window.innerWidth / 2,
-                        (oldY - window.innerHeight / 2) * scale + window.innerHeight / 2
-                    );
-                    fireworksContext.lineTo(
-                        (spark.x - window.innerWidth / 2) * scale + window.innerWidth / 2,
-                        (spark.y - window.innerHeight / 2) * scale + window.innerHeight / 2
-                    );
-                    fireworksContext.stroke();
-                }
-
-                fireworksContext.globalAlpha = 1;
-                fireworksContext.shadowBlur = 0;
-                frameRequest = fireworks.length ? requestAnimationFrame(animateFireworks) : 0;
-            }
-
-            window.addEventListener('resize', resizeFireworksCanvas);
-            window.addEventListener('pointermove', function (event) {
-                if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
-                const now = performance.now();
-                if (now - lastBurstTime < 90) return;
-                if (previousPointer) {
-                    const distance = Math.hypot(event.clientX - previousPointer.x, event.clientY - previousPointer.y);
-                    if (distance < 24) return;
-                }
-                previousPointer = { x: event.clientX, y: event.clientY };
-                lastBurstTime = now;
-                addFireworkBurst(event.clientX, event.clientY);
-            });
-            document.addEventListener('visibilitychange', function () {
-                if (document.hidden) {
-                    fireworks.length = 0;
-                    if (frameRequest) cancelAnimationFrame(frameRequest);
-                    frameRequest = 0;
-                    fireworksContext.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        function setActivePipelineStage(index) {
+            if (!pipelineStages.length) return;
+            activePipelineStage = index % pipelineStages.length;
+            pipelineStages.forEach(function (stage, stageIndex) {
+                const isActive = stageIndex === activePipelineStage;
+                stage.classList.toggle('is-active', isActive);
+                if (isActive) {
+                    stage.setAttribute('aria-current', 'step');
+                } else {
+                    stage.removeAttribute('aria-current');
                 }
             });
-            resizeFireworksCanvas();
         }
+
+        setActivePipelineStage(0);
+        window.setInterval(function () {
+            if (prefersReducedMotion || document.hidden || !document.body.classList.contains('home-motion-active')) return;
+            setActivePipelineStage(activePipelineStage + 1);
+        }, 1800);
+
+        const gameDialog = document.getElementById('diwali-game-dialog');
+        const gameCanvas = document.getElementById('diwali-game-canvas');
+        const gameContext = gameCanvas.getContext('2d');
+        const gameScore = document.getElementById('diwali-game-score');
+        const gameTime = document.getElementById('diwali-game-time');
+        const gameTimeBar = document.getElementById('diwali-game-time-bar');
+        const gameTimeTrack = document.getElementById('diwali-game-time-track');
+        const gameBest = document.getElementById('diwali-game-best');
+        const gameStatus = document.getElementById('diwali-game-status');
+        const gameOpenButton = document.getElementById('diwali-game-open');
+        const gameCloseButton = gameDialog.querySelector('.diwali-game-close');
+        const gameRestartButton = document.getElementById('diwali-game-restart');
+
+        if (!gameContext) {
+            throw new Error('The Diwali Rocket Game requires canvas support.');
+        }
+
+        const gameColors = ['#ffd166', '#ff7b54', '#f78cba', '#7bdff2', '#b8f28b', '#ffffff'];
+        const gameRockets = [];
+        const gameSparks = [];
+        const gameStars = [];
+        const gameDuration = 30;
+        let gameWidth = 0;
+        let gameHeight = 0;
+        let gamePixelRatio = 1;
+        let gameScoreValue = 0;
+        let gameBestValue = 0;
+        let gameTimeLeft = gameDuration;
+        let gameTarget = { x: 0, y: 0, phase: 0 };
+        let gameStartedAt = 0;
+        let gameFrame = 0;
+        let gameTimer = 0;
+        let gameActive = false;
+        let gamePreviousFrame = 0;
+
+        function resizeGameCanvas() {
+            const bounds = gameCanvas.getBoundingClientRect();
+            gamePixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            gameWidth = bounds.width;
+            gameHeight = bounds.height;
+            gameCanvas.width = Math.round(gameWidth * gamePixelRatio);
+            gameCanvas.height = Math.round(gameHeight * gamePixelRatio);
+            gameContext.setTransform(gamePixelRatio, 0, 0, gamePixelRatio, 0, 0);
+            gameStars.length = 0;
+            for (let index = 0; index < Math.floor(gameWidth / 11); index += 1) {
+                gameStars.push({
+                    x: Math.random() * gameWidth,
+                    y: Math.random() * Math.max(1, gameHeight - 45),
+                    radius: 0.5 + Math.random() * 1.2,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+
+        function moveGameTarget() {
+            gameTarget = {
+                x: 58 + Math.random() * Math.max(1, gameWidth - 116),
+                y: 90 + Math.random() * Math.max(1, gameHeight * 0.35),
+                phase: Math.random() * Math.PI * 2
+            };
+        }
+
+        function updateGameScore() {
+            gameScore.textContent = gameScoreValue;
+            gameTime.textContent = gameTimeLeft;
+            gameBest.textContent = gameBestValue;
+            gameTimeBar.style.width = `${(gameTimeLeft / gameDuration) * 100}%`;
+            gameTimeTrack.setAttribute('aria-valuenow', String(gameTimeLeft));
+        }
+
+        function setGameStatus(message, complete) {
+            gameStatus.textContent = message;
+            gameStatus.classList.toggle('is-complete', Boolean(complete));
+        }
+
+        function burstRocket(x, y) {
+            for (let index = 0; index < 38; index += 1) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 1.1 + Math.random() * 3.3;
+                const life = 520 + Math.random() * 550;
+                gameSparks.push({
+                    x,
+                    y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    life,
+                    maxLife: life,
+                    size: 1.4 + Math.random() * 1.8,
+                    color: gameColors[Math.floor(Math.random() * gameColors.length)]
+                });
+            }
+        }
+
+        function launchGameRocket(x, y) {
+            if (!gameActive) return;
+            const boundedX = Math.max(0, Math.min(gameWidth, x));
+            const boundedY = Math.max(0, Math.min(gameHeight, y));
+            gameRockets.push({
+                x: gameWidth / 2,
+                y: gameHeight - 12,
+                startX: gameWidth / 2,
+                startY: gameHeight - 12,
+                targetX: boundedX,
+                targetY: boundedY,
+                progress: 0
+            });
+            if (!gameFrame) {
+                gamePreviousFrame = performance.now();
+                gameFrame = requestAnimationFrame(animateGame);
+            }
+        }
+
+        function drawGameTarget(now) {
+            const targetX = gameTarget.x + Math.sin(now / 800 + gameTarget.phase) * 20;
+            const targetY = gameTarget.y + Math.cos(now / 1050 + gameTarget.phase) * 9;
+            gameContext.save();
+            gameContext.shadowColor = '#ffd166';
+            gameContext.shadowBlur = 26;
+            gameContext.strokeStyle = 'rgba(255, 209, 102, 0.4)';
+            gameContext.lineWidth = 1.5;
+            gameContext.beginPath();
+            gameContext.arc(targetX, targetY, 31 + Math.sin(now / 220) * 2, 0, Math.PI * 2);
+            gameContext.stroke();
+            gameContext.fillStyle = '#ffbb55';
+            gameContext.beginPath();
+            gameContext.moveTo(targetX, targetY - 23);
+            gameContext.bezierCurveTo(targetX - 13, targetY - 8, targetX - 10, targetY + 1, targetX, targetY + 1);
+            gameContext.bezierCurveTo(targetX + 10, targetY + 1, targetX + 13, targetY - 8, targetX, targetY - 23);
+            gameContext.fill();
+            gameContext.fillStyle = '#fff4cc';
+            gameContext.beginPath();
+            gameContext.ellipse(targetX, targetY + 18, 22, 8, 0, 0, Math.PI * 2);
+            gameContext.fill();
+            gameContext.strokeStyle = '#ffd166';
+            gameContext.lineWidth = 2;
+            gameContext.beginPath();
+            gameContext.ellipse(targetX, targetY + 16, 22, 8, 0, 0, Math.PI);
+            gameContext.stroke();
+            gameContext.shadowBlur = 0;
+            gameContext.fillStyle = '#fff4cc';
+            gameContext.font = '13px Segoe UI, sans-serif';
+            gameContext.textAlign = 'center';
+            gameContext.fillText('AIM FOR THE DIYA', targetX, targetY - 39);
+            gameContext.restore();
+            return { x: targetX, y: targetY };
+        }
+
+        function drawGameBackdrop(now) {
+            const sky = gameContext.createLinearGradient(0, 0, 0, gameHeight);
+            sky.addColorStop(0, '#11182f');
+            sky.addColorStop(0.68, '#28213f');
+            sky.addColorStop(1, '#59344a');
+            gameContext.fillStyle = sky;
+            gameContext.fillRect(0, 0, gameWidth, gameHeight);
+
+            gameStars.forEach(function (star) {
+                gameContext.globalAlpha = 0.35 + (Math.sin(now / 500 + star.phase) + 1) * 0.3;
+                gameContext.fillStyle = '#fff2c5';
+                gameContext.beginPath();
+                gameContext.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                gameContext.fill();
+            });
+            gameContext.globalAlpha = 1;
+
+            gameContext.strokeStyle = 'rgba(255, 218, 133, 0.48)';
+            gameContext.lineWidth = 1.5;
+            gameContext.beginPath();
+            gameContext.moveTo(0, 20);
+            gameContext.quadraticCurveTo(gameWidth / 2, 82, gameWidth, 20);
+            gameContext.stroke();
+            for (let index = 0; index < 13; index += 1) {
+                const x = 12 + (gameWidth - 24) * (index / 12);
+                const y = 21 + Math.sin((x / Math.max(1, gameWidth)) * Math.PI) * 61;
+                gameContext.fillStyle = gameColors[index % gameColors.length];
+                gameContext.shadowColor = gameContext.fillStyle;
+                gameContext.shadowBlur = 11;
+                gameContext.beginPath();
+                gameContext.arc(x, y + 8, 3, 0, Math.PI * 2);
+                gameContext.fill();
+            }
+            gameContext.shadowBlur = 0;
+
+            const groundY = gameHeight - 34;
+            gameContext.fillStyle = 'rgba(12, 17, 34, 0.62)';
+            gameContext.fillRect(0, groundY, gameWidth, gameHeight - groundY);
+            for (let index = 0; index < 10; index += 1) {
+                const buildingX = index * (gameWidth / 9) - 12;
+                const buildingHeight = 20 + (index * 17 % 25);
+                gameContext.fillRect(buildingX, groundY - buildingHeight, gameWidth / 15, buildingHeight);
+                gameContext.fillStyle = 'rgba(255, 209, 102, 0.5)';
+                gameContext.fillRect(buildingX + 8, groundY - buildingHeight + 7, 3, 3);
+                gameContext.fillStyle = 'rgba(12, 17, 34, 0.62)';
+            }
+        }
+
+        function animateGame(now) {
+            const delta = Math.min(now - gamePreviousFrame, 32);
+            const step = delta / 16.67;
+            gamePreviousFrame = now;
+            drawGameBackdrop(now);
+            const targetPosition = gameActive ? drawGameTarget(now) : null;
+
+            for (let index = gameRockets.length - 1; index >= 0; index -= 1) {
+                const rocket = gameRockets[index];
+                rocket.progress += delta / 620;
+                const progress = Math.min(rocket.progress, 1);
+                rocket.x = rocket.startX + (rocket.targetX - rocket.startX) * progress;
+                rocket.y = rocket.startY + (rocket.targetY - rocket.startY) * progress - Math.sin(progress * Math.PI) * 48;
+                gameContext.strokeStyle = 'rgba(255, 209, 102, 0.48)';
+                gameContext.lineWidth = 2;
+                gameContext.beginPath();
+                gameContext.moveTo(rocket.startX, rocket.startY);
+                gameContext.lineTo(rocket.x, rocket.y);
+                gameContext.stroke();
+                gameContext.fillStyle = '#ffd166';
+                gameContext.shadowColor = '#ff9f1c';
+                gameContext.shadowBlur = 12;
+                gameContext.beginPath();
+                gameContext.arc(rocket.x, rocket.y, 3, 0, Math.PI * 2);
+                gameContext.fill();
+
+                if (progress >= 1) {
+                    burstRocket(rocket.x, rocket.y);
+                    if (targetPosition && Math.hypot(rocket.x - targetPosition.x, rocket.y - targetPosition.y) < 68) {
+                        gameScoreValue += 1;
+                        gameBestValue = Math.max(gameBestValue, gameScoreValue);
+                        updateGameScore();
+                        moveGameTarget();
+                    }
+                    gameRockets.splice(index, 1);
+                }
+            }
+
+            for (let index = gameSparks.length - 1; index >= 0; index -= 1) {
+                const spark = gameSparks[index];
+                spark.x += spark.vx * step;
+                spark.y += spark.vy * step;
+                spark.vy += 0.035 * step;
+                spark.vx *= 0.985;
+                spark.vy *= 0.985;
+                spark.life -= delta;
+
+                if (spark.life <= 0) {
+                    gameSparks.splice(index, 1);
+                    continue;
+                }
+
+                gameContext.globalAlpha = Math.min(1, spark.life / 180);
+                gameContext.fillStyle = spark.color;
+                gameContext.shadowColor = spark.color;
+                gameContext.shadowBlur = 8;
+                gameContext.beginPath();
+                gameContext.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+                gameContext.fill();
+            }
+
+            gameContext.globalAlpha = 1;
+            gameContext.shadowBlur = 0;
+            if (!gameActive && gameTimeLeft === 0) {
+                gameContext.fillStyle = 'rgba(11, 15, 31, 0.76)';
+                gameContext.fillRect(0, 0, gameWidth, gameHeight);
+                gameContext.textAlign = 'center';
+                gameContext.fillStyle = '#ffe39a';
+                gameContext.font = '700 29px Segoe UI, sans-serif';
+                gameContext.fillText('Shubh Deepavali!', gameWidth / 2, gameHeight / 2 - 8);
+                gameContext.fillStyle = '#ffffff';
+                gameContext.font = '16px Segoe UI, sans-serif';
+                gameContext.fillText(`You scored ${gameScoreValue} ${gameScoreValue === 1 ? 'point' : 'points'}`, gameWidth / 2, gameHeight / 2 + 23);
+            }
+            gameFrame = gameActive || gameRockets.length || gameSparks.length
+                ? requestAnimationFrame(animateGame)
+                : 0;
+        }
+
+        function stopGame() {
+            gameActive = false;
+            window.clearInterval(gameTimer);
+            gameTimer = 0;
+            if (gameFrame) cancelAnimationFrame(gameFrame);
+            gameFrame = 0;
+            gameRockets.length = 0;
+            gameSparks.length = 0;
+            gameContext.clearRect(0, 0, gameWidth, gameHeight);
+        }
+
+        function startGame() {
+            stopGame();
+            resizeGameCanvas();
+            gameScoreValue = 0;
+            gameTimeLeft = gameDuration;
+            gameStartedAt = Date.now();
+            gameActive = true;
+            moveGameTarget();
+            updateGameScore();
+            setGameStatus('Hit the glowing diya before the timer runs out!', false);
+            gameRestartButton.textContent = 'Play again';
+            gamePreviousFrame = performance.now();
+            gameFrame = requestAnimationFrame(animateGame);
+            gameTimer = window.setInterval(function () {
+                gameTimeLeft = Math.max(0, gameDuration - Math.floor((Date.now() - gameStartedAt) / 1000));
+                updateGameScore();
+                if (!gameTimeLeft) {
+                    gameActive = false;
+                    window.clearInterval(gameTimer);
+                    gameTimer = 0;
+                    setGameStatus(`Time is up! You scored ${gameScoreValue}. Play again to beat your best.`, true);
+                    gameRestartButton.textContent = 'Play another round';
+                }
+            }, 250);
+        }
+
+        gameOpenButton.addEventListener('click', function () {
+            gameDialog.showModal();
+            startGame();
+            gameCanvas.focus();
+        });
+        gameCloseButton.addEventListener('click', function () {
+            gameDialog.close();
+        });
+        gameRestartButton.addEventListener('click', startGame);
+        gameDialog.addEventListener('close', stopGame);
+        gameCanvas.addEventListener('pointerdown', function (event) {
+            const bounds = gameCanvas.getBoundingClientRect();
+            launchGameRocket(event.clientX - bounds.left, event.clientY - bounds.top);
+        });
+        gameDialog.addEventListener('keydown', function (event) {
+            if (event.code !== 'Space' || event.target === gameRestartButton || event.target === gameCloseButton) return;
+            event.preventDefault();
+            launchGameRocket(gameTarget.x, gameTarget.y);
+        });
+        window.addEventListener('resize', function () {
+            if (!gameDialog.open) return;
+            resizeGameCanvas();
+            moveGameTarget();
+        });
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden || !gameActive) return;
+            gameActive = false;
+            window.clearInterval(gameTimer);
+            gameTimer = 0;
+            setGameStatus('Game paused while this tab is hidden. Play again to start a fresh round.', false);
+            updateGameScore();
+        });
 
         const counterObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
