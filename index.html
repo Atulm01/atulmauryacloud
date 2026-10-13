@@ -10,6 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
         :root {
+            --motion-cycle: 10s;
             --bg: #f2f7f6;
             --bg-soft: #e8f2f0;
             --panel: #ffffff;
@@ -289,22 +290,184 @@
         .global-capabilities {
             position: relative;
             z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 0.55rem 1.1rem;
-            padding: 0.72rem 1rem;
+            display: block;
+            padding: 0;
             border-bottom: 1px solid var(--border);
-            background: linear-gradient(90deg, #edf6f4, #f8fbfa 50%, #edf6f4);
+            background:
+                radial-gradient(ellipse at 76% 48%, rgba(76, 201, 240, 0.13), transparent 45%),
+                linear-gradient(110deg, #e6f2f1, #f7fbfb 52%, #e8f4f8);
             color: var(--text);
             font-size: 0.8rem;
-            text-align: center;
         }
 
-        .global-capabilities strong {
+        .coverage-inner {
+            display: grid;
+            grid-template-columns: minmax(190px, 0.7fr) minmax(0, 2fr);
+            align-items: center;
+            gap: 1.5rem;
+            min-height: 142px;
+            padding: 0.75rem 0;
+        }
+
+        .coverage-copy strong {
+            display: block;
             color: var(--primary);
             font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .coverage-copy span {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .coverage-map {
+            display: block;
+            width: 100%;
+            height: 132px;
+            overflow: visible;
+            perspective: 700px;
+        }
+
+        .coverage-globe-shadow {
+            fill: rgba(17, 67, 91, 0.12);
+            filter: blur(5px);
+        }
+
+        .coverage-globe {
+            fill: url(#coverage-globe-gradient);
+            stroke: rgba(71, 156, 184, 0.46);
+            stroke-width: 1.2;
+            filter: drop-shadow(0 7px 7px rgba(19, 61, 82, 0.2));
+        }
+
+        .coverage-globe-grid {
+            fill: none;
+            stroke: rgba(209, 247, 255, 0.32);
+            stroke-width: 0.8;
+        }
+
+        .coverage-land {
+            fill: url(#coverage-land-texture);
+            stroke: rgba(31, 111, 76, 0.72);
+            stroke-width: 1;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 1px 1px rgba(3, 54, 44, 0.32));
+        }
+
+        .coverage-cloud {
+            fill: #f7ffff;
+            fill-opacity: 0.52;
+            stroke: rgba(255, 255, 255, 0.62);
+            stroke-width: 0.8;
+            filter: drop-shadow(0 1px 2px rgba(23, 81, 112, 0.18));
+            pointer-events: none;
+        }
+
+        .home-motion-active .coverage-cloud {
+            animation: coverage-cloud-drift 22s ease-in-out infinite alternate;
+        }
+
+        .home-motion-active .coverage-cloud--south {
+            animation-delay: -8s;
+            animation-duration: 27s;
+        }
+
+        .home-motion-active .coverage-cloud--asia {
+            animation-delay: -13s;
+            animation-duration: 24s;
+        }
+
+        @keyframes coverage-cloud-drift {
+            from { translate: -9px 1px; }
+            to { translate: 12px -2px; }
+        }
+
+        .coverage-globe-shading {
+            fill: url(#coverage-globe-shading);
+            pointer-events: none;
+        }
+
+        .coverage-ocean-shimmer {
+            fill: none;
+            stroke: rgba(230, 252, 255, 0.34);
+            stroke-linecap: round;
+            stroke-width: 1;
+            pointer-events: none;
+        }
+
+        .coverage-route {
+            fill: none;
+            stroke: rgba(15, 104, 141, 0.46);
+            stroke-width: 1.1;
+            stroke-dasharray: 3 6;
+        }
+
+        .coverage-node {
+            fill: #087f8c;
+            stroke: #fff;
+            stroke-width: 2.5;
+            filter: drop-shadow(0 1px 3px rgba(9, 50, 67, 0.4));
+        }
+
+        .coverage-satellite {
+            filter: drop-shadow(0 2px 3px rgba(16, 42, 67, 0.25));
+        }
+
+        .coverage-traffic {
+            opacity: 0;
+            pointer-events: none;
+            filter: drop-shadow(0 0 3px rgba(50, 221, 255, 0.95));
+        }
+
+        .coverage-traffic-core {
+            fill: #f9fdff;
+            stroke: #20bad2;
+            stroke-width: 2.5;
+        }
+
+        .coverage-traffic-trail {
+            fill: none;
+            stroke: url(#coverage-traffic-gradient);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .home-motion-active .coverage-traffic {
+            opacity: 1;
+            offset-rotate: auto;
+            animation: coverage-traffic-flight var(--motion-cycle) linear infinite;
+        }
+
+        .home-motion-active .coverage-traffic--atlantic {
+            offset-path: path("M 116 68 Q 246 8 391 57");
+        }
+
+        .home-motion-active .coverage-traffic--pacific {
+            offset-path: path("M 486 84 Q 650 14 116 68");
+            animation-delay: -2.5s;
+        }
+
+        .home-motion-active .coverage-traffic--south {
+            offset-path: path("M 137 151 Q 275 98 391 57");
+            animation-delay: -5s;
+        }
+
+        .home-motion-active .coverage-traffic--asia {
+            offset-path: path("M 391 57 Q 500 30 574 127");
+            animation-delay: -7.5s;
+        }
+
+        .home-motion-active .coverage-traffic--africa {
+            offset-path: path("M 391 57 Q 423 78 421 111");
+            animation-delay: -3.7s;
+        }
+
+        @keyframes coverage-traffic-flight {
+            from { offset-distance: 0%; }
+            to { offset-distance: 100%; }
         }
 
         .service-brands-inner {
@@ -684,7 +847,10 @@
             border: 1px solid rgba(8, 127, 140, 0.16);
             border-radius: 50%;
             content: "";
-            animation: orbit 16s linear infinite;
+        }
+
+        body.home-motion-active .hero::before {
+            animation: orbit var(--motion-cycle) linear infinite;
         }
 
         .hero-inner {
@@ -1165,9 +1331,9 @@
             opacity: 0;
         }
 
-        .project-workflow.visible .workflow-pipeline::after {
+        .home-motion-active .project-workflow .workflow-pipeline::after {
             opacity: 1;
-            animation: pipeline-data-flow 12s linear infinite;
+            animation: pipeline-data-flow var(--motion-cycle) linear infinite;
         }
 
         @keyframes pipeline-data-flow {
@@ -1216,23 +1382,23 @@
             line-height: 1.5;
         }
 
-        .project-workflow.visible .pipeline-stage {
-            animation: pipeline-stage-highlight 10s ease-in-out infinite;
+        .home-motion-active .project-workflow .pipeline-stage {
+            animation: pipeline-stage-highlight var(--motion-cycle) ease-in-out infinite;
         }
 
-        .project-workflow.visible .pipeline-stage:nth-child(2) { animation-delay: 2s; }
-        .project-workflow.visible .pipeline-stage:nth-child(3) { animation-delay: 4s; }
-        .project-workflow.visible .pipeline-stage:nth-child(4) { animation-delay: 6s; }
-        .project-workflow.visible .pipeline-stage:nth-child(5) { animation-delay: 8s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(2) { animation-delay: 2s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(3) { animation-delay: 4s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(4) { animation-delay: 6s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(5) { animation-delay: 8s; }
 
-        .project-workflow.visible .pipeline-stage .pipeline-node {
-            animation: pipeline-node-highlight 10s ease-in-out infinite;
+        .home-motion-active .project-workflow .pipeline-stage .pipeline-node {
+            animation: pipeline-node-highlight var(--motion-cycle) ease-in-out infinite;
         }
 
-        .project-workflow.visible .pipeline-stage:nth-child(2) .pipeline-node { animation-delay: 2s; }
-        .project-workflow.visible .pipeline-stage:nth-child(3) .pipeline-node { animation-delay: 4s; }
-        .project-workflow.visible .pipeline-stage:nth-child(4) .pipeline-node { animation-delay: 6s; }
-        .project-workflow.visible .pipeline-stage:nth-child(5) .pipeline-node { animation-delay: 8s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(2) .pipeline-node { animation-delay: 2s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(3) .pipeline-node { animation-delay: 4s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(4) .pipeline-node { animation-delay: 6s; }
+        .home-motion-active .project-workflow .pipeline-stage:nth-child(5) .pipeline-node { animation-delay: 8s; }
 
         @keyframes pipeline-stage-highlight {
             0%, 14%, 100% { opacity: 0.72; }
@@ -1242,6 +1408,17 @@
         @keyframes pipeline-node-highlight {
             0%, 14%, 100% { background: #fff; color: var(--pipeline-ink); transform: translateY(0); }
             7% { background: var(--pipeline-ink); color: #fff; transform: translateY(-3px); }
+        }
+
+        .home-motion-active .coverage-satellite {
+            offset-path: path("M 116 68 Q 258 5 391 57 T 616 91");
+            offset-rotate: auto;
+            animation: satellite-flight var(--motion-cycle) linear infinite;
+        }
+
+        @keyframes satellite-flight {
+            from { offset-distance: 0%; }
+            to { offset-distance: 100%; }
         }
 
         .workflow-support {
@@ -2191,6 +2368,15 @@
         }
 
         @media (max-width: 900px) {
+            .coverage-inner {
+                grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.6fr);
+                gap: 0.8rem;
+            }
+
+            .coverage-map {
+                height: 112px;
+            }
+
             .service-brands-inner {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
             }
@@ -2237,7 +2423,7 @@
                 left: 20px;
             }
 
-            .project-workflow.visible .workflow-pipeline::after {
+            .home-motion-active .project-workflow .workflow-pipeline::after {
                 animation-name: pipeline-data-flow-vertical;
             }
 
@@ -2317,6 +2503,17 @@
         }
 
         @media (max-width: 560px) {
+            .coverage-inner {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+                padding: 0.8rem 0 0.45rem;
+                text-align: center;
+            }
+
+            .coverage-map {
+                height: 105px;
+            }
+
             .services-grid,
             .pricing-grid,
             .about-boxes,
@@ -2537,6 +2734,7 @@
             }
 
             .diwali-fireworks { display: none; }
+            .coverage-satellite, .coverage-traffic { display: none; }
         }
     </style>
 </head>
@@ -2578,8 +2776,114 @@
             <a class="service-brand service-trigger" href="#dynamics-365" data-service="dynamics-365"><img class="brand-logo-image" src="dynamics365.svg" alt="Dynamics 365 logo">Dynamics 365</a>
         </div>
     </div>
-    <div class="global-capabilities" aria-label="International service coverage">
-        <span><strong>Remote service coverage:</strong> Worldwide</span>
+    <div class="global-capabilities" aria-label="Worldwide remote service coverage">
+        <div class="container coverage-inner">
+            <div class="coverage-copy">
+                <strong>Remote service coverage</strong>
+                <span>Worldwide cloud and IT support, delivered remotely across time zones.</span>
+            </div>
+            <svg class="coverage-map" viewBox="0 0 760 170" role="img" aria-labelledby="coverage-map-title coverage-map-desc">
+                <title id="coverage-map-title">Worldwide remote service coverage</title>
+                <desc id="coverage-map-desc">A dimensional world map showing animated data traffic across the Atlantic, Pacific, South America, Africa, and Asia.</desc>
+                <defs>
+                    <linearGradient id="coverage-globe-gradient" x1="0" y1="0" x2="0.9" y2="1">
+                        <stop offset="0" stop-color="#d9f5fb" />
+                        <stop offset="0.48" stop-color="#84cbdc" />
+                        <stop offset="1" stop-color="#247b9f" />
+                    </linearGradient>
+                    <linearGradient id="coverage-land-gradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f0fbec" />
+                        <stop offset="0.55" stop-color="#aadbc7" />
+                        <stop offset="1" stop-color="#6eb7ae" />
+                    </linearGradient>
+                    <pattern id="coverage-land-texture" width="34" height="27" patternUnits="userSpaceOnUse">
+                        <rect width="34" height="27" fill="url(#coverage-land-gradient)" />
+                        <path d="M2 8q4-5 8-1-1 5-7 5zM19 3q5-3 8 1-2 4-7 4zM13 18q4-5 9-2-1 5-7 6z" fill="#4b9a61" fill-opacity=".5" />
+                        <path d="M27 18q3-3 6 0l-2 4-5-1zM3 22q3-3 5 0l-2 3H2z" fill="#216d4a" fill-opacity=".36" />
+                        <circle cx="16" cy="10" r="1.2" fill="#d2eaa0" fill-opacity=".7" />
+                    </pattern>
+                    <linearGradient id="coverage-traffic-gradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stop-color="#20bad2" stop-opacity="0" />
+                        <stop offset="1" stop-color="#f7feff" stop-opacity="0.95" />
+                    </linearGradient>
+                    <radialGradient id="coverage-globe-highlight" cx="35%" cy="20%" r="75%">
+                        <stop offset="0" stop-color="#fff" stop-opacity="0.34" />
+                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                    </radialGradient>
+                    <radialGradient id="coverage-globe-shading" cx="50%" cy="45%" r="68%">
+                        <stop offset="0.58" stop-color="#032d48" stop-opacity="0" />
+                        <stop offset="0.84" stop-color="#032d48" stop-opacity="0.06" />
+                        <stop offset="1" stop-color="#032d48" stop-opacity="0.34" />
+                    </radialGradient>
+                    <clipPath id="coverage-globe-clip">
+                        <ellipse cx="380" cy="85" rx="359" ry="77" />
+                    </clipPath>
+                </defs>
+                <ellipse class="coverage-globe-shadow" cx="380" cy="164" rx="302" ry="6" />
+                <ellipse class="coverage-globe" cx="380" cy="85" rx="359" ry="77" />
+                <g class="coverage-globe-grid" clip-path="url(#coverage-globe-clip)">
+                    <path d="M28 85 Q380 35 732 85 M39 57 Q380 19 721 57 M39 113 Q380 151 721 113" />
+                    <ellipse cx="380" cy="85" rx="90" ry="77" />
+                    <ellipse cx="380" cy="85" rx="190" ry="77" />
+                    <ellipse cx="380" cy="85" rx="286" ry="77" />
+                    <path d="M380 8 Q326 85 380 162 M380 8 Q434 85 380 162" />
+                </g>
+                <g class="coverage-ocean-shimmer" clip-path="url(#coverage-globe-clip)">
+                    <path d="M70 94q28-8 56 0m82 25q22-6 45 0m336-65q20-5 41 1m-142 75q17-5 35 0" />
+                    <path d="M217 49q14-4 28 0m331 67q16-4 32 0m-465-5q18-4 35 0" />
+                </g>
+                <ellipse cx="380" cy="85" rx="359" ry="77" fill="url(#coverage-globe-highlight)" />
+                <g clip-path="url(#coverage-globe-clip)">
+                    <path class="coverage-land" d="M46 49 61 35 84 31 97 21 119 25 132 18 151 27 165 30 179 42 174 53 159 57 153 68 141 72 132 86 119 93 112 108 99 113 88 103 82 88 72 79 67 66 53 63ZM127 98 141 103 151 118 154 135 147 151 137 161 128 150 125 132 119 117ZM237 41 250 30 271 29 279 37 294 36 302 45 292 54 277 56 268 66 254 62 246 54 234 53ZM287 75 301 67 315 70 322 83 329 94 325 107 318 119 311 136 300 147 294 132 293 115 285 101 279 88ZM350 47 366 36 383 34 391 40 406 37 419 43 431 38 447 44 463 42 480 49 500 48 516 53 532 50 548 58 566 57 584 65 599 72 617 73 628 82 618 91 604 91 593 98 578 96 568 104 551 102 542 111 527 107 518 98 504 97 494 89 480 92 468 84 451 86 439 78 425 81 413 73 398 77 386 68 371 69 360 60 347 60ZM398 104 412 96 428 98 439 108 434 121 421 127 407 122 397 114ZM553 118 568 112 583 114 595 122 591 133 577 138 563 134 552 126Z" />
+                    <g class="coverage-cloud coverage-cloud--north-america" transform="translate(77 43)">
+                        <path d="M0 11q-1-5 5-6 2-7 9-4 5-6 10 0 7-1 8 5 6 1 4 6H2z" />
+                    </g>
+                    <g class="coverage-cloud coverage-cloud--atlantic" transform="translate(242 30)">
+                        <path d="M0 10q0-5 6-5 2-6 8-3 4-5 9 0 6-1 7 5 5 1 3 5H2z" />
+                    </g>
+                    <g class="coverage-cloud coverage-cloud--asia" transform="translate(474 52)">
+                        <path d="M0 10q0-5 6-5 2-6 8-3 4-5 9 0 6-1 7 5 5 1 3 5H2z" />
+                    </g>
+                    <g class="coverage-cloud coverage-cloud--south" transform="translate(333 105)">
+                        <path d="M0 9q0-4 5-4 2-5 7-2 4-4 8 0 5-1 6 4 5 1 3 5H2z" />
+                    </g>
+                    <path class="coverage-route" d="M116 68 Q 258 5 391 57 T 616 91" />
+                    <path class="coverage-route" d="M486 84 Q 650 14 116 68" />
+                    <path class="coverage-route" d="M137 151 Q 275 98 391 57" />
+                    <path class="coverage-route" d="M391 57 Q 500 30 574 127" />
+                    <path class="coverage-route" d="M391 57 Q 423 78 421 111" />
+                    <g class="coverage-traffic coverage-traffic--atlantic" aria-hidden="true">
+                        <path class="coverage-traffic-trail" d="M-21 0 H-3" />
+                        <circle class="coverage-traffic-core" r="4" />
+                    </g>
+                    <g class="coverage-traffic coverage-traffic--pacific" aria-hidden="true">
+                        <path class="coverage-traffic-trail" d="M-21 0 H-3" />
+                        <circle class="coverage-traffic-core" r="4" />
+                    </g>
+                    <g class="coverage-traffic coverage-traffic--south" aria-hidden="true">
+                        <path class="coverage-traffic-trail" d="M-21 0 H-3" />
+                        <circle class="coverage-traffic-core" r="4" />
+                    </g>
+                    <g class="coverage-traffic coverage-traffic--asia" aria-hidden="true">
+                        <path class="coverage-traffic-trail" d="M-21 0 H-3" />
+                        <circle class="coverage-traffic-core" r="4" />
+                    </g>
+                    <g class="coverage-traffic coverage-traffic--africa" aria-hidden="true">
+                        <path class="coverage-traffic-trail" d="M-21 0 H-3" />
+                        <circle class="coverage-traffic-core" r="4" />
+                    </g>
+                    <circle class="coverage-node" cx="116" cy="68" r="5" />
+                    <circle class="coverage-node" cx="391" cy="57" r="5" />
+                    <circle class="coverage-node" cx="486" cy="84" r="5" />
+                    <circle class="coverage-node" cx="574" cy="127" r="5" />
+                    <g class="coverage-satellite">
+                        <path d="M-15-5h8l7 5-7 5h-8l4-5zM7-5h8l-4 5 4 5H7L0 0zM-2-2h4v4h-4z" fill="#a66b17" stroke="#fff" stroke-width="1.2" />
+                        <circle r="10" fill="none" stroke="#a66b17" stroke-opacity=".45" stroke-width="1" />
+                    </g>
+                </g>
+                <ellipse class="coverage-globe-shading" cx="380" cy="85" rx="359" ry="77" />
+            </svg>
+        </div>
     </div>
 
     <dialog class="welcome-dialog" id="welcome-dialog" aria-labelledby="welcome-heading" aria-describedby="welcome-intro">
@@ -3269,6 +3573,16 @@
 
                 <div class="team-grid">
                     <article class="team-card">
+                        <img class="team-photo" src="atul-team-photo.png" alt="Atul Maurya, Founder and Cloud Advisor" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80';">
+                        <div>
+                            <h3>Atul Maurya</h3>
+                            <span class="team-role">Founder &amp; Microsoft Solutions Consultant</span>
+                            <p>Helps businesses plan and adopt Microsoft cloud, security, and workplace solutions.</p>
+                            <a class="linkedin-link" href="https://www.linkedin.com/in/aatul-maurya/" target="_blank" rel="noopener noreferrer">View LinkedIn profile</a>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
                         <img class="team-photo" src="ravi-gupta.jpg.jpg" alt="Ravi Gupta, Network, Database, and Security Specialist" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80';">
                         <div>
                             <h3>Ravi Gupta</h3>
@@ -3723,6 +4037,7 @@
             pageViews.forEach(function (page) {
                 page.classList.toggle('active', page === activePage);
             });
+            document.body.classList.toggle('home-motion-active', activePage.id === 'home');
 
             document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
                 if (link.getAttribute('href') === `#${activePage.id}`) {
