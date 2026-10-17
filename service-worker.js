@@ -1,7 +1,8 @@
-const CACHE_NAME = 'atul-maurya-cloud-v23';
+const CACHE_NAME = 'atul-maurya-cloud-v25';
 const APP_SHELL = [
   './',
   './index.html',
+  './world-map-land.svg',
   './manifest.webmanifest',
   './logo.png.png',
   './myphoto.jpg.jpg',
