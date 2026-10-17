@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f7f9f7">
-    <meta name="description" content="Cloud, Microsoft, cybersecurity, and AI automation services built around the way your business works.">
+    <meta name="theme-color" content="#f6f9f7">
+    <meta name="description" content="Your cloud services partner for Microsoft Azure, Microsoft 365, Teams, SharePoint, OneDrive, Exchange, Entra, Intune, Defender, Copilot, Power Platform, and Dynamics 365. Serving regional and worldwide clients.">
     <title>Atul Maurya Cloud Solution | Cloud, IT &amp; AI Services</title>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="logo.png.png">
@@ -18,11 +18,12 @@
             --muted: #607183;
             --teal: #087f8c;
             --teal-deep: #076b73;
+            --green: #16856f;
             --mint: #b9edda;
-            --paper: #f7f9f7;
+            --mint-soft: #eaf4f0;
+            --paper: #f6f9f7;
             --white: #fff;
-            --line: #e1e8e5;
-            --cream: #f3ecdf;
+            --line: #dce7e2;
             --shadow: 0 18px 50px rgba(23, 43, 66, 0.09);
             --content: 1180px;
         }
@@ -42,8 +43,8 @@
             z-index: -1;
             inset: 0;
             background:
-                radial-gradient(ellipse at 84% 12%, rgba(81, 191, 161, 0.11), transparent 31rem),
-                radial-gradient(ellipse at 4% 55%, rgba(84, 159, 190, 0.07), transparent 27rem);
+                radial-gradient(ellipse at 84% 12%, rgba(81, 191, 161, 0.1), transparent 31rem),
+                radial-gradient(ellipse at 4% 55%, rgba(84, 159, 151, 0.055), transparent 27rem);
             content: "";
             pointer-events: none;
         }
@@ -67,8 +68,8 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #24a889;
-            box-shadow: 0 0 0 5px rgba(36, 168, 137, 0.12);
+            background: var(--green);
+            box-shadow: 0 0 0 5px rgba(22, 133, 111, 0.12);
             content: "";
         }
         h1, h2, h3, p { margin-top: 0; }
@@ -130,7 +131,7 @@
             transition: background 180ms ease, color 180ms ease;
         }
         .nav-menu a:hover,
-        .nav-menu a[aria-current="location"] { background: #eaf5f0; color: var(--teal-deep); }
+        .nav-menu a[aria-current="location"] { background: var(--mint-soft); color: var(--teal-deep); }
         .nav-actions { display: flex; align-items: center; gap: 0.7rem; }
         .menu-toggle {
             display: none;
@@ -161,15 +162,17 @@
         }
         .button:hover { transform: translateY(-2px); }
         .button-primary {
-            background: linear-gradient(135deg, var(--teal), #159b83);
+            background: linear-gradient(135deg, var(--teal), var(--green));
             box-shadow: 0 10px 25px rgba(8, 127, 140, 0.2);
             color: #fff;
         }
         .button-primary:hover { box-shadow: 0 14px 30px rgba(8, 127, 140, 0.28); }
-        .button-soft { border-color: #e6dccb; background: var(--cream); color: var(--ink); }
-        .button-soft:hover { background: #ebe0d0; }
+        .button-soft { border-color: var(--line); background: var(--mint-soft); color: var(--ink); }
+        .button-soft:hover { background: #dcefe6; }
         .button-outline { border-color: var(--line); background: #fff; color: var(--ink); }
-        .button-outline:hover { border-color: #b9d7cc; background: #f6fbf8; }
+        .button-outline:hover { border-color: #a8d0bf; background: #f2f8f5; }
+        .button-whatsapp { border-color: #168a4a; background: #168a4a; color: #fff; box-shadow: 0 10px 25px rgba(22, 138, 74, 0.19); }
+        .button-whatsapp:hover { background: #11773e; box-shadow: 0 14px 30px rgba(22, 138, 74, 0.26); }
 
         .hero {
             position: relative;
@@ -203,14 +206,14 @@
             gap: 0.55rem;
             margin-bottom: 1.25rem;
             padding: 0.45rem 0.75rem;
-            border: 1px solid #d6e8df;
+            border: 1px solid #cfe4d9;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.75);
             color: var(--teal-deep);
             font-size: 0.78rem;
             font-weight: 700;
         }
-        .hero-kicker span { color: #d59a47; letter-spacing: 0.06em; }
+        .hero-kicker span { color: var(--green); letter-spacing: 0.06em; }
         .hero h1 {
             max-width: 720px;
             margin: 0;
@@ -218,7 +221,25 @@
             line-height: 0.99;
             letter-spacing: -0.075em;
         }
-        .hero h1 em { color: var(--teal); font-style: normal; }
+        .hero h1 em {
+            position: relative;
+            color: var(--teal);
+            font-style: normal;
+            white-space: nowrap;
+        }
+        .hero h1 em.is-typing::after {
+            display: inline-block;
+            width: 2px;
+            height: 0.88em;
+            margin-left: 0.08em;
+            background: currentColor;
+            vertical-align: -0.04em;
+            animation: typing-caret 750ms steps(1, end) infinite;
+            content: "";
+        }
+        @keyframes typing-caret {
+            50% { opacity: 0; }
+        }
         .hero-copy > p {
             max-width: 610px;
             margin: 1.4rem 0 0;
@@ -243,7 +264,7 @@
             padding: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.86);
             border-radius: 30px;
-            background: linear-gradient(145deg, #e4f2ed, #e2eef2 60%, #f5eee1);
+            background: linear-gradient(145deg, #e4f2ed, #e3f0eb 60%, #f1f6f2);
             box-shadow: var(--shadow);
         }
         .hero-photo {
@@ -287,48 +308,85 @@
             height: 38px;
             place-items: center;
             border-radius: 12px;
-            background: #e5f5ef;
+            background: var(--mint-soft);
             color: var(--teal);
             font-size: 1.15rem;
         }
         .hero-float strong { display: block; font-size: 0.77rem; }
         .hero-float small { display: block; color: var(--muted); font-size: 0.68rem; }
 
-        .partner-strip { border-block: 1px solid var(--line); background: rgba(255, 255, 255, 0.66); }
-        .partner-inner { display: flex; min-height: 92px; align-items: center; justify-content: space-between; gap: 1rem; }
-        .partner-label { flex: 0 0 auto; color: var(--muted); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-        .partner-logos { display: flex; flex: 1; align-items: center; justify-content: space-around; gap: 1rem; }
-        .partner-logos img { width: 38px; height: 38px; object-fit: contain; opacity: 0.82; }
-        .partner-logos .microsoft-mark { width: 130px; height: 32px; }
+        .promise-section { background: var(--paper); }
+        .centered-heading { max-width: 850px; margin: 0 auto 2.5rem; text-align: center; }
+        .centered-heading h2 {
+            margin: 0 0 0.65rem;
+            font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+            line-height: 1.1;
+            letter-spacing: -0.055em;
+        }
+        .gradient-text {
+            background: linear-gradient(100deg, var(--teal), var(--green));
+            background-clip: text;
+            color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .centered-heading > p:last-child { margin: 0; color: var(--muted); }
+        .promise-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .promise-card {
+            min-height: 226px;
+            padding: 1.55rem;
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            background: #fff;
+            box-shadow: 0 3px 8px rgba(23, 43, 66, 0.035);
+        }
+        .feature-icon {
+            display: grid;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.2rem;
+            place-items: center;
+            border-radius: 13px;
+            background: linear-gradient(145deg, var(--teal), var(--green));
+            color: #fff;
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+        .feature-icon--pink { background: linear-gradient(145deg, #087f8c, #16856f); }
+        .feature-icon--orange { background: linear-gradient(145deg, #0b7285, #269b7b); }
+        .feature-icon--teal { background: linear-gradient(145deg, #16856f, #087f8c); }
+        .promise-card h3, .reason-card h3 { margin: 0 0 0.45rem; font-size: 1.06rem; letter-spacing: -0.025em; }
+        .promise-card p, .reason-card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 
         .solutions-section { background: #fff; }
+        .solutions-section .section-heading { margin-inline: auto; text-align: center; }
         .solutions-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
         .solution-card {
             display: flex;
-            min-height: 340px;
+            min-height: 365px;
             flex-direction: column;
             align-items: flex-start;
             padding: clamp(1.35rem, 3vw, 2rem);
             border: 1px solid var(--line);
-            border-radius: 22px;
-            background: linear-gradient(160deg, #fff 56%, #f5faf7);
-            box-shadow: 0 10px 32px rgba(23, 43, 66, 0.045);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 3px 9px rgba(23, 43, 66, 0.04);
             transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
         }
         .solution-card:hover { transform: translateY(-5px); border-color: #b7d9cc; box-shadow: var(--shadow); }
         .solution-icon {
             display: grid;
-            width: 54px;
-            height: 54px;
+            width: 60px;
+            height: 60px;
             margin-bottom: 1.35rem;
             place-items: center;
-            border-radius: 17px;
-            background: linear-gradient(145deg, #d8f2e7, #dcecf2);
-            color: var(--teal-deep);
+            border-radius: 13px;
+            background: linear-gradient(145deg, var(--teal), var(--green));
+            color: #fff;
             font-size: 1.45rem;
         }
-        .solution-card:nth-child(2) .solution-icon { background: linear-gradient(145deg, #e3e8fb, #f0e5f4); color: #6254a2; }
-        .solution-card:nth-child(3) .solution-icon { background: linear-gradient(145deg, #f7e6d6, #f8efd9); color: #a56b29; }
+        .solution-card:nth-child(2) .solution-icon { background: linear-gradient(145deg, #0b7285, #16856f); }
+        .solution-card:nth-child(3) .solution-icon { background: linear-gradient(145deg, #087f8c, #269b7b); }
         .solution-card h3 { margin: 0 0 0.55rem; font-size: 1.35rem; letter-spacing: -0.035em; }
         .solution-card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
         .solution-list { display: grid; gap: 0.55rem; margin: 1.2rem 0 1.4rem; padding: 0; list-style: none; color: var(--ink-soft); font-size: 0.83rem; }
@@ -337,17 +395,12 @@
         .text-link span { display: inline-block; margin-left: 0.25rem; transition: transform 180ms ease; }
         .text-link:hover span { transform: translateX(4px); }
 
-        .value-section { position: relative; overflow: hidden; }
-        .value-layout { display: grid; grid-template-columns: 0.82fr 1.18fr; align-items: center; gap: clamp(2rem, 6vw, 5rem); }
-        .value-copy h2 { margin: 0 0 1rem; font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.08; letter-spacing: -0.055em; }
-        .value-copy p { margin: 0; color: var(--muted); }
-        .value-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
-        .value-point { min-height: 142px; padding: 1.15rem; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.82); }
-        .value-point strong { display: block; margin-bottom: 0.4rem; font-family: "Manrope", sans-serif; font-size: 0.96rem; }
-        .value-point p { margin: 0; color: var(--muted); font-size: 0.82rem; }
-        .value-number { display: inline-block; margin-bottom: 0.7rem; color: var(--teal); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+        .reasons-section { background: var(--paper); }
+        .reasons-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .reason-card { min-height: 220px; padding: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+        .reason-card .feature-icon { margin-bottom: 1.1rem; }
 
-        .global-section { overflow: hidden; background: #edf5f1; }
+        .global-section { overflow: hidden; background: var(--mint-soft); }
         .global-grid { display: grid; grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.8fr); align-items: center; gap: 1rem; }
         .global-copy h2 { margin: 0 0 0.8rem; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.055em; }
         .global-copy p { margin: 0; color: var(--muted); }
@@ -358,10 +411,18 @@
         .map-route { fill: none; stroke: rgba(8, 127, 140, 0.5); stroke-width: 2.5; stroke-dasharray: 3 10; stroke-linecap: round; animation: route-flow 2.1s linear infinite; }
         .map-route:nth-child(even) { animation-direction: reverse; animation-duration: 1.7s; }
         @keyframes route-flow { to { stroke-dashoffset: -26; } }
-        .map-packet { pointer-events: none; offset-rotate: auto; animation: packet-flight 7s linear infinite; filter: drop-shadow(0 0 7px rgba(24, 193, 184, 0.9)); }
-        .map-packet--fast { animation-delay: -3.3s; animation-duration: 5.2s; opacity: 0.82; }
-        .map-packet circle { fill: #fff; stroke: #10aebd; stroke-width: 3; }
-        .map-packet path { fill: none; stroke: rgba(16, 174, 189, 0.9); stroke-width: 5; stroke-linecap: round; }
+        .map-packet { pointer-events: none; offset-rotate: auto; animation: packet-flight 7s linear infinite; filter: drop-shadow(0 0 7px rgba(22, 133, 111, 0.65)); }
+        .map-packet--fast { animation-delay: -3.3s; animation-duration: 5.2s; }
+        .map-packet--incoming { animation-direction: reverse; }
+        .map-packet--incoming.packet-atlantic { animation-delay: -1.1s; }
+        .map-packet--incoming.packet-asia { animation-delay: -2.4s; }
+        .map-packet--incoming.packet-sea { animation-delay: -3.7s; }
+        .map-packet--incoming.packet-pacific { animation-delay: -4.8s; }
+        .map-packet--incoming.packet-south { animation-delay: -5.9s; }
+        .map-packet--incoming.packet-africa { animation-delay: -2.9s; }
+        .map-packet--incoming.packet-australia { animation-delay: -4.1s; }
+        .map-packet circle { fill: #fff; stroke: var(--teal); stroke-width: 3; }
+        .map-packet path { fill: none; stroke: rgba(8, 127, 140, 0.88); stroke-width: 5; stroke-linecap: round; }
         .packet-atlantic { offset-path: path("M 294 119 Q 387 52 500 93"); }
         .packet-asia { offset-path: path("M 500 93 Q 606 76 702 170"); }
         .packet-sea { offset-path: path("M 702 170 Q 750 159 788 211"); }
@@ -369,17 +430,22 @@
         .packet-south { offset-path: path("M 294 119 Q 300 200 371 271"); }
         .packet-africa { offset-path: path("M 500 93 Q 575 143 602 218"); }
         .packet-australia { offset-path: path("M 500 93 Q 724 65 919 295"); }
-        @keyframes packet-flight { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-        .map-hub-pulse { fill: none; stroke: rgba(8, 127, 140, 0.58); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: hub-pulse 2.7s ease-out infinite; }
+        @keyframes packet-flight {
+            0% { offset-distance: 0%; opacity: 0; }
+            6% { opacity: 1; }
+            94% { opacity: 1; }
+            100% { offset-distance: 100%; opacity: 0; }
+        }
+        .map-hub-pulse { fill: none; stroke: rgba(22, 133, 111, 0.58); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: hub-pulse 2.7s ease-out infinite; }
         @keyframes hub-pulse { 0% { opacity: 0.65; transform: scale(.65); } 100% { opacity: 0; transform: scale(2.4); } }
-        .map-hub { fill: #087f8c; stroke: #fff; stroke-width: 3; }
-        .map-label { fill: var(--ink); font: 700 13px "DM Sans", sans-serif; paint-order: stroke; stroke: rgba(237, 245, 241, 0.96); stroke-width: 4px; stroke-linejoin: round; }
+        .map-hub { fill: var(--teal-deep); stroke: #fff; stroke-width: 3; }
+        .map-label { fill: var(--ink); font: 700 13px "DM Sans", sans-serif; paint-order: stroke; stroke: rgba(234, 244, 240, 0.96); stroke-width: 4px; stroke-linejoin: round; }
 
         .pricing-section { background: #fff; }
         .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 1rem; }
         .price-card { position: relative; display: flex; flex-direction: column; padding: 1.55rem; border: 1px solid var(--line); border-radius: 21px; background: #fff; box-shadow: 0 10px 32px rgba(23, 43, 66, 0.045); }
-        .price-card.featured { border-color: rgba(8, 127, 140, 0.42); background: linear-gradient(160deg, #eef8f4, #fff 62%); box-shadow: 0 18px 45px rgba(8, 127, 140, 0.11); }
-        .popular-tag { position: absolute; top: 1rem; right: 1rem; padding: 0.35rem 0.65rem; border-radius: 999px; background: #dff3e9; color: var(--teal-deep); font-size: 0.68rem; font-weight: 800; }
+        .price-card.featured { border-color: rgba(8, 127, 140, 0.42); background: linear-gradient(160deg, #eaf4f0, #fff 62%); box-shadow: 0 18px 45px rgba(8, 127, 140, 0.11); }
+        .popular-tag { position: absolute; top: 1rem; right: 1rem; padding: 0.35rem 0.65rem; border-radius: 999px; background: #dcefe6; color: var(--teal-deep); font-size: 0.68rem; font-weight: 800; }
         .price-card h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
         .price { margin: 0.75rem 0; font-family: "Manrope", sans-serif; font-size: 2.25rem; font-weight: 800; letter-spacing: -0.06em; }
         .price small { color: var(--muted); font-family: "DM Sans", sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0; }
@@ -399,23 +465,23 @@
             overflow: hidden;
             border-radius: 26px;
             background:
-                radial-gradient(circle at 90% 10%, rgba(185, 237, 218, 0.27), transparent 16rem),
-                linear-gradient(120deg, #142e45, #17465a);
+                radial-gradient(circle at 90% 10%, rgba(185, 237, 218, 0.19), transparent 16rem),
+                linear-gradient(120deg, #172b42, #124f58);
             color: #fff;
         }
         .contact-panel h2 { max-width: 640px; margin: 0 0 0.55rem; font-size: clamp(1.8rem, 3.8vw, 3rem); line-height: 1.1; letter-spacing: -0.05em; }
         .contact-panel p { max-width: 620px; margin: 0; color: #c9d9de; }
         .contact-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 0.65rem; }
-        .contact-panel .button-outline { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.1); color: #fff; }
+        .contact-panel .button-outline { border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.08); color: #fff; }
 
-        .site-footer { padding: 2.25rem 0 1.4rem; border-top: 1px solid var(--line); background: #f7f9f7; }
+        .site-footer { padding: 2.25rem 0 1.4rem; border-top: 1px solid var(--line);         background: var(--paper); }
         .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding-bottom: 1.6rem; }
         .footer-about { max-width: 440px; }
         .footer-about p { margin: 0.75rem 0 0; color: var(--muted); font-size: 0.87rem; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 0.7rem 1.3rem; color: var(--ink-soft); font-size: 0.84rem; font-weight: 600; }
         .footer-links a:hover { color: var(--teal); }
         .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.76rem; }
-        .floating-contact { position: fixed; z-index: 15; right: 1.25rem; bottom: 1.25rem; box-shadow: 0 12px 28px rgba(8, 127, 140, 0.25); }
+        .floating-contact { position: fixed; z-index: 15; right: 1.25rem; bottom: 1.25rem; box-shadow: 0 12px 28px rgba(22, 138, 74, 0.25); }
 
         .contact-dialog {
             width: min(490px, calc(100% - 2rem));
@@ -473,13 +539,9 @@
             .hero-photo { height: 358px; }
             .hero-float { left: -0.35rem; }
             .hero-caption { right: -0.35rem; bottom: 1.4rem; }
-            .partner-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 0.75rem; padding-block: 1rem; }
-            .partner-logos { width: 100%; justify-content: space-between; gap: 0.65rem; }
-            .partner-logos img { width: 31px; height: 31px; }
-            .partner-logos .microsoft-mark { width: 100px; }
             .solutions-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .promise-grid, .reasons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .solution-card { min-height: 0; }
-            .value-layout { grid-template-columns: 1fr; }
             .contact-panel { align-items: flex-start; flex-direction: column; }
             .footer-top { flex-direction: column; }
             .footer-bottom { flex-direction: column; gap: 0.35rem; }
@@ -492,7 +554,7 @@
             .hero-photo { height: 310px; border-radius: 17px; }
             .hero-caption { bottom: 1rem; padding: 0.75rem; }
             .hero-float { top: 1.25rem; }
-            .value-points { grid-template-columns: 1fr; }
+            .promise-grid, .reasons-grid { grid-template-columns: 1fr; }
             .map-label { font-size: 22px; }
             .floating-contact { right: 0.8rem; bottom: 0.8rem; }
             .floating-contact span { display: none; }
@@ -530,12 +592,12 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <div class="hero-kicker"><span aria-hidden="true">✦</span> Cloud, Microsoft &amp; intelligent automation</div>
-                    <h1>Make technology your <em>next advantage.</em></h1>
+                    <div class="hero-kicker"><span aria-hidden="true">✦</span> Your cloud services partner · regional and worldwide</div>
+                    <h1 aria-label="Make technology your next advantage.">Make technology your <em class="typing-text" data-text="next advantage." aria-hidden="true">next advantage.</em></h1>
                     <p>We help growing businesses modernize the cloud, protect their people and data, and turn repetitive work into reliable workflows.</p>
                     <div class="hero-actions">
                         <button class="button button-primary" type="button" data-contact="Business consultation">Plan your next move <span aria-hidden="true">→</span></button>
-                        <a class="button button-soft" href="#services">Explore what we do</a>
+                        <a class="button button-whatsapp" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">Talk on WhatsApp <span aria-hidden="true">↗</span></a>
                     </div>
                     <div class="hero-proof" aria-label="What you can expect">
                         <span><b class="proof-check" aria-hidden="true">✓</b> Practical, not over-engineered</span>
@@ -557,16 +619,34 @@
             </div>
         </section>
 
-        <section class="partner-strip" aria-label="Technology platforms">
-            <div class="container partner-inner">
-                <span class="partner-label">Solutions across the Microsoft cloud</span>
-                <div class="partner-logos">
-                    <img src="microsoft.svg" alt="Microsoft">
-                    <img src="azure.svg" alt="Azure">
-                    <img src="teams.svg" alt="Microsoft Teams">
-                    <img src="powerbi.svg" alt="Power BI">
-                    <img src="powerapps.svg" alt="Power Apps">
-                    <img src="dynamics365.svg" alt="Dynamics 365">
+        <section class="section promise-section" aria-labelledby="promise-title">
+            <div class="container">
+                <div class="section-heading centered-heading reveal">
+                    <p class="eyebrow">Built for teams everywhere</p>
+                    <h2 id="promise-title">Technology support for <span class="gradient-text">business at every scale.</span></h2>
+                    <p>Regional guidance and worldwide remote delivery, with services shaped around your goals and your team.</p>
+                </div>
+                <div class="promise-grid">
+                    <article class="promise-card reveal">
+                        <span class="feature-icon" aria-hidden="true">▣</span>
+                        <h3>Enterprise-ready solutions</h3>
+                        <p>Thoughtful cloud foundations designed to grow with your organization.</p>
+                    </article>
+                    <article class="promise-card reveal reveal-delay-1">
+                        <span class="feature-icon feature-icon--pink" aria-hidden="true">ϟ</span>
+                        <h3>Practical delivery</h3>
+                        <p>Clear project steps, hands-on implementation, and a supported handover.</p>
+                    </article>
+                    <article class="promise-card reveal reveal-delay-1">
+                        <span class="feature-icon feature-icon--orange" aria-hidden="true">₹</span>
+                        <h3>Cost-conscious planning</h3>
+                        <p>Understand scope, licensing, usage, and costs before you commit.</p>
+                    </article>
+                    <article class="promise-card reveal reveal-delay-2">
+                        <span class="feature-icon feature-icon--teal" aria-hidden="true">♧</span>
+                        <h3>Long-term partnership</h3>
+                        <p>Ongoing support and improvement beyond the initial launch.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -574,76 +654,85 @@
         <section class="section solutions-section" id="services">
             <div class="container">
                 <div class="section-heading reveal">
-                    <p class="eyebrow">What we do</p>
-                    <h2>Everything you need to run a more capable business.</h2>
-                    <p>Choose a clear starting point. We’ll shape the work around your people, systems, and priorities.</p>
+                    <p class="eyebrow">Microsoft and cloud solutions</p>
+                    <h2>What can we help you <span class="gradient-text">build?</span></h2>
+                    <p>Microsoft technologies for a connected, secure, and productive workplace, delivered to fit your business.</p>
                 </div>
                 <div class="solutions-grid">
                     <article class="solution-card reveal">
-                        <span class="solution-icon" aria-hidden="true">☁</span>
-                        <h3>Cloud &amp; workplace</h3>
-                        <p>Build a secure, flexible foundation for your team, applications, and data.</p>
+                        <span class="solution-icon" aria-hidden="true">◎</span>
+                        <h3>Microsoft cloud &amp; workplace</h3>
+                        <p>Set up and connect the Microsoft services your team relies on every day.</p>
                         <ul class="solution-list">
                             <li>Azure architecture and migration</li>
-                            <li>Microsoft 365 and Teams</li>
-                            <li>Backup, identity, and cost control</li>
+                            <li>Microsoft 365: Teams, SharePoint, OneDrive, Exchange</li>
+                            <li>Entra ID, Intune, backup, and cost control</li>
                         </ul>
-                        <a class="text-link" href="#contact">Explore cloud services <span aria-hidden="true">→</span></a>
+                        <a class="text-link" href="#contact">Explore Microsoft cloud <span aria-hidden="true">→</span></a>
                     </article>
                     <article class="solution-card reveal reveal-delay-1">
-                        <span class="solution-icon" aria-hidden="true">◈</span>
-                        <h3>Security &amp; managed IT</h3>
+                        <span class="solution-icon" aria-hidden="true">▣</span>
+                        <h3>Security &amp; protection</h3>
                         <p>Reduce risk and keep essential technology dependable as you grow.</p>
                         <ul class="solution-list">
-                            <li>Security and access reviews</li>
-                            <li>Endpoint, network, and cloud protection</li>
+                            <li>Microsoft Defender and security reviews</li>
+                            <li>Entra ID, Intune, endpoint, and cloud protection</li>
                             <li>Ongoing support and monitoring</li>
                         </ul>
-                        <a class="text-link" href="#contact">Strengthen your environment <span aria-hidden="true">→</span></a>
+                        <a class="text-link" href="#contact">Secure your environment <span aria-hidden="true">→</span></a>
                     </article>
                     <article class="solution-card reveal reveal-delay-2">
                         <span class="solution-icon" aria-hidden="true">✳</span>
-                        <h3>AI &amp; business automation</h3>
+                        <h3>Business apps &amp; AI</h3>
                         <p>Make everyday work faster with connected apps and thoughtful automation.</p>
                         <ul class="solution-list">
-                            <li>Power Apps and Power Automate</li>
-                            <li>AI-assisted workflows and copilots</li>
-                            <li>Power BI insights and integrations</li>
+                            <li>Power Apps, Power Automate, and Power BI</li>
+                            <li>Copilot and AI-assisted workflows</li>
+                            <li>Dynamics 365 and business integrations</li>
                         </ul>
-                        <a class="text-link" href="#contact">Find your automation wins <span aria-hidden="true">→</span></a>
+                        <a class="text-link" href="#contact">Explore apps and AI <span aria-hidden="true">→</span></a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section value-section" id="approach">
-            <div class="container value-layout">
-                <div class="value-copy reveal">
-                    <p class="eyebrow">A better way to deliver</p>
-                    <h2>Good technology should make work feel simpler.</h2>
-                    <p>We start by listening, map the real problem, and agree on what success looks like. Then we deliver in practical steps—with clear ownership, documentation, and support.</p>
-                    <a class="button button-soft" href="#contact" style="margin-top:1.35rem">Talk through a challenge <span aria-hidden="true">→</span></a>
+        <section class="section reasons-section" id="approach">
+            <div class="container">
+                <div class="section-heading centered-heading reveal">
+                    <p class="eyebrow">Why work with us</p>
+                    <h2>Why choose your <span class="gradient-text">cloud partner?</span></h2>
+                    <p>Experienced, practical support across the Microsoft technologies that power modern work.</p>
                 </div>
-                <div class="value-points">
-                    <article class="value-point reveal">
-                        <span class="value-number">01 / CLARITY</span>
-                        <strong>A plan that fits</strong>
-                        <p>Priorities, costs, risks, and next steps made understandable.</p>
+                <div class="reasons-grid">
+                    <article class="reason-card reveal">
+                        <span class="feature-icon" aria-hidden="true">&lt;/&gt;</span>
+                        <h3>Microsoft expertise</h3>
+                        <p>Azure, Microsoft 365, Teams, SharePoint, Entra, Intune, and more in one connected plan.</p>
                     </article>
-                    <article class="value-point reveal reveal-delay-1">
-                        <span class="value-number">02 / DELIVERY</span>
-                        <strong>Built with care</strong>
-                        <p>Secure implementation, tested integrations, and a smooth handover.</p>
+                    <article class="reason-card reveal reveal-delay-1">
+                        <span class="feature-icon feature-icon--pink" aria-hidden="true">↗</span>
+                        <h3>Full implementation support</h3>
+                        <p>From discovery and configuration to testing, launch, documentation, and handover.</p>
                     </article>
-                    <article class="value-point reveal reveal-delay-1">
-                        <span class="value-number">03 / SECURITY</span>
-                        <strong>Protection by design</strong>
-                        <p>Identity, access, resilience, and governance considered from day one.</p>
+                    <article class="reason-card reveal reveal-delay-2">
+                        <span class="feature-icon feature-icon--orange" aria-hidden="true">✳</span>
+                        <h3>AI that fits your work</h3>
+                        <p>Copilot, Power Platform, and automation selected for real business needs.</p>
                     </article>
-                    <article class="value-point reveal reveal-delay-2">
-                        <span class="value-number">04 / PARTNERSHIP</span>
-                        <strong>Here after go-live</strong>
-                        <p>Support and improvement as your business and needs evolve.</p>
+                    <article class="reason-card reveal">
+                        <span class="feature-icon feature-icon--teal" aria-hidden="true">₹</span>
+                        <h3>Cost-aware decisions</h3>
+                        <p>Plan licenses and cloud usage carefully, with scope and trade-offs explained.</p>
+                    </article>
+                    <article class="reason-card reveal reveal-delay-1">
+                        <span class="feature-icon" aria-hidden="true">ϟ</span>
+                        <h3>Focused delivery</h3>
+                        <p>Practical milestones and direct communication help keep work moving.</p>
+                    </article>
+                    <article class="reason-card reveal reveal-delay-2">
+                        <span class="feature-icon feature-icon--pink" aria-hidden="true">◇</span>
+                        <h3>Secure &amp; scalable</h3>
+                        <p>Build with identity, protection, resilience, and future growth in mind.</p>
                     </article>
                 </div>
             </div>
@@ -653,9 +742,9 @@
             <div class="container global-grid">
                 <div class="global-copy reveal">
                     <p class="eyebrow">Connected wherever you work</p>
-                    <h2>Local understanding. Global reach.</h2>
-                    <p>We support distributed teams and cloud environments across time zones, connecting people, systems, and services with dependable digital foundations.</p>
-                    <span class="global-note">Remote cloud and IT delivery worldwide</span>
+                    <h2>Your cloud partner, wherever business takes you.</h2>
+                    <p>We provide cloud and IT services to businesses across their region and worldwide. From local guidance to remote delivery across time zones, we connect people, systems, and services with dependable digital foundations.</p>
+                    <span class="global-note">Regional service and worldwide remote delivery</span>
                 </div>
                 <svg class="world-map reveal" viewBox="0 0 1000 430" role="img" aria-labelledby="world-title world-desc">
                     <title id="world-title">Animated global service network</title>
@@ -683,6 +772,13 @@
                         <g class="map-packet map-packet--fast packet-south"><path d="M-32 0H-5"/><circle r="6"/></g>
                         <g class="map-packet map-packet--fast packet-africa"><path d="M-32 0H-5"/><circle r="6"/></g>
                         <g class="map-packet map-packet--fast packet-australia"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-atlantic"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-asia"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-sea"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-pacific"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-south"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-africa"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <g class="map-packet map-packet--incoming packet-australia"><path d="M-32 0H-5"/><circle r="6"/></g>
                         <circle class="map-hub-pulse" cx="294" cy="119" r="8"/>
                         <circle class="map-hub-pulse" cx="500" cy="93" r="8"/>
                         <circle class="map-hub-pulse" cx="702" cy="170" r="8"/>
@@ -763,6 +859,7 @@
                     </div>
                     <div class="contact-actions">
                         <button class="button button-primary" type="button" data-contact="Business consultation">Start a conversation <span aria-hidden="true">→</span></button>
+                        <a class="button button-whatsapp" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">Talk on WhatsApp <span aria-hidden="true">↗</span></a>
                         <a class="button button-outline" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">Book a time</a>
                     </div>
                 </div>
@@ -778,7 +875,7 @@
                         <img src="logo.png.png" alt="">
                         <span class="brand-name"><strong>Atul Maurya</strong><span>Cloud Solution Pvt. Ltd.</span></span>
                     </a>
-                    <p>Cloud, Microsoft, security, and automation services for businesses building better digital operations. Remote delivery for teams worldwide.</p>
+                    <p>Your cloud services partner for Azure, Microsoft 365, Teams, SharePoint, OneDrive, Exchange, Entra, Intune, Defender, Copilot, Power Platform, and Dynamics 365. Serving businesses across the region and worldwide.</p>
                 </div>
                 <nav class="footer-links" aria-label="Footer navigation">
                     <a href="#services">Services</a>
@@ -786,6 +883,7 @@
                     <a href="#global">Global delivery</a>
                     <a href="#pricing">Pricing</a>
                     <a href="mailto:samratatulmaurya9415@outlook.com">Email us</a>
+                    <a href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </nav>
             </div>
             <div class="footer-bottom">
@@ -795,7 +893,7 @@
         </div>
     </footer>
 
-    <button class="button button-primary floating-contact" type="button" data-contact="Quick question" aria-label="Contact us">Let’s talk <span aria-hidden="true">↗</span></button>
+    <a class="button button-whatsapp floating-contact" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer" aria-label="Talk to us on WhatsApp">WhatsApp <span aria-hidden="true">↗</span></a>
 
     <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-copy">
         <div class="dialog-head">
@@ -824,6 +922,28 @@
         const menuToggle = document.querySelector('.menu-toggle');
 
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const typingText = document.querySelector('.typing-text');
+        const fullTypingText = typingText.dataset.text;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            typingText.textContent = fullTypingText;
+        } else {
+            typingText.textContent = '';
+            typingText.classList.add('is-typing');
+            let typedCharacters = 0;
+            function typeNextCharacter() {
+                typedCharacters += 1;
+                typingText.textContent = fullTypingText.slice(0, typedCharacters);
+                if (typedCharacters < fullTypingText.length) {
+                    window.setTimeout(typeNextCharacter, 72);
+                } else {
+                    window.setTimeout(function () {
+                        typingText.classList.remove('is-typing');
+                    }, 900);
+                }
+            }
+            window.setTimeout(typeNextCharacter, 360);
+        }
 
         function showContact(topic) {
             const subject = topic + ' inquiry';

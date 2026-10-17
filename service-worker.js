@@ -1,4 +1,4 @@
-const CACHE_NAME = 'atul-maurya-cloud-v25';
+const CACHE_NAME = 'atul-maurya-cloud-v27';
 const APP_SHELL = [
   './',
   './index.html',
