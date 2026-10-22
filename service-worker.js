@@ -1,16 +1,16 @@
-const CACHE_NAME = 'atul-maurya-cloud-v27';
+const CACHE_NAME = 'atul-maurya-cloud-v37';
 const APP_SHELL = [
   './',
   './index.html',
   './world-map-land.svg',
   './manifest.webmanifest',
   './logo.png.png',
+  './app-icon-192.png',
+  './app-icon-512.png',
   './myphoto.jpg.jpg',
   './iphoto.jpg.jpg.png',
   './atul-team-photo.png',
-  './ravi-gupta.jpg.jpg',
-  './vijay-singh.jpg.jpg',
-  './abdullah-ahmad.jpg.jpg',
+  './lic-agent-poster.png',
   './azure.svg',
   './microsoft.svg',
   './teams.svg',

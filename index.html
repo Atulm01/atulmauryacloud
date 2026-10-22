@@ -7,7 +7,8 @@
     <meta name="description" content="Your cloud services partner for Microsoft Azure, Microsoft 365, Teams, SharePoint, OneDrive, Exchange, Entra, Intune, Defender, Copilot, Power Platform, and Dynamics 365. Serving regional and worldwide clients.">
     <title>Atul Maurya Cloud Solution | Cloud, IT &amp; AI Services</title>
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" href="logo.png.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="app-icon-512.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="app-icon-512.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
 
@@ -185,6 +186,17 @@
         .button-outline:hover { border-color: #a8d0bf; background: #f2f8f5; }
         .button-whatsapp { border-color: #168a4a; background: #168a4a; color: #fff; box-shadow: 0 10px 25px rgba(22, 138, 74, 0.19); }
         .button-whatsapp:hover { background: #11773e; box-shadow: 0 14px 30px rgba(22, 138, 74, 0.26); }
+        .button-cta.button-primary { animation: consultation-glow 4s ease-in-out infinite; }
+        .button-cta.button-whatsapp { animation: whatsapp-glow 4s ease-in-out infinite; animation-delay: 1.2s; }
+        .button-cta svg { width: 18px; height: 18px; flex: 0 0 auto; }
+        @keyframes consultation-glow {
+            0%, 100% { box-shadow: 0 10px 25px rgba(8, 127, 140, 0.2); }
+            50% { box-shadow: 0 12px 30px rgba(8, 127, 140, 0.38); }
+        }
+        @keyframes whatsapp-glow {
+            0%, 100% { box-shadow: 0 10px 25px rgba(22, 138, 74, 0.19); }
+            50% { box-shadow: 0 12px 30px rgba(22, 138, 74, 0.38); }
+        }
 
         .hero {
             position: relative;
@@ -226,6 +238,10 @@
             font-weight: 700;
         }
         .hero-kicker span { color: var(--green); letter-spacing: 0.06em; }
+        .availability-chip { display: inline-flex; align-items: center; gap: 0.55rem; margin: 0 0 1.05rem; padding: 0.42rem 0.75rem; border: 1px solid #cfe4d9; border-radius: 999px; background: rgba(255, 255, 255, 0.82); color: var(--ink-soft); font-size: 0.76rem; font-weight: 700; }
+        .availability-dot { position: relative; width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; background: #16a36a; box-shadow: 0 0 0 3px rgba(22, 163, 106, 0.12); }
+        .availability-dot::after { position: absolute; inset: -4px; border: 1px solid rgba(22, 163, 106, 0.48); border-radius: 50%; animation: online-pulse 2s ease-out infinite; content: ""; }
+        @keyframes online-pulse { 0% { opacity: 0.8; transform: scale(0.65); } 100% { opacity: 0; transform: scale(1.8); } }
         .hero h1 {
             max-width: 720px;
             margin: 0;
@@ -259,6 +275,24 @@
             font-size: clamp(1rem, 1.4vw, 1.18rem);
         }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.7rem; }
+        .install-app-button svg { width: 18px; height: 18px; flex: 0 0 auto; }
+        .install-dialog {
+            width: min(500px, calc(100% - 2rem));
+            max-width: none;
+            padding: 1.5rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: #fff;
+            color: var(--ink);
+            box-shadow: 0 24px 80px rgba(23, 43, 66, 0.25);
+        }
+        .install-dialog::backdrop { background: rgba(13, 34, 51, 0.56); backdrop-filter: blur(4px); }
+        .install-dialog h2 { margin: 0; font-size: 1.4rem; letter-spacing: -0.04em; }
+        .install-dialog > p { margin: 0.7rem 0 1rem; color: var(--muted); font-size: 0.9rem; }
+        .install-steps { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+        .install-steps li { padding: 0.85rem 1rem; border: 1px solid var(--line); border-radius: 13px; background: var(--paper); color: var(--ink-soft); font-size: 0.86rem; }
+        .install-steps strong { display: block; margin-bottom: 0.2rem; color: var(--ink); }
+        .install-dialog .dialog-actions { justify-content: flex-end; }
         .hero-proof {
             display: flex;
             flex-wrap: wrap;
@@ -456,6 +490,11 @@
         .map-frame.is-light .map-hub { fill: #fff; stroke: #087f8c; }
         .map-frame.is-light .map-label { fill: #172b42; stroke: rgba(234, 244, 240, 0.96); }
         .map-frame.is-light .map-controls button { border-color: var(--line); background: #fff; color: var(--ink); }
+        .about-grid, .career-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .about-card, .career-card { padding: clamp(1.4rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 10px 32px rgba(23, 43, 66, 0.045); }
+        .about-card h3, .career-card h3 { margin: 0 0 0.55rem; font-size: 1.2rem; }
+        .about-card p, .career-card p { margin: 0; color: var(--muted); }
+        .career-card .button { margin-top: 1.2rem; }
         body.page-mode main > section { display: none; }
         body.page-mode main > section.is-page-visible { display: block; }
         body.page-mode main > #contact { display: block; }
@@ -512,6 +551,32 @@
         .footer-links a:hover { color: var(--teal); }
         .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.76rem; }
         .floating-contact { position: fixed; z-index: 15; right: 1.25rem; bottom: 1.25rem; box-shadow: 0 12px 28px rgba(22, 138, 74, 0.25); }
+
+        .chat-toggle { position: fixed; z-index: 16; bottom: 1.25rem; left: 1.25rem; display: inline-flex; min-height: 52px; align-items: center; gap: 0.65rem; padding: 0.75rem 1rem; border: 0; border-radius: 16px; background: linear-gradient(135deg, var(--ink), #245466); box-shadow: 0 14px 34px rgba(23, 43, 66, 0.24); color: #fff; cursor: pointer; font-size: 0.88rem; font-weight: 800; transition: transform 180ms ease, box-shadow 180ms ease; }
+        .chat-toggle:hover { transform: translateY(-2px); box-shadow: 0 18px 38px rgba(23, 43, 66, 0.3); }
+        .chat-toggle svg { width: 21px; height: 21px; }
+        .chat-panel { position: fixed; z-index: 25; bottom: 5.8rem; left: 1.25rem; display: flex; width: min(390px, calc(100vw - 2rem)); max-height: min(600px, calc(100dvh - 8rem)); flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: 0 24px 80px rgba(23, 43, 66, 0.24); }
+        .chat-panel[hidden] { display: none; }
+        .chat-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.1rem; background: linear-gradient(120deg, #172b42, #124f58); color: #fff; }
+        .chat-header-copy { display: flex; align-items: center; gap: 0.75rem; }
+        .chat-header-icon { display: grid; width: 42px; height: 42px; flex: 0 0 42px; place-items: center; border-radius: 14px; background: rgba(255, 255, 255, 0.13); }
+        .chat-header-icon svg { width: 23px; height: 23px; }
+        .chat-header h2 { margin: 0; font-family: "Manrope", sans-serif; font-size: 1rem; }
+        .chat-header p { margin: 0.1rem 0 0; color: #c9d9de; font-size: 0.75rem; }
+        .chat-close { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; font-size: 1.35rem; }
+        .chat-messages { display: flex; min-height: 190px; flex: 1 1 auto; flex-direction: column; gap: 0.7rem; overflow-y: auto; padding: 1rem; background: #f7faf8; }
+        .chat-message { max-width: 88%; padding: 0.7rem 0.85rem; border-radius: 15px; font-size: 0.85rem; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+        .chat-message--bot { align-self: flex-start; border: 1px solid var(--line); border-bottom-left-radius: 5px; background: #fff; color: var(--ink-soft); }
+        .chat-message--user { align-self: flex-end; border-bottom-right-radius: 5px; background: var(--teal); color: #fff; }
+        .chat-suggestions { display: flex; flex-wrap: wrap; gap: 0.45rem; padding: 0.75rem 1rem 0; background: #fff; }
+        .chat-suggestion { padding: 0.42rem 0.65rem; border: 1px solid #cfe4d9; border-radius: 999px; background: #f5faf7; color: var(--teal-deep); cursor: pointer; font-size: 0.74rem; font-weight: 700; }
+        .chat-suggestion:hover { background: var(--mint-soft); }
+        .chat-form { display: flex; align-items: center; gap: 0.55rem; padding: 0.8rem 1rem 0.9rem; background: #fff; }
+        .chat-input { width: 100%; min-width: 0; min-height: 46px; padding: 0.7rem 0.85rem; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: var(--ink); font: inherit; font-size: 0.85rem; }
+        .chat-send { display: grid; width: 46px; height: 46px; flex: 0 0 46px; place-items: center; border: 0; border-radius: 13px; background: var(--teal); color: #fff; cursor: pointer; }
+        .chat-send:hover { background: var(--teal-deep); }
+        .chat-send svg { width: 20px; height: 20px; }
+        .chat-note { margin: 0; padding: 0 1rem 0.8rem; background: #fff; color: var(--muted); font-size: 0.68rem; }
 
         .contact-dialog {
             width: min(490px, calc(100% - 2rem));
@@ -570,6 +635,7 @@
             .hero-float { left: -0.35rem; }
             .hero-caption { right: -0.35rem; bottom: 1.4rem; }
             .solutions-grid, .pricing-grid, .licensing-grid { grid-template-columns: 1fr; }
+            .about-grid, .career-grid { grid-template-columns: 1fr; }
             .promise-grid, .reasons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .solution-card { min-height: 0; }
             .contact-panel { align-items: flex-start; flex-direction: column; }
@@ -587,6 +653,8 @@
             .promise-grid, .reasons-grid { grid-template-columns: 1fr; }
             .map-label { font-size: 22px; }
             .floating-contact { right: 0.8rem; bottom: 0.8rem; }
+            .chat-toggle { bottom: 0.8rem; left: 0.8rem; }
+            .chat-panel { bottom: 4.9rem; left: 0.8rem; max-height: calc(100dvh - 6rem); }
             .floating-contact span { display: none; }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -594,6 +662,7 @@
             .reveal { opacity: 1; transform: none; }
             .map-data { stroke-dasharray: none; }
             .map-point { opacity: 1; transform: none; filter: none; }
+            .availability-dot::after { animation: none; }
         }
     </style>
 </head>
@@ -605,15 +674,20 @@
                 <span class="brand-name"><strong>Atul Maurya</strong><span>Cloud Solution Pvt. Ltd.</span></span>
             </a>
             <nav class="nav-menu" id="site-navigation" aria-label="Main navigation">
+                <a href="?page=home">Home</a>
                 <a href="?page=services">Services</a>
                 <a href="?page=approach">Our approach</a>
                 <a href="?page=global">Global delivery</a>
                 <a href="?page=licensing">Licensing</a>
                 <a href="?page=pricing">Pricing</a>
+                <a href="?page=career">Career</a>
                 <a href="?page=about">About</a>
             </nav>
             <div class="nav-actions">
-                <a class="button button-primary" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
+                <a class="button button-primary button-cta" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 3.5v3M16.5 3.5v3M4 9.5h16M8 13h3v3H8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Book a consultation <span aria-hidden="true">↗</span>
+                </a>
                 <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation">
                     <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                 </button>
@@ -626,11 +700,19 @@
             <div class="container hero-grid">
                 <div class="hero-copy">
                     <div class="hero-kicker"><span aria-hidden="true">✦</span> Your cloud services partner · regional and worldwide</div>
+                    <div class="availability-chip"><span class="availability-dot" aria-hidden="true"></span>Online support · Worldwide</div>
                     <h1 aria-label="Make technology your next advantage.">Make technology your <em class="typing-text" data-text="next advantage." aria-hidden="true">next advantage.</em></h1>
                     <p>We help growing businesses modernize the cloud, protect their people and data, and turn repetitive work into reliable workflows.</p>
                     <div class="hero-actions">
                         <button class="button button-primary" type="button" data-contact="Business consultation">Plan your next move <span aria-hidden="true">→</span></button>
-                        <a class="button button-whatsapp" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">Talk on WhatsApp <span aria-hidden="true">↗</span></a>
+                        <a class="button button-whatsapp button-cta" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 8.1c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.4.4 0 .3-.1 1.1-.6 1.5-.5.5-1.2.7-1.8.6-1-.2-2.2-.7-3.4-1.8-1.4-1.3-2.3-2.8-2.5-3.8-.2-.8.1-1.6.9-2.1Z" fill="currentColor"/></svg>
+                            Talk on WhatsApp <span aria-hidden="true">↗</span>
+                        </a>
+                        <button class="button button-soft install-app-button" id="install-app" type="button">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M10 5.5h4M11 18.5h2M12 9v5M9.5 11.5 12 14l2.5-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Install on your phone
+                        </button>
                     </div>
                     <div class="hero-proof" aria-label="What you can expect">
                         <span><b class="proof-check" aria-hidden="true">✓</b> Practical, not over-engineered</span>
@@ -1026,6 +1108,47 @@
             </div>
         </section>
 
+        <section class="section promise-section" id="career">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Build what’s next with us</p>
+                    <h2>Careers at <span class="gradient-text">Atul Maurya Cloud Solution.</span></h2>
+                    <p>We value thoughtful problem-solving, reliable delivery, and technology that makes a real difference for people and businesses.</p>
+                </div>
+                <div class="career-grid">
+                    <article class="career-card reveal">
+                        <h3>Grow your skills</h3>
+                        <p>Work across cloud, Microsoft technologies, security, and business solutions while building practical experience and learning with each project.</p>
+                    </article>
+                    <article class="career-card reveal reveal-delay-1">
+                        <h3>Interested in joining us?</h3>
+                        <p>Freshers and experienced professionals can apply through our Job Seekers &amp; Skill Development form.</p>
+                        <a class="button button-primary" href="https://forms.cloud.microsoft/r/HqswhzFP2E" target="_blank" rel="noopener noreferrer">Apply for a job <span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section licensing-section" id="about-page">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">About our company</p>
+                    <h2>Technology partnership built around <span class="gradient-text">your business.</span></h2>
+                    <p>Atul Maurya Cloud Solution Pvt. Ltd. helps organizations make the most of cloud and Microsoft technologies through practical guidance, thoughtful implementation, and ongoing support.</p>
+                </div>
+                <div class="about-grid">
+                    <article class="about-card reveal">
+                        <h3>What we do</h3>
+                        <p>We support Azure, Microsoft 365, security, business applications, automation, and licensing—helping teams connect their tools and plan for what’s next.</p>
+                    </article>
+                    <article class="about-card reveal reveal-delay-1">
+                        <h3>How we work</h3>
+                        <p>We listen first, explain the options clearly, and shape a practical plan around your goals, your team, and your budget. We serve clients in Canada, Australia, and worldwide.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="contact-band" id="contact">
             <div class="container">
                 <div class="contact-panel reveal">
@@ -1036,7 +1159,10 @@
                     </div>
                     <div class="contact-actions">
                         <button class="button button-primary" type="button" data-contact="Business consultation">Start a conversation <span aria-hidden="true">→</span></button>
-                        <a class="button button-whatsapp" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">Talk on WhatsApp <span aria-hidden="true">↗</span></a>
+                        <a class="button button-whatsapp button-cta" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 8.1c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.4.4 0 .3-.1 1.1-.6 1.5-.5.5-1.2.7-1.8.6-1-.2-2.2-.7-3.4-1.8-1.4-1.3-2.3-2.8-2.5-3.8-.2-.8.1-1.6.9-2.1Z" fill="currentColor"/></svg>
+                            Talk on WhatsApp <span aria-hidden="true">↗</span>
+                        </a>
                         <a class="button button-outline" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">Book a time</a>
                     </div>
                 </div>
@@ -1055,11 +1181,14 @@
                     <p>Your cloud services partner for Azure, Microsoft 365, Teams, SharePoint, OneDrive, Exchange, Entra, Intune, Defender, Copilot, Power Platform, and Dynamics 365. Serving businesses across the region and worldwide.</p>
                 </div>
                 <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="?page=home">Home</a>
                     <a href="?page=services">Services</a>
                     <a href="?page=approach">Our approach</a>
                     <a href="?page=global">Global delivery</a>
                     <a href="?page=licensing">Licensing</a>
                     <a href="?page=pricing">Pricing</a>
+                    <a href="?page=career">Career</a>
+                    <a href="?page=about">About</a>
                     <a href="mailto:samratatulmaurya9415@outlook.com">Email us</a>
                     <a href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </nav>
@@ -1071,7 +1200,55 @@
         </div>
     </footer>
 
-    <a class="button button-whatsapp floating-contact" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer" aria-label="Talk to us on WhatsApp">WhatsApp <span aria-hidden="true">↗</span></a>
+    <a class="button button-whatsapp button-cta floating-contact" href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer" aria-label="Talk to us on WhatsApp">WhatsApp <span aria-hidden="true">↗</span></a>
+
+    <button class="chat-toggle" id="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.6-.8L4 20l1.3-3.8a8 8 0 1 1 14.7-4.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8M8 13.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Ask us
+    </button>
+    <section class="chat-panel" id="chat-panel" role="dialog" aria-label="Company information chat" aria-modal="false" hidden>
+        <header class="chat-header">
+            <div class="chat-header-copy">
+                <span class="chat-header-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 11.5a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.6-.8L4 20l1.3-3.8a8 8 0 1 1 14.7-4.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8M8 13.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+                <div><h2>How can we help?</h2><p>Company info · instant answers</p></div>
+            </div>
+            <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">&times;</button>
+        </header>
+        <div class="chat-messages" id="chat-messages" aria-live="polite" aria-relevant="additions text"></div>
+        <div class="chat-suggestions" aria-label="Suggested questions">
+            <button class="chat-suggestion" type="button" data-chat-question="How do I install the app on my phone?">Install app</button>
+            <button class="chat-suggestion" type="button" data-chat-question="What services do you offer?">Services</button>
+            <button class="chat-suggestion" type="button" data-chat-question="How much do your plans cost?">Pricing</button>
+            <button class="chat-suggestion" type="button" data-chat-question="How do we get started?">Getting started</button>
+            <button class="chat-suggestion" type="button" data-chat-question="How long does implementation take?">Timelines</button>
+            <button class="chat-suggestion" type="button" data-chat-question="What security services do you provide?">Security</button>
+            <button class="chat-suggestion" type="button" data-chat-question="Which countries do you serve?">Locations</button>
+            <button class="chat-suggestion" type="button" data-chat-question="How can I apply for a job?">Careers</button>
+            <button class="chat-suggestion" type="button" data-chat-question="How do I contact you?">Contact</button>
+        </div>
+        <form class="chat-form" id="chat-form">
+            <label for="chat-input" hidden>Ask a question about our company</label>
+            <input class="chat-input" id="chat-input" name="question" type="text" maxlength="500" placeholder="Ask about services, pricing..." autocomplete="off" required>
+            <button class="chat-send" type="submit" aria-label="Send question"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.7 18-3.8-7.5L3 9.7 21 3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+        <p class="chat-note">Answers are based on information on this website. For anything else, contact our team.</p>
+    </section>
+
+    <dialog class="install-dialog" id="install-dialog" aria-labelledby="install-dialog-title" aria-describedby="install-dialog-copy">
+        <div class="dialog-head">
+            <h2 id="install-dialog-title">Add our app to your phone</h2>
+            <button class="dialog-close" id="install-dialog-close" type="button" aria-label="Close install instructions">&times;</button>
+        </div>
+        <p id="install-dialog-copy">This website can be added to your Home Screen for quick, app-like access. No app-store download is needed.</p>
+        <ol class="install-steps">
+            <li><strong>iPhone or iPad</strong>Open this website in Safari. Tap Share, then choose “Add to Home Screen” and tap Add.</li>
+            <li><strong>Android</strong>Open this website in Chrome. Tap the menu (⋮), choose “Install app” or “Add to Home screen,” then confirm.</li>
+        </ol>
+        <p class="chat-note">Installation is available after the website is published securely over HTTPS. If you don’t see the option, try the browser steps above.</p>
+        <div class="dialog-actions">
+            <button class="button button-primary" id="install-dialog-done" type="button">Got it</button>
+        </div>
+    </dialog>
 
     <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-copy">
         <div class="dialog-head">
@@ -1101,6 +1278,15 @@
         const mapFrame = document.querySelector('.map-frame');
         const worldMap = document.querySelector('.world-map');
         const mapModeToggle = document.querySelector('.map-mode-toggle');
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatPanel = document.getElementById('chat-panel');
+        const chatClose = document.getElementById('chat-close');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const installButton = document.getElementById('install-app');
+        const installDialog = document.getElementById('install-dialog');
+        let deferredInstallPrompt = null;
         const pageViews = {
             home: ['home-hero', 'promise'],
             services: ['services'],
@@ -1108,7 +1294,8 @@
             global: ['global'],
             licensing: ['licensing'],
             pricing: ['pricing'],
-            about: []
+            career: ['career'],
+            about: ['about-page']
         };
         const requestedPage = new URLSearchParams(window.location.search).get('page');
         const activePage = Object.prototype.hasOwnProperty.call(pageViews, requestedPage) ? requestedPage : 'home';
@@ -1119,6 +1306,7 @@
             global: 'Global Delivery',
             licensing: 'Microsoft Licensing',
             pricing: 'Plans & Pricing',
+            career: 'Careers',
             about: 'About & Contact'
         };
 
@@ -1134,6 +1322,216 @@
         document.title = 'Atul Maurya Cloud Solution | ' + pageTitles[activePage];
 
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const companyAnswers = [
+            {
+                keywords: ['install', 'download', 'mobile app', 'phone app', 'smartphone', 'add to home screen', 'home screen', 'iphone', 'ipad', 'android', 'download app', 'install application'],
+                answer: 'You can add this website to your phone’s Home Screen for quick, app-like access; no app-store download is needed. On iPhone or iPad, open the site in Safari, tap Share, then “Add to Home Screen.” On Android, open it in Chrome, tap the menu (⋮), then “Install app” or “Add to Home screen.” This is available after the website is published over secure HTTPS.'
+            },
+            {
+                keywords: ['service', 'services', 'what do you offer', 'offerings', 'what can you help', 'cloud support'],
+                answer: 'We help businesses with Azure architecture and migration; Microsoft 365 and workplace setup; security and protection; Power Apps, Power Automate and Power BI; Copilot and AI workflows; Dynamics 365; licensing guidance; and ongoing support.'
+            },
+            {
+                keywords: ['azure', 'cloud migration', 'cloud architecture', 'cloud setup'],
+                answer: 'Our cloud services include Azure architecture and migration, Microsoft 365 setup, Entra ID, Intune, backup, and cloud cost control. Share your goals with our team to discuss a suitable scope.'
+            },
+            {
+                keywords: ['security', 'defender', 'protection', 'cybersecurity', 'secure', 'monitoring'],
+                answer: 'Security services include Microsoft Defender and security reviews, Entra ID and Intune, endpoint and cloud protection, and ongoing support and monitoring.'
+            },
+            {
+                keywords: ['power apps', 'power automate', 'power bi', 'automation', 'copilot', 'artificial intelligence', ' ai ', 'dynamics'],
+                answer: 'We work with Power Apps, Power Automate, Power BI, Copilot, AI-assisted workflows, Dynamics 365, and business integrations to make everyday work more connected and efficient.'
+            },
+            {
+                keywords: ['price', 'pricing', 'cost', 'plan', 'plans', 'starter', 'growth', 'enterprise', 'how much', 'payment', 'monthly fee'],
+                answer: 'Our starting plans are Starter at ₹4,999/month, Growth at ₹12,999/month, and Enterprise at a custom price. Microsoft licensing, Azure consumption, taxes, and project-specific work are quoted separately. Contact us to confirm the scope and proposal.'
+            },
+            {
+                keywords: ['what is included', 'what s included', 'included in the price', 'pricing include', 'cost include', 'extra cost', 'additional cost'],
+                answer: 'Plan features are listed on the Pricing page. Microsoft licensing, Azure consumption, taxes, and project-specific work are quoted separately. We confirm the scope and proposal before work begins.'
+            },
+            {
+                keywords: ['get started', 'getting started', 'first step', 'start a project', 'begin a project', 'how to start'],
+                answer: 'Start by booking a consultation or contacting our team. Tell us about your goals, current setup, and priorities; we can discuss a practical scope and next steps.'
+            },
+            {
+                keywords: ['how long', 'timeline', 'timelines', 'duration', 'take to implement', 'take to migrate', 'project take', 'delivery time'],
+                answer: 'Timelines depend on the project scope, existing environment, and requirements. After discussing your goals, we can agree practical steps and milestones for the work.'
+            },
+            {
+                keywords: ['ongoing support', 'after setup', 'after implementation', 'after launch', 'managed support', 'support plans', 'support include'],
+                answer: 'Yes. Ongoing support is part of our service approach. The Starter plan includes monthly support, Growth includes advanced support, and Enterprise includes priority dedicated support. Contact us to confirm the right scope.'
+            },
+            {
+                keywords: ['custom solution', 'custom plan', 'custom quote', 'custom proposal', 'enterprise quote', 'small business', 'small team'],
+                answer: 'We shape services around your goals and team. Starter is intended for small teams, and Enterprise pricing is custom. Contact us to discuss your requirements and receive a proposal.'
+            },
+            {
+                keywords: ['protect my business', 'protect our business', 'security measures', 'how secure', 'security services', 'security support'],
+                answer: 'Security is built into our approach. Services include Microsoft Defender and security reviews, identity and device management with Entra ID and Intune, endpoint and cloud protection, and ongoing support. The right safeguards depend on your environment.'
+            },
+            {
+                keywords: ['remote work', 'remote support', 'work remotely', 'outside india', 'international client', 'different country', 'serve clients'],
+                answer: 'We provide regional guidance and worldwide remote delivery, including service for clients in Canada and Australia. Contact us to confirm availability and requirements for your location.'
+            },
+            {
+                keywords: ['license', 'licensing', 'microsoft 365 business', 'microsoft 365 enterprise', 'windows enterprise', 'subscription', 'savings plan', 'reservation'],
+                answer: 'We provide licensing guidance for Microsoft 365 Business and Enterprise, Azure, Power Platform, Dynamics 365, and Windows Enterprise. The right license depends on your users, features, and workloads; use the Licensing page for an overview and confirm current terms before purchase.'
+            },
+            {
+                keywords: ['career', 'careers', 'job', 'jobs', 'apply', 'application', 'fresher', 'experienced', 'skill development', 'hiring', 'vacancy'],
+                answer: 'Freshers and experienced professionals can apply through our Job Seekers & Skill Development form: https://forms.cloud.microsoft/r/HqswhzFP2E'
+            },
+            {
+                keywords: ['country', 'countries', 'location', 'locations', 'canada', 'australia', 'india', 'worldwide', 'global', 'where do you serve', 'united states', 'united kingdom', 'singapore', 'japan'],
+                answer: 'We provide regional guidance and worldwide remote delivery, including service for clients in Canada and Australia. The map highlights network locations and markets; contact us to confirm availability for your location.'
+            },
+            {
+                keywords: ['contact', 'email', 'phone', 'whatsapp', 'reach', 'talk to someone', 'speak to'],
+                answer: 'Email samratatulmaurya9415@outlook.com or message us on WhatsApp at +91 84293 95452. You can also use the Start a conversation button on this page.'
+            },
+            {
+                keywords: ['book', 'booking', 'consultation', 'appointment', 'schedule', 'meeting'],
+                answer: 'Book a consultation here: https://calendar.app.google/Keq58kLdWUuqwNYh7. Our team can discuss your goals and suggest a practical next step.'
+            },
+            {
+                keywords: ['about', 'company', 'who are you', 'who is atul', 'founder', 'how do you work'],
+                answer: 'Atul Maurya Cloud Solution Pvt. Ltd. helps organizations make the most of cloud and Microsoft technologies through practical guidance, implementation, and ongoing support.'
+            },
+            {
+                keywords: ['support', 'help', 'onboarding', 'implementation', 'migration', 'how does it work'],
+                answer: 'We start by understanding your goals, then agree a clear scope and practical delivery steps. Support can include discovery, configuration, testing, launch, documentation, handover, and ongoing improvements.'
+            }
+        ];
+
+        function addChatMessage(message, sender) {
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-message chat-message--' + sender;
+            const urlPattern = /https:\/\/[^\s]+/g;
+            let currentIndex = 0;
+            let match;
+            while ((match = urlPattern.exec(message)) !== null) {
+                bubble.appendChild(document.createTextNode(message.slice(currentIndex, match.index)));
+                const link = document.createElement('a');
+                link.href = match[0];
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = match[0];
+                bubble.appendChild(link);
+                currentIndex = urlPattern.lastIndex;
+            }
+            bubble.appendChild(document.createTextNode(message.slice(currentIndex)));
+            chatMessages.appendChild(bubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function normalizeQuestion(value) {
+            return value.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        function findCompanyAnswer(question) {
+            const normalized = normalizeQuestion(question);
+            const normalizedQuestion = ' ' + normalized + ' ';
+            const greetingOnly = /^(hi|hello|hey|good morning|good afternoon|good evening|greetings|howdy)( there)?( please)?$/.test(normalized);
+            if (greetingOnly) {
+                return 'Hello! Welcome to Atul Maurya Cloud Solution. I’d be happy to help with our services, pricing, support, locations, or careers. What would you like to know?';
+            }
+            if (/^(thank you|thanks|thanks a lot|thank you very much)$/.test(normalized)) {
+                return 'You’re very welcome! Please feel free to ask if there’s anything else I can help you with.';
+            }
+            if (/^(bye|goodbye|see you|that s all)$/.test(normalized)) {
+                return 'Thank you for visiting! If you need anything else, please contact our team. Have a lovely day!';
+            }
+            let bestMatch = null;
+            let bestScore = 0;
+
+            companyAnswers.forEach(function (entry) {
+                let score = 0;
+                entry.keywords.forEach(function (keyword) {
+                    const normalizedKeyword = normalizeQuestion(keyword);
+                    if (!normalizedKeyword) return;
+                    if (normalizedQuestion.includes(' ' + normalizedKeyword + ' ')) {
+                        score = Math.max(score, normalizedKeyword.split(' ').length + 1);
+                    }
+                });
+                if (score > bestScore) {
+                    bestMatch = entry;
+                    bestScore = score;
+                }
+            });
+
+            return bestMatch
+                ? 'Certainly! ' + bestMatch.answer
+                : 'I’m sorry, but I couldn’t find that detail in the information on this website. Please email samratatulmaurya9415@outlook.com or message us on WhatsApp at +91 84293 95452. Our team will be happy to help.';
+        }
+
+        function askCompanyQuestion(question) {
+            const cleanedQuestion = question.trim();
+            if (!cleanedQuestion) return;
+            addChatMessage(cleanedQuestion, 'user');
+            addChatMessage(findCompanyAnswer(cleanedQuestion), 'bot');
+        }
+
+        addChatMessage('Hello, and welcome! I’d be happy to answer questions about our services, pricing, support, locations, or careers using the information on this website. How may I help you today?', 'bot');
+        window.addEventListener('beforeinstallprompt', function (event) {
+            event.preventDefault();
+            deferredInstallPrompt = event;
+        });
+        window.addEventListener('appinstalled', function () {
+            installButton.textContent = 'App is installed';
+            installButton.disabled = true;
+        });
+        installButton.addEventListener('click', async function () {
+            if (!deferredInstallPrompt) {
+                installDialog.showModal();
+                return;
+            }
+            const installPrompt = deferredInstallPrompt;
+            deferredInstallPrompt = null;
+            await installPrompt.prompt();
+            const choice = await installPrompt.userChoice;
+            if (choice.outcome === 'accepted') {
+                installButton.textContent = 'App is installed';
+                installButton.disabled = true;
+            }
+        });
+        function closeInstallDialog() {
+            installDialog.close();
+            installButton.focus();
+        }
+        document.getElementById('install-dialog-close').addEventListener('click', closeInstallDialog);
+        document.getElementById('install-dialog-done').addEventListener('click', closeInstallDialog);
+        chatToggle.addEventListener('click', function () {
+            const isOpening = chatPanel.hidden;
+            chatPanel.hidden = !isOpening;
+            chatToggle.setAttribute('aria-expanded', String(isOpening));
+            if (isOpening) chatInput.focus();
+        });
+        chatClose.addEventListener('click', function () {
+            chatPanel.hidden = true;
+            chatToggle.setAttribute('aria-expanded', 'false');
+            chatToggle.focus();
+        });
+        chatPanel.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                chatPanel.hidden = true;
+                chatToggle.setAttribute('aria-expanded', 'false');
+                chatToggle.focus();
+            }
+        });
+        chatForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            askCompanyQuestion(chatInput.value);
+            chatInput.value = '';
+            chatInput.focus();
+        });
+        document.querySelectorAll('[data-chat-question]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                askCompanyQuestion(button.dataset.chatQuestion);
+            });
+        });
 
         if (mapFrame && worldMap) {
             let mapZoom = 1;
