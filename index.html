@@ -123,15 +123,27 @@
         .brand-name span { color: var(--muted); font-size: 0.72rem; font-weight: 600; }
         .nav-menu { display: flex; align-items: center; gap: 0.25rem; }
         .nav-menu a {
+            position: relative;
             padding: 0.6rem 0.78rem;
             border-radius: 11px;
             color: var(--ink-soft);
             font-size: 0.85rem;
             font-weight: 600;
-            transition: background 180ms ease, color 180ms ease;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
         }
         .nav-menu a:hover,
-        .nav-menu a[aria-current="location"] { background: var(--mint-soft); color: var(--teal-deep); }
+        .nav-menu a[aria-current="page"] { background: var(--mint-soft); color: var(--teal-deep); }
+        .nav-menu a:hover { transform: translateY(-1px); }
+        .nav-menu a[aria-current="page"]::after {
+            position: absolute;
+            right: 0.78rem;
+            bottom: 0.25rem;
+            left: 0.78rem;
+            height: 2px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--green));
+            content: "";
+        }
         .nav-actions { display: flex; align-items: center; gap: 0.7rem; }
         .menu-toggle {
             display: none;
@@ -401,45 +413,52 @@
         .reason-card .feature-icon { margin-bottom: 1.1rem; }
 
         .global-section { overflow: hidden; background: var(--mint-soft); }
-        .global-grid { display: grid; grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.8fr); align-items: center; gap: 1rem; }
+        .global-grid { display: grid; grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.8fr); align-items: center; gap: 1.5rem; }
         .global-copy h2 { margin: 0 0 0.8rem; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.055em; }
         .global-copy p { margin: 0; color: var(--muted); }
         .global-note { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem; color: var(--teal-deep); font-size: 0.78rem; font-weight: 800; }
         .global-note::before { width: 7px; height: 7px; border-radius: 50%; background: #21a27e; content: ""; }
-        .world-map { display: block; width: 100%; height: auto; overflow: visible; }
-        .world-land { opacity: 0.98; }
-        .map-route { fill: none; stroke: rgba(8, 127, 140, 0.5); stroke-width: 2.5; stroke-dasharray: 3 10; stroke-linecap: round; animation: route-flow 2.1s linear infinite; }
-        .map-route:nth-child(even) { animation-direction: reverse; animation-duration: 1.7s; }
-        @keyframes route-flow { to { stroke-dashoffset: -26; } }
-        .map-packet { pointer-events: none; offset-rotate: auto; animation: packet-flight 7s linear infinite; filter: drop-shadow(0 0 7px rgba(22, 133, 111, 0.65)); }
-        .map-packet--fast { animation-delay: -3.3s; animation-duration: 5.2s; }
-        .map-packet--incoming { animation-direction: reverse; }
-        .map-packet--incoming.packet-atlantic { animation-delay: -1.1s; }
-        .map-packet--incoming.packet-asia { animation-delay: -2.4s; }
-        .map-packet--incoming.packet-sea { animation-delay: -3.7s; }
-        .map-packet--incoming.packet-pacific { animation-delay: -4.8s; }
-        .map-packet--incoming.packet-south { animation-delay: -5.9s; }
-        .map-packet--incoming.packet-africa { animation-delay: -2.9s; }
-        .map-packet--incoming.packet-australia { animation-delay: -4.1s; }
-        .map-packet circle { fill: #fff; stroke: var(--teal); stroke-width: 3; }
-        .map-packet path { fill: none; stroke: rgba(8, 127, 140, 0.88); stroke-width: 5; stroke-linecap: round; }
-        .packet-atlantic { offset-path: path("M 294 119 Q 387 52 500 93"); }
-        .packet-asia { offset-path: path("M 500 93 Q 606 76 702 170"); }
-        .packet-sea { offset-path: path("M 702 170 Q 750 159 788 211"); }
-        .packet-pacific { offset-path: path("M 296 137 Q 570 35 888 130"); }
-        .packet-south { offset-path: path("M 294 119 Q 300 200 371 271"); }
-        .packet-africa { offset-path: path("M 500 93 Q 575 143 602 218"); }
-        .packet-australia { offset-path: path("M 500 93 Q 724 65 919 295"); }
-        @keyframes packet-flight {
-            0% { offset-distance: 0%; opacity: 0; }
-            6% { opacity: 1; }
-            94% { opacity: 1; }
-            100% { offset-distance: 100%; opacity: 0; }
-        }
-        .map-hub-pulse { fill: none; stroke: rgba(22, 133, 111, 0.58); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: hub-pulse 2.7s ease-out infinite; }
-        @keyframes hub-pulse { 0% { opacity: 0.65; transform: scale(.65); } 100% { opacity: 0; transform: scale(2.4); } }
-        .map-hub { fill: var(--teal-deep); stroke: #fff; stroke-width: 3; }
-        .map-label { fill: var(--ink); font: 700 13px "DM Sans", sans-serif; paint-order: stroke; stroke: rgba(234, 244, 240, 0.96); stroke-width: 4px; stroke-linejoin: round; }
+        .map-frame { position: relative; overflow: hidden; padding: 0; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 22px; background: #25292e; box-shadow: 0 24px 70px rgba(15, 28, 42, 0.2); }
+        .world-map { display: block; width: 100%; height: auto; overflow: hidden; background: #25292e; }
+        .world-land { opacity: 0.8; filter: grayscale(1) brightness(0.42) sepia(0.18) hue-rotate(170deg) saturate(0.55); }
+        .map-route { fill: none; stroke: #a9b4c0; stroke-width: 1.15; stroke-linecap: round; opacity: 0.14; }
+        .map-route--bright { stroke: #d6e0eb; opacity: 0.23; }
+        .map-data { fill: none; stroke: #b9d5e1; stroke-width: 1; stroke-dasharray: 1 26; stroke-linecap: round; opacity: 0.42; animation: data-flow 5s linear infinite; }
+        .map-data--cyan { stroke: #47edf5; stroke-width: 1.5; stroke-dasharray: 1 38; opacity: 0.68; animation-duration: 3.8s; }
+        .map-data--gold { stroke: #ffc928; stroke-width: 1.4; stroke-dasharray: 1 43; opacity: 0.62; animation-duration: 5.4s; }
+        @keyframes data-flow { to { stroke-dashoffset: -54; } }
+        .map-point { transform-box: fill-box; transform-origin: center; animation: point-blink 3s ease-in-out infinite; animation-delay: var(--delay, 0s); }
+        .map-point--cyan { fill: #53f2f5; filter: drop-shadow(0 0 5px rgba(83, 242, 245, 0.72)); }
+        .map-point--gold { fill: #ffd22e; filter: drop-shadow(0 0 5px rgba(255, 210, 46, 0.76)); }
+        .map-point--white { fill: #eef4fb; filter: drop-shadow(0 0 4px rgba(238, 244, 251, 0.6)); }
+        .map-point--blue { fill: #559bff; filter: drop-shadow(0 0 4px rgba(85, 155, 255, 0.55)); }
+        .map-point--star { animation-name: star-twinkle; animation-duration: 2.5s; }
+        @keyframes point-blink { 0%, 100% { opacity: 0.35; transform: scale(0.72); } 48% { opacity: 1; transform: scale(1.2); } }
+        @keyframes star-twinkle { 0%, 100% { opacity: 0.3; transform: scale(0.7) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(45deg); } }
+        .map-hub-pulse { fill: none; stroke: #51e8ef; stroke-width: 1.2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: hub-pulse 3.2s ease-out infinite; }
+        @keyframes hub-pulse { 0% { opacity: 0.62; transform: scale(.55); } 100% { opacity: 0; transform: scale(3.2); } }
+        .map-hub { fill: #e9fdff; stroke: #46dce8; stroke-width: 1.5; }
+        .map-label { fill: #eaf2fa; font: 600 11px "DM Sans", sans-serif; paint-order: stroke; stroke: rgba(37, 41, 46, 0.9); stroke-width: 3px; stroke-linejoin: round; }
+        .map-country { fill: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.015em; }
+        .map-controls { position: absolute; right: 1rem; bottom: 1rem; display: flex; align-items: flex-end; justify-content: space-between; left: 1rem; pointer-events: none; }
+        .map-controls button { border: 1px solid rgba(255, 255, 255, 0.15); background: #090a0c; color: #fff; cursor: pointer; pointer-events: auto; }
+        .map-mode-toggle { min-height: 42px; padding: 0.65rem 1rem; border-radius: 3px; font-size: 0.8rem; font-weight: 800; }
+        .map-zoom { display: grid; overflow: hidden; border-radius: 4px; }
+        .map-zoom button { width: 46px; height: 44px; font-size: 1.5rem; line-height: 1; }
+        .map-zoom button + button { border-top-color: rgba(255, 255, 255, 0.25); }
+        .map-frame.is-light { border-color: var(--line); background: #eaf4f0; }
+        .map-frame.is-light .world-map { background: #eaf4f0; }
+        .map-frame.is-light .world-land { filter: none; opacity: 0.8; }
+        .map-frame.is-light .map-route { stroke: #54717e; opacity: 0.24; }
+        .map-frame.is-light .map-route--bright { stroke: #284957; opacity: 0.38; }
+        .map-frame.is-light .map-data { stroke: #087f8c; opacity: 0.65; }
+        .map-frame.is-light .map-point--white { fill: #24445a; }
+        .map-frame.is-light .map-hub { fill: #fff; stroke: #087f8c; }
+        .map-frame.is-light .map-label { fill: #172b42; stroke: rgba(234, 244, 240, 0.96); }
+        .map-frame.is-light .map-controls button { border-color: var(--line); background: #fff; color: var(--ink); }
+        body.page-mode main > section { display: none; }
+        body.page-mode main > section.is-page-visible { display: block; }
+        body.page-mode main > #contact { display: block; }
 
         .pricing-section { background: #fff; }
         .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 1rem; }
@@ -454,6 +473,17 @@
         .price-list li::before { margin-right: 0.5rem; color: #21a27e; content: "✓"; font-weight: 800; }
         .price-card .button { width: 100%; margin-top: auto; }
         .pricing-note { margin: 1rem 0 0; color: var(--muted); font-size: 0.78rem; }
+
+        .licensing-section { background: var(--paper); }
+        .licensing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .licensing-card { display: flex; min-width: 0; flex-direction: column; padding: 1.4rem; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 10px 32px rgba(23, 43, 66, 0.035); }
+        .licensing-card h3 { margin: 0.85rem 0 0.45rem; font-size: 1.1rem; letter-spacing: -0.03em; }
+        .licensing-model { align-self: flex-start; margin: 0; padding: 0.3rem 0.6rem; border-radius: 999px; background: var(--mint-soft); color: var(--teal-deep); font-size: 0.72rem; font-weight: 800; }
+        .licensing-card p:not(.licensing-model) { margin: 0; color: var(--muted); font-size: 0.87rem; }
+        .licensing-card strong { color: var(--ink-soft); }
+        .licensing-link { display: inline-flex; align-items: baseline; gap: 0.3rem; margin-top: auto; padding-top: 1.15rem; color: var(--teal-deep); font-size: 0.82rem; font-weight: 800; }
+        .licensing-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+        .licensing-note { margin: 1.25rem 0 0; color: var(--muted); font-size: 0.8rem; }
 
         .contact-band { padding: 0 0 clamp(4rem, 7vw, 6rem); background: #fff; }
         .contact-panel {
@@ -539,7 +569,7 @@
             .hero-photo { height: 358px; }
             .hero-float { left: -0.35rem; }
             .hero-caption { right: -0.35rem; bottom: 1.4rem; }
-            .solutions-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .solutions-grid, .pricing-grid, .licensing-grid { grid-template-columns: 1fr; }
             .promise-grid, .reasons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .solution-card { min-height: 0; }
             .contact-panel { align-items: flex-start; flex-direction: column; }
@@ -562,22 +592,25 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
             .reveal { opacity: 1; transform: none; }
+            .map-data { stroke-dasharray: none; }
+            .map-point { opacity: 1; transform: none; filter: none; }
         }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="nav">
-            <a class="brand" href="#home" aria-label="Atul Maurya Cloud Solution home">
+            <a class="brand" href="?page=home" aria-label="Atul Maurya Cloud Solution home">
                 <img src="logo.png.png" alt="">
                 <span class="brand-name"><strong>Atul Maurya</strong><span>Cloud Solution Pvt. Ltd.</span></span>
             </a>
             <nav class="nav-menu" id="site-navigation" aria-label="Main navigation">
-                <a href="#services">Services</a>
-                <a href="#approach">Our approach</a>
-                <a href="#global">Global delivery</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#about">About</a>
+                <a href="?page=services">Services</a>
+                <a href="?page=approach">Our approach</a>
+                <a href="?page=global">Global delivery</a>
+                <a href="?page=licensing">Licensing</a>
+                <a href="?page=pricing">Pricing</a>
+                <a href="?page=about">About</a>
             </nav>
             <div class="nav-actions">
                 <a class="button button-primary" href="https://calendar.app.google/Keq58kLdWUuqwNYh7" target="_blank" rel="noopener noreferrer">Book a consultation <span aria-hidden="true">↗</span></a>
@@ -589,7 +622,7 @@
     </header>
 
     <main id="home">
-        <section class="hero">
+        <section class="hero" id="home-hero">
             <div class="container hero-grid">
                 <div class="hero-copy">
                     <div class="hero-kicker"><span aria-hidden="true">✦</span> Your cloud services partner · regional and worldwide</div>
@@ -619,7 +652,7 @@
             </div>
         </section>
 
-        <section class="section promise-section" aria-labelledby="promise-title">
+        <section class="section promise-section" id="promise" aria-labelledby="promise-title">
             <div class="container">
                 <div class="section-heading centered-heading reveal">
                     <p class="eyebrow">Built for teams everywhere</p>
@@ -744,58 +777,202 @@
                     <p class="eyebrow">Connected wherever you work</p>
                     <h2>Your cloud partner, wherever business takes you.</h2>
                     <p>We provide cloud and IT services to businesses across their region and worldwide. From local guidance to remote delivery across time zones, we connect people, systems, and services with dependable digital foundations.</p>
-                    <span class="global-note">Regional service and worldwide remote delivery</span>
+                    <span class="global-note">Serving Canada, Australia and clients worldwide</span>
                 </div>
-                <svg class="world-map reveal" viewBox="0 0 1000 430" role="img" aria-labelledby="world-title world-desc">
-                    <title id="world-title">Animated global service network</title>
-                    <desc id="world-desc">A world coastline map with animated data paths linking service hubs across North America, Europe, Asia, Africa, and Australia.</desc>
+                <div class="map-frame reveal">
+                <svg class="world-map" viewBox="0 0 1000 430" role="img" aria-labelledby="world-title world-desc">
+                    <title id="world-title">Global fiber network with moving data</title>
+                    <desc id="world-desc">Colorful fiber-optic cable routes and data pulses connect service hubs across North America, Europe, Asia, Africa, and Australia.</desc>
                     <image class="world-land" href="world-map-land.svg" x="0" y="0" width="1000" height="430"/>
                     <g aria-hidden="true">
-                        <path class="map-route" d="M294 119 Q387 52 500 93"/>
-                        <path class="map-route" d="M500 93 Q606 76 702 170"/>
-                        <path class="map-route" d="M702 170 Q750 159 788 211"/>
-                        <path class="map-route" d="M296 137 Q570 35 888 130"/>
-                        <path class="map-route" d="M294 119 Q300 200 371 271"/>
-                        <path class="map-route" d="M500 93 Q575 143 602 218"/>
-                        <path class="map-route" d="M500 93 Q724 65 919 295"/>
-                        <g class="map-packet packet-atlantic"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-asia"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-sea"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-pacific"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-south"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-africa"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet packet-australia"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-atlantic"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-asia"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-sea"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-pacific"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-south"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-africa"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--fast packet-australia"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-atlantic"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-asia"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-sea"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-pacific"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-south"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-africa"><path d="M-32 0H-5"/><circle r="6"/></g>
-                        <g class="map-packet map-packet--incoming packet-australia"><path d="M-32 0H-5"/><circle r="6"/></g>
+                        <path class="map-route" d="M60 186 Q152 112 260 160 Q335 192 404 133"/>
+                        <path class="map-route map-route--bright" d="M215 149 Q325 205 418 130 Q466 99 500 100"/>
+                        <path class="map-route" d="M273 160 Q332 244 405 314 Q437 347 462 367"/>
+                        <path class="map-route" d="M356 177 Q422 116 478 112 Q533 67 561 82"/>
+                        <path class="map-route map-route--bright" d="M388 138 Q445 161 481 105 Q516 94 534 115"/>
+                        <path class="map-route" d="M465 105 Q515 124 554 91 Q594 82 630 130"/>
+                        <path class="map-route" d="M479 115 Q534 175 578 219 Q598 271 621 321"/>
+                        <path class="map-route map-route--bright" d="M516 95 Q617 135 700 192 Q765 208 840 190"/>
+                        <path class="map-route" d="M543 125 Q632 171 681 220 Q710 255 744 280"/>
+                        <path class="map-route" d="M579 124 Q661 83 733 131 Q788 179 850 154"/>
+                        <path class="map-route map-route--bright" d="M603 147 Q674 204 755 222 Q816 246 900 304"/>
+                        <path class="map-route" d="M685 185 Q733 136 795 164 Q847 202 915 171"/>
+                        <path class="map-route" d="M707 201 Q746 253 811 266 Q871 288 934 331"/>
+                        <path class="map-route" d="M152 229 Q216 204 278 231 Q329 264 389 286"/>
+                        <path class="map-route" d="M80 170 Q185 245 295 180 Q365 113 442 120"/>
+                        <path class="map-route map-route--bright" d="M455 92 Q520 148 599 128 Q660 119 721 170"/>
+                        <path class="map-route" d="M525 111 Q575 65 650 106 Q697 127 756 147"/>
+                        <path class="map-route" d="M650 202 Q725 232 775 193 Q839 143 923 185"/>
+                        <path class="map-route" d="M550 118 Q552 206 608 268 Q653 309 668 359"/>
+                        <path class="map-route" d="M743 170 Q792 220 837 240 Q887 258 954 226"/>
+                        <path class="map-route map-route--bright" d="M294 119 Q303 99 326 91 Q397 66 465 105"/>
+                        <path class="map-route" d="M326 91 Q358 117 388 138"/>
+                        <path class="map-route map-route--bright" d="M788 211 Q825 241 879 289 Q902 300 920 306"/>
+                        <path class="map-route" d="M888 130 Q910 190 920 306"/>
+                        <path class="map-data map-data--cyan" d="M60 186 Q152 112 260 160 Q335 192 404 133"/>
+                        <path class="map-data map-data--gold" d="M215 149 Q325 205 418 130 Q466 99 500 100"/>
+                        <path class="map-data" d="M273 160 Q332 244 405 314 Q437 347 462 367"/>
+                        <path class="map-data map-data--cyan" d="M356 177 Q422 116 478 112 Q533 67 561 82"/>
+                        <path class="map-data map-data--gold" d="M388 138 Q445 161 481 105 Q516 94 534 115"/>
+                        <path class="map-data" d="M465 105 Q515 124 554 91 Q594 82 630 130"/>
+                        <path class="map-data map-data--cyan" d="M479 115 Q534 175 578 219 Q598 271 621 321"/>
+                        <path class="map-data map-data--gold" d="M516 95 Q617 135 700 192 Q765 208 840 190"/>
+                        <path class="map-data" d="M543 125 Q632 171 681 220 Q710 255 744 280"/>
+                        <path class="map-data map-data--cyan" d="M579 124 Q661 83 733 131 Q788 179 850 154"/>
+                        <path class="map-data map-data--gold" d="M603 147 Q674 204 755 222 Q816 246 900 304"/>
+                        <path class="map-data" d="M685 185 Q733 136 795 164 Q847 202 915 171"/>
+                        <path class="map-data map-data--cyan" d="M707 201 Q746 253 811 266 Q871 288 934 331"/>
+                        <path class="map-data map-data--gold" d="M152 229 Q216 204 278 231 Q329 264 389 286"/>
+                        <path class="map-data" d="M80 170 Q185 245 295 180 Q365 113 442 120"/>
+                        <path class="map-data map-data--cyan" d="M455 92 Q520 148 599 128 Q660 119 721 170"/>
+                        <path class="map-data map-data--gold" d="M525 111 Q575 65 650 106 Q697 127 756 147"/>
+                        <path class="map-data" d="M650 202 Q725 232 775 193 Q839 143 923 185"/>
+                        <path class="map-data map-data--cyan" d="M550 118 Q552 206 608 268 Q653 309 668 359"/>
+                        <path class="map-data map-data--gold" d="M743 170 Q792 220 837 240 Q887 258 954 226"/>
+                        <path class="map-data map-data--cyan" d="M294 119 Q303 99 326 91 Q397 66 465 105"/>
+                        <path class="map-data" d="M326 91 Q358 117 388 138"/>
+                        <path class="map-data map-data--gold" d="M788 211 Q825 241 879 289 Q902 300 920 306"/>
+                        <path class="map-data map-data--cyan" d="M888 130 Q910 190 920 306"/>
+                        <g class="map-point--cluster">
+                            <circle class="map-point map-point--cyan" style="--delay:-.4s" cx="203" cy="145" r="3.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.3s" cx="224" cy="170" r="2.8"/>
+                            <circle class="map-point map-point--gold" style="--delay:-.7s" cx="239" cy="126" r="2.8"/>
+                            <circle class="map-point map-point--white" style="--delay:-1.8s" cx="251" cy="151" r="2.3"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.2s" cx="271" cy="178" r="3.2"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.6s" cx="293" cy="95" r="3.1"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-.8s" cx="312" cy="82" r="3.6"/>
+                            <circle class="map-point map-point--white" style="--delay:-2.3s" cx="331" cy="102" r="2.5"/>
+                            <circle class="map-point map-point--blue" style="--delay:-1.1s" cx="347" cy="91" r="2.4"/>
+                            <circle class="map-point map-point--blue" style="--delay:-.9s" cx="287" cy="139" r="2.1"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-1.1s" cx="306" cy="158" r="4" />
+                            <circle class="map-point map-point--cyan" style="--delay:-2.6s" cx="324" cy="185" r="3.2"/>
+                            <circle class="map-point map-point--gold" style="--delay:-1.7s" cx="340" cy="150" r="2.8"/>
+                            <circle class="map-point map-point--white" style="--delay:-.2s" cx="361" cy="170" r="2.2"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.8s" cx="378" cy="139" r="3.6"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-.6s" cx="391" cy="157" r="3.5"/>
+                            <circle class="map-point map-point--blue" style="--delay:-1.9s" cx="412" cy="129" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.5s" cx="447" cy="108" r="3.1"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-2.1s" cx="464" cy="91" r="4"/>
+                            <circle class="map-point map-point--white" style="--delay:-.8s" cx="478" cy="122" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.9s" cx="489" cy="102" r="3.4"/>
+                            <circle class="map-point map-point--blue" style="--delay:-1.2s" cx="504" cy="79" r="2.2"/>
+                            <circle class="map-point map-point--gold" style="--delay:-2.4s" cx="518" cy="113" r="2.9"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-.5s" cx="532" cy="92" r="3.6"/>
+                            <circle class="map-point map-point--white map-point--star" style="--delay:-1.6s" cx="547" cy="72" r="3.8"/>
+                            <circle class="map-point map-point--gold" style="--delay:-2.7s" cx="559" cy="105" r="2.8"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.4s" cx="575" cy="88" r="3.1"/>
+                            <circle class="map-point map-point--blue" style="--delay:-.3s" cx="592" cy="121" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.1s" cx="637" cy="145" r="3.5"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-.9s" cx="668" cy="176" r="3.8"/>
+                            <circle class="map-point map-point--white" style="--delay:-1.8s" cx="686" cy="207" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.5s" cx="704" cy="188" r="3.1"/>
+                            <circle class="map-point map-point--gold" style="--delay:-1s" cx="722" cy="220" r="2.7"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.8s" cx="748" cy="152" r="3.4"/>
+                            <circle class="map-point map-point--white" style="--delay:-.6s" cx="770" cy="179" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.7s" cx="795" cy="160" r="3.4"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-2.3s" cx="814" cy="185" r="3.7"/>
+                            <circle class="map-point map-point--blue" style="--delay:-1.1s" cx="834" cy="148" r="2.4"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2.6s" cx="858" cy="169" r="3.2"/>
+                            <circle class="map-point map-point--white map-point--star" style="--delay:-.4s" cx="882" cy="201" r="3.6"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-2s" cx="911" cy="176" r="3"/>
+                            <circle class="map-point map-point--gold" style="--delay:-1.5s" cx="929" cy="229" r="2.7"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-.7s" cx="901" cy="304" r="3.5"/>
+                            <circle class="map-point map-point--gold map-point--star" style="--delay:-2.4s" cx="920" cy="321" r="3.6"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.4s" cx="904" cy="291" r="3.2"/>
+                            <circle class="map-point map-point--white" style="--delay:-.6s" cx="928" cy="300" r="2.5"/>
+                            <circle class="map-point map-point--gold" style="--delay:-2s" cx="939" cy="317" r="2.8"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-1.2s" cx="387" cy="292" r="3.2"/>
+                            <circle class="map-point map-point--white" style="--delay:-2.7s" cx="428" cy="338" r="2.6"/>
+                            <circle class="map-point map-point--cyan" style="--delay:-.5s" cx="624" cy="316" r="3.1"/>
+                            <circle class="map-point map-point--blue" style="--delay:-1.9s" cx="662" cy="347" r="2.4"/>
+                            <circle class="map-point map-point--gold" style="--delay:-2.2s" cx="755" cy="279" r="2.8"/>
+                            <circle class="map-point map-point--white" style="--delay:-1.4s" cx="288" cy="227" r="2.5"/>
+                        </g>
                         <circle class="map-hub-pulse" cx="294" cy="119" r="8"/>
                         <circle class="map-hub-pulse" cx="500" cy="93" r="8"/>
                         <circle class="map-hub-pulse" cx="702" cy="170" r="8"/>
                         <circle class="map-hub-pulse" cx="788" cy="211" r="8"/>
                         <circle class="map-hub-pulse" cx="888" cy="130" r="8"/>
+                        <circle class="map-hub-pulse" cx="326" cy="91" r="8"/>
+                        <circle class="map-hub-pulse" cx="920" cy="306" r="8"/>
                         <circle class="map-hub" cx="294" cy="119" r="6"/>
                         <circle class="map-hub" cx="500" cy="93" r="6"/>
                         <circle class="map-hub" cx="702" cy="170" r="6"/>
                         <circle class="map-hub" cx="788" cy="211" r="6"/>
                         <circle class="map-hub" cx="888" cy="130" r="6"/>
-                        <text class="map-label" x="269" y="108">New York</text>
-                        <text class="map-label" x="477" y="82">London</text>
-                        <text class="map-label" x="678" y="159">Mumbai</text>
-                        <text class="map-label" x="770" y="234">Singapore</text>
-                        <text class="map-label" x="860" y="119">Tokyo</text>
+                        <circle class="map-hub" cx="326" cy="91" r="6"/>
+                        <circle class="map-hub" cx="920" cy="306" r="6"/>
+                        <text class="map-label map-country" x="305" y="77">Canada</text>
+                        <text class="map-label map-country" x="889" y="346">Australia</text>
+                        <text class="map-label map-country" x="237" y="108">United States</text>
+                        <text class="map-label map-country" x="452" y="82">United Kingdom</text>
+                        <text class="map-label map-country" x="678" y="159">India</text>
+                        <text class="map-label map-country" x="770" y="234">Singapore</text>
+                        <text class="map-label map-country" x="860" y="119">Japan</text>
+                        <text class="map-label map-country" x="531" y="137">Germany</text>
+                        <text class="map-label map-country" x="489" y="151">France</text>
+                        <text class="map-label map-country" x="593" y="193">United Arab Emirates</text>
+                        <text class="map-label map-country" x="361" y="301">Brazil</text>
+                        <text class="map-label map-country" x="925" y="367">New Zealand</text>
                     </g>
                 </svg>
+                <div class="map-controls" aria-label="Map controls">
+                    <button class="map-mode-toggle" type="button" aria-pressed="false">Light Mode</button>
+                    <div class="map-zoom" aria-label="Map zoom">
+                        <button type="button" class="map-zoom-in" aria-label="Zoom in">+</button>
+                        <button type="button" class="map-zoom-out" aria-label="Zoom out">−</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section licensing-section" id="licensing">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Microsoft licensing, made clearer</p>
+                    <h2>Compare the model before you choose a plan.</h2>
+                    <p>A practical overview of how common Microsoft business products are licensed and billed. We summarize Microsoft’s public guidance in our own words; use the official links for current product rights and terms.</p>
+                </div>
+                <div class="licensing-grid">
+                    <article class="licensing-card reveal">
+                        <p class="licensing-model">Per-user subscription</p>
+                        <h3>Microsoft 365 Business</h3>
+                        <p><strong>Compare:</strong> Business Basic, Standard, and Premium bundle different combinations of online services, desktop apps, security, and device management. Match the bundle to each user’s actual needs.</p>
+                        <a class="licensing-link" href="https://www.microsoft.com/en-us/microsoft-365/business/microsoft-365-plans-and-pricing" target="_blank" rel="noopener noreferrer">Microsoft 365 Business plans <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="licensing-card reveal reveal-delay-1">
+                        <p class="licensing-model">Per-user subscription</p>
+                        <h3>Microsoft 365 Enterprise</h3>
+                        <p><strong>Compare:</strong> Enterprise editions package productivity, identity, security, and compliance capabilities at different levels. Confirm which features are included and which need add-on licenses.</p>
+                        <a class="licensing-link" href="https://www.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-plans-and-pricing" target="_blank" rel="noopener noreferrer">Microsoft 365 Enterprise plans <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="licensing-card reveal reveal-delay-2">
+                        <p class="licensing-model">Usage-based + commitments</p>
+                        <h3>Microsoft Azure</h3>
+                        <p><strong>Compare:</strong> Pay-as-you-go follows eligible resource usage. Reservations suit steady, defined workloads; savings plans trade a set hourly spend commitment for discounts across eligible usage. Commitments have terms and unused value may not roll over.</p>
+                        <a class="licensing-link" href="https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/savings-plan-overview" target="_blank" rel="noopener noreferrer">Azure savings plans and reservations <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="licensing-card reveal">
+                        <p class="licensing-model">User, capacity, or consumption</p>
+                        <h3>Power Platform</h3>
+                        <p><strong>Compare:</strong> Standalone user licenses, capacity add-ons, and pay-as-you-go meters cover different app, automation, and data scenarios. Some Microsoft 365 plans include limited rights; those are not a substitute for every premium capability.</p>
+                        <a class="licensing-link" href="https://learn.microsoft.com/en-us/power-platform/admin/pricing-billing-skus" target="_blank" rel="noopener noreferrer">Power Platform licensing overview <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="licensing-card reveal reveal-delay-1">
+                        <p class="licensing-model">Product and user based</p>
+                        <h3>Dynamics 365</h3>
+                        <p><strong>Compare:</strong> Licensing depends on the business application and users’ access needs. Base, attach, team-member, and capacity rights can differ; validate each role and scenario against the current product guide.</p>
+                        <a class="licensing-link" href="https://go.microsoft.com/fwlink/p/?LinkId=866544" target="_blank" rel="noopener noreferrer">Dynamics 365 licensing guide <span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="licensing-card reveal reveal-delay-2">
+                        <p class="licensing-model">Per-device or per-user subscription</p>
+                        <h3>Windows Enterprise</h3>
+                        <p><strong>Compare:</strong> Enterprise options include per-device licensing and E3 or E5 user subscriptions. Subscription activation generally steps up eligible Windows Pro devices; check the base license and deployment requirements.</p>
+                        <a class="licensing-link" href="https://www.microsoft.com/en-us/licensing/product-licensing/windows" target="_blank" rel="noopener noreferrer">Windows licensing details <span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+                <p class="licensing-note">This comparison is a planning aid, not a license quote or legal interpretation. Microsoft pricing, availability, entitlements, and terms vary by country, agreement, and product changes. Confirm the current Microsoft terms for your exact users and workloads before purchase.</p>
             </div>
         </section>
 
@@ -871,17 +1048,18 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-about">
-                    <a class="brand" href="#home">
+                    <a class="brand" href="?page=home">
                         <img src="logo.png.png" alt="">
                         <span class="brand-name"><strong>Atul Maurya</strong><span>Cloud Solution Pvt. Ltd.</span></span>
                     </a>
                     <p>Your cloud services partner for Azure, Microsoft 365, Teams, SharePoint, OneDrive, Exchange, Entra, Intune, Defender, Copilot, Power Platform, and Dynamics 365. Serving businesses across the region and worldwide.</p>
                 </div>
                 <nav class="footer-links" aria-label="Footer navigation">
-                    <a href="#services">Services</a>
-                    <a href="#approach">Our approach</a>
-                    <a href="#global">Global delivery</a>
-                    <a href="#pricing">Pricing</a>
+                    <a href="?page=services">Services</a>
+                    <a href="?page=approach">Our approach</a>
+                    <a href="?page=global">Global delivery</a>
+                    <a href="?page=licensing">Licensing</a>
+                    <a href="?page=pricing">Pricing</a>
                     <a href="mailto:samratatulmaurya9415@outlook.com">Email us</a>
                     <a href="https://wa.me/918429395452?text=Hello%2C%20I%27d%20like%20to%20talk%20about%20your%20cloud%20services." target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </nav>
@@ -920,12 +1098,67 @@
         const dialogStatus = document.getElementById('dialog-status');
         const navMenu = document.getElementById('site-navigation');
         const menuToggle = document.querySelector('.menu-toggle');
+        const mapFrame = document.querySelector('.map-frame');
+        const worldMap = document.querySelector('.world-map');
+        const mapModeToggle = document.querySelector('.map-mode-toggle');
+        const pageViews = {
+            home: ['home-hero', 'promise'],
+            services: ['services'],
+            approach: ['approach'],
+            global: ['global'],
+            licensing: ['licensing'],
+            pricing: ['pricing'],
+            about: []
+        };
+        const requestedPage = new URLSearchParams(window.location.search).get('page');
+        const activePage = Object.prototype.hasOwnProperty.call(pageViews, requestedPage) ? requestedPage : 'home';
+        const pageTitles = {
+            home: 'Cloud, IT & AI Services',
+            services: 'Cloud & Microsoft Services',
+            approach: 'Our Approach',
+            global: 'Global Delivery',
+            licensing: 'Microsoft Licensing',
+            pricing: 'Plans & Pricing',
+            about: 'About & Contact'
+        };
+
+        document.body.classList.add('page-mode');
+        pageViews[activePage].forEach(function (sectionId) {
+            document.getElementById(sectionId).classList.add('is-page-visible');
+        });
+        document.querySelectorAll('.nav-menu a').forEach(function (link) {
+            if (new URL(link.href).searchParams.get('page') === activePage) {
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+        document.title = 'Atul Maurya Cloud Solution | ' + pageTitles[activePage];
 
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        if (mapFrame && worldMap) {
+            let mapZoom = 1;
+            function updateMapZoom(nextZoom) {
+                mapZoom = Math.max(1, Math.min(2.4, nextZoom));
+                const width = 1000 / mapZoom;
+                const height = 430 / mapZoom;
+                worldMap.setAttribute('viewBox', ((1000 - width) / 2) + ' ' + ((430 - height) / 2) + ' ' + width + ' ' + height);
+            }
+            document.querySelector('.map-zoom-in').addEventListener('click', function () {
+                updateMapZoom(mapZoom * 1.25);
+            });
+            document.querySelector('.map-zoom-out').addEventListener('click', function () {
+                updateMapZoom(mapZoom / 1.25);
+            });
+            mapModeToggle.addEventListener('click', function () {
+                const isLight = mapFrame.classList.toggle('is-light');
+                mapModeToggle.setAttribute('aria-pressed', String(isLight));
+                mapModeToggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+            });
+        }
+
         const typingText = document.querySelector('.typing-text');
         const fullTypingText = typingText.dataset.text;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (activePage !== 'home' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             typingText.textContent = fullTypingText;
         } else {
             typingText.textContent = '';
@@ -1015,21 +1248,6 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(function (element) {
             revealObserver.observe(element);
-        });
-
-        const navLinks = Array.from(document.querySelectorAll('.nav-menu a'));
-        const sectionObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                navLinks.forEach(function (link) {
-                    if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
-                    else link.removeAttribute('aria-current');
-                });
-            });
-        }, { rootMargin: '-25% 0px -65% 0px' });
-        navLinks.forEach(function (link) {
-            const section = document.querySelector(link.hash);
-            if (section) sectionObserver.observe(section);
         });
 
         if ('serviceWorker' in navigator && location.protocol !== 'file:') {
