@@ -200,6 +200,32 @@
                 border-color: rgba(58, 152, 255, 0.5);
             }
         }
+        @keyframes floatPanel {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+        }
+        @keyframes softZoom {
+            0% {
+                transform: scale(1);
+                filter: saturate(1) brightness(1);
+            }
+            100% {
+                transform: scale(1.03);
+                filter: saturate(1.08) brightness(1.02);
+            }
+        }
+        @keyframes ambientGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(111, 90, 246, 0.06), 0 14px 32px rgba(23, 43, 66, 0.08);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(111, 90, 246, 0.04), 0 18px 38px rgba(58, 152, 255, 0.12);
+            }
+        }
         .brand-name { display: grid; line-height: 1.15; }
         .brand-name strong { font-size: 0.91rem; font-weight: 800; }
         .brand-name span { color: var(--muted); font-size: 0.72rem; font-weight: 600; }
@@ -256,9 +282,12 @@
             font-weight: 800;
             line-height: 1.2;
             text-align: center;
+            will-change: transform, box-shadow;
+            transform: translateY(0);
             transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
         }
-        .button:hover { transform: translateY(-2px); }
+        .button:hover { transform: translateY(-2px) scale(1.01); }
+        .button:active { transform: translateY(0) scale(0.99); }
         .button-primary {
             background: linear-gradient(135deg, #5f4aea 0%, #2a8ef6 100%);
             box-shadow: 0 14px 28px rgba(95, 74, 234, 0.28);
@@ -446,6 +475,7 @@
             border-radius: 30px;
             background: linear-gradient(145deg, #e4f2ed, #e3f0eb 60%, #f1f6f2);
             box-shadow: var(--shadow);
+            animation: ambientGlow 7s ease-in-out infinite;
         }
         .hero-photo {
             width: 100%;
@@ -454,6 +484,7 @@
             background: #dbe8e4;
             object-fit: cover;
             object-position: center 20%;
+            animation: softZoom 12s ease-in-out infinite alternate;
         }
         .hero-caption {
             position: absolute;
@@ -466,6 +497,7 @@
             background: rgba(255, 255, 255, 0.93);
             box-shadow: 0 16px 35px rgba(23, 43, 66, 0.14);
             backdrop-filter: blur(10px);
+            animation: floatPanel 8.5s ease-in-out infinite 0.5s;
         }
         .hero-caption strong { display: block; font-family: "Manrope", sans-serif; font-size: 0.95rem; }
         .hero-caption span { display: block; margin-top: 0.2rem; color: var(--muted); font-size: 0.77rem; line-height: 1.45; }
@@ -481,6 +513,7 @@
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.94);
             box-shadow: 0 14px 32px rgba(23, 43, 66, 0.12);
+            animation: floatPanel 7s ease-in-out infinite;
         }
         .float-icon {
             display: grid;
@@ -513,13 +546,30 @@
         .centered-heading > p:last-child { margin: 0; color: var(--muted); }
         .promise-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .promise-card {
+            position: relative;
             min-height: 226px;
             padding: 1.55rem;
+            overflow: hidden;
             border: 1px solid rgba(15, 44, 57, 0.08);
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.86);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 248, 255, 0.9));
             box-shadow: 0 10px 25px rgba(23, 43, 66, 0.03);
-            transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+            transform: translateY(0);
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+            animation: cardLiftIn 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .promise-card::before {
+            position: absolute;
+            top: -30%;
+            left: -10%;
+            width: 40%;
+            height: 180%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
+            transform: translateX(-150%) rotate(18deg);
+            opacity: 0;
+            transition: transform 700ms ease, opacity 300ms ease;
+            content: "";
+            pointer-events: none;
         }
         .promise-card:hover,
         .reason-card:hover,
@@ -528,11 +578,44 @@
             border-color: rgba(11, 127, 139, 0.18);
             box-shadow: 0 18px 35px rgba(17, 33, 53, 0.08);
         }
+        .promise-card:hover::before {
+            opacity: 1;
+            transform: translateX(360%) rotate(18deg);
+        }
+        @keyframes cardLiftIn {
+            0% {
+                opacity: 0;
+                transform: translateY(22px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .benefit-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.28rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(111, 90, 246, 0.1);
+            color: var(--purple-dark);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
         .feature-icon {
             display: grid;
             width: 60px;
             height: 60px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0;
             place-items: center;
             border-radius: 16px;
             background: linear-gradient(145deg, var(--purple), var(--blue));
@@ -546,6 +629,31 @@
         .feature-icon--teal { background: linear-gradient(145deg, #1ac4a2, #3a98ff); }
         .promise-card h3, .reason-card h3 { margin: 0 0 0.45rem; font-size: 1.06rem; letter-spacing: -0.025em; }
         .promise-card p, .reason-card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+        .benefit-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .benefit-points li {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.34rem 0.6rem;
+            border: 1px solid rgba(111, 90, 246, 0.12);
+            border-radius: 999px;
+            background: rgba(111, 90, 246, 0.04);
+            color: var(--ink-soft);
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+        .benefit-points li::before {
+            margin-right: 0.4rem;
+            color: #1caa83;
+            content: "✓";
+            font-weight: 800;
+        }
 
         .solutions-section { background: #fff; }
         .solutions-section .section-heading { margin-inline: auto; text-align: center; }
@@ -1241,24 +1349,52 @@
                 </div>
                 <div class="promise-grid">
                     <article class="promise-card reveal">
-                        <span class="feature-icon" aria-hidden="true">▣</span>
+                        <div class="benefit-top">
+                            <span class="feature-icon" aria-hidden="true">▣</span>
+                            <span class="benefit-badge">Scalable</span>
+                        </div>
                         <h3>Enterprise-ready solutions</h3>
-                        <p>Thoughtful cloud foundations designed to grow with your organization.</p>
+                        <p>Thoughtful cloud foundations designed to grow with your organization while keeping systems dependable.</p>
+                        <ul class="benefit-points">
+                            <li>Fewer bottlenecks</li>
+                            <li>Better scale</li>
+                        </ul>
                     </article>
                     <article class="promise-card reveal reveal-delay-1">
-                        <span class="feature-icon feature-icon--pink" aria-hidden="true">ϟ</span>
+                        <div class="benefit-top">
+                            <span class="feature-icon feature-icon--pink" aria-hidden="true">ϟ</span>
+                            <span class="benefit-badge">Clear</span>
+                        </div>
                         <h3>Practical delivery</h3>
-                        <p>Clear project steps, hands-on implementation, and a supported handover.</p>
+                        <p>Clear project steps, hands-on implementation, and a supported handover that keeps momentum high.</p>
+                        <ul class="benefit-points">
+                            <li>Fast rollout</li>
+                            <li>Lower friction</li>
+                        </ul>
                     </article>
                     <article class="promise-card reveal reveal-delay-1">
-                        <span class="feature-icon feature-icon--orange" aria-hidden="true">₹</span>
+                        <div class="benefit-top">
+                            <span class="feature-icon feature-icon--orange" aria-hidden="true">₹</span>
+                            <span class="benefit-badge">Smart</span>
+                        </div>
                         <h3>Cost-conscious planning</h3>
-                        <p>Understand scope, licensing, usage, and costs before you commit.</p>
+                        <p>Understand scope, licensing, usage, and costs before you commit so budget decisions stay confident.</p>
+                        <ul class="benefit-points">
+                            <li>Budget clarity</li>
+                            <li>Less waste</li>
+                        </ul>
                     </article>
                     <article class="promise-card reveal reveal-delay-2">
-                        <span class="feature-icon feature-icon--teal" aria-hidden="true">♧</span>
+                        <div class="benefit-top">
+                            <span class="feature-icon feature-icon--teal" aria-hidden="true">♧</span>
+                            <span class="benefit-badge">Support</span>
+                        </div>
                         <h3>Long-term partnership</h3>
-                        <p>Ongoing support and improvement beyond the initial launch.</p>
+                        <p>Ongoing support, optimization, and expert guidance beyond launch so your systems keep improving.</p>
+                        <ul class="benefit-points">
+                            <li>Always guided</li>
+                            <li>Continuous growth</li>
+                        </ul>
                     </article>
                 </div>
             </div>
